@@ -1,0 +1,29 @@
+package Math_Library
+public
+	
+	system Math_System
+	end Math_System;
+	
+	system implementation Math_System.i
+		subcomponents
+			mp: process Math_Process.i;
+	end Math_System.i;
+	
+	process Math_Process
+	end Math_Process;
+	
+	process implementation Math_Process.i
+		subcomponents
+			mt: thread Math_Thread.i;
+	end Math_Process.i;
+	
+	thread Math_Thread
+	end Math_Thread;
+	
+	thread implementation Math_Thread.i
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 1sec;
+	end Math_Thread.i;
+	
+end Math_Library;

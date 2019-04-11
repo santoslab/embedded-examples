@@ -1,0 +1,38 @@
+#ifndef SIREUM_H_math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints
+#define SIREUM_H_math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints
+#include <types.h>
+
+// math_library.Math_Library.Math_Thread_i_Bridge.EntryPoints
+
+#define math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_Math_Thread_i_BridgeId_(this) ((this)->Math_Thread_i_BridgeId)
+#define math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_component_(this) ((math_library_Math_Library_Math_Thread_i_Impl) &(this)->component)
+#define math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_dataInPortIds_(this) ((IS_82ABD8) &(this)->dataInPortIds)
+#define math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_eventInPortIds_(this) ((IS_82ABD8) &(this)->eventInPortIds)
+#define math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_dataOutPortIds_(this) ((IS_82ABD8) &(this)->dataOutPortIds)
+#define math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_eventOutPortIds_(this) ((IS_82ABD8) &(this)->eventOutPortIds)
+
+B math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints__eq(math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints this, math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints other);
+static inline B math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints__ne(math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints this, math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints other) {
+  return !math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints__eq(this, other);
+};
+void math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_cprint(math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints this, B isOut);
+void math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_string(String result, StackFrame caller, math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints this);
+
+#define math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints__is(sf, this) (((math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints) this)->type == Tmath_library_Math_Library_Math_Thread_i_Bridge_EntryPoints)
+
+static inline math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints__as(StackFrame caller, void *this) {
+  if (math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints__is(caller, this)) return (math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints) this;
+  fprintf(stderr, "Invalid case from %s to math_library.Math_Library.Math_Thread_i_Bridge.EntryPoints.", TYPE_string(this));
+  sfAbortImpl(caller, "");
+  abort();
+}
+
+void math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_apply(StackFrame caller, math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints this, Z Math_Thread_i_BridgeId, math_library_Math_Library_Math_Thread_i_Impl component);
+
+Unit math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_initialise_(StackFrame caller, math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints this);
+
+Unit math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_compute_(StackFrame caller, math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints this);
+
+Unit math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints_finalise_(StackFrame caller, math_library_Math_Library_Math_Thread_i_Bridge_EntryPoints this);
+
+#endif
