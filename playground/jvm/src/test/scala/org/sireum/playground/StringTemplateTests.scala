@@ -6,26 +6,11 @@ import org.sireum.test._
 class StringTemplateTests extends TestSuite {
 
   val tests = Tests {
-    // * adds position info
-    // - registers test as JUnit tests
-    * - {
-      val str = "Hello world"
-      println(str)
-    }
-
-    // Parr example
-    //   import org.stringtemplate.v4.*;
-    //   ...
-    //   ST hello = new ST("Hello, <name>");
-    //   hello.add("name", "World");
-    //   System.out.println(hello.render());
-
     * - {
       val name: String = "World"
       val hello: ST = st"Hello, ${name}!"
       println(hello.render)
     }
-
 
     * - {
       def hello(name:String): ST = st"Hello, ${name}!"
@@ -44,6 +29,70 @@ class StringTemplateTests extends TestSuite {
       println(hello("World").render)
     }
 
+    * - {
+      val seq1 = ISZ(1, 2, 3)
+      val _st1 = st"${(seq1, ":")}"
+      println(_st1.render)
+      val seq2 = ISZ(1)
+      val _st2 = st"${(seq2, ":")}"
+      println(_st2.render)
+      val seq3 = ISZ()
+      val _st3 = st"${(seq3, ":")}"
+      println(_st3.render)
+      println("All done!")
+    }
+
+    * - {
+      val thenStatement = "x = x + 1;"
+      val elseStatement = "x = x - 1;"
+      val _st = st"""if (a > b)
+                    |  ${thenStatement}
+                    |else
+                    |  ${elseStatement} """
+      println(_st.render)
+    }
+
+    * - {
+      val thenStatement = "x = x + 1;"
+      val elseStatement = "x = x - 1;"
+      val _st = st"""if (a > b)
+                       ${thenStatement}
+                     else
+                       ${elseStatement} """
+      println(_st.render)
+    }
+
+    * - {
+      val ids = ISZ(("n1", "v1"), ("n2", "v2"), ("n3", "v3"))
+      // how is the code above typed?
+      val mapdefs =
+        st"""// map defs
+            | val mapping = [
+            |  ${(for (p <- ids) yield st"${p._1} = ${p._2}", ",\n")}
+            | ]"""
+      val mapdefs1 =
+        st"""// map defs
+            | val mapping = [
+            |  ${(ids.map(p => st"${p._1} = ${p._2}"), ",\n")}
+            | ]"""
+      println(mapdefs.render)
+      // what is the semantics of yield?
+      // the intent of the above example?
+      //  should format
+      //     val mapping = [
+      //         n1 = v1,
+      //         n2 = v2,
+      //         n3 = v3
+      //     ]
+    }
+    // Parr example
+    //   import org.stringtemplate.v4.*;
+    //   ...
+    //   ST hello = new ST("Hello, <name>");
+    //   hello.add("name", "World");
+    //   System.out.println(hello.render());
+
+
     //    * - {
 //      def init(v:String) = if OT NULLXXX st"= ${v}" else st""
 //      def decl(typ: String, name: String, value: String)
@@ -58,13 +107,7 @@ class StringTemplateTests extends TestSuite {
       println(_st.render)
     }
 
-    * - {
-      val str = "Hello world - multi line string template"
-      val _st = st"""1.
-                    |2. ${str}
-                    |3. """
-      println(_st.render)
-    }
+
 
     * - {
       val str = "Hello world - sequences"
@@ -78,9 +121,9 @@ class StringTemplateTests extends TestSuite {
 
     *("Custom Titled Test: Hello world - sequences")({
       val seq = ISZ('a', 'b', 'c')
-      val _st = st"${(seq, ",")}"
+      val _st = st"${(seq, ":")}"
       println(_st.render)
-      _st.render.native == "a,b,c"
+      _st.render.native == "a:b:c"
     })
 
     *({
