@@ -1,0 +1,9 @@
+#ifndef SIREUM_H_math_library_Math_Library_Math_Thread_i
+#define SIREUM_H_math_library_Math_Library_Math_Thread_i
+#include <types.h>
+
+Unit math_library_Math_Library_Math_Thread_i_Impl_initialise_(StackFrame caller, math_library_Math_Library_Math_Thread_i_Impl this);
+
+Unit math_library_Math_Library_Math_Thread_i_Impl_finalise_(StackFrame caller, math_library_Math_Library_Math_Thread_i_Impl this);
+
+#endif

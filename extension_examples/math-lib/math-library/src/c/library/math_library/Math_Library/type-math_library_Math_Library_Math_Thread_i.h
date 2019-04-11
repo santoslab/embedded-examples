@@ -1,0 +1,6 @@
+#ifndef SIREUM_TYPE_H_math_library_Math_Library_Math_Thread_i
+#define SIREUM_TYPE_H_math_library_Math_Library_Math_Thread_i
+#include <misc.h>
+
+
+#endif
