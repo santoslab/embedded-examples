@@ -1,0 +1,1712 @@
+{
+  "type" : "Aadl",
+  "components" : [
+    {
+      "type" : "Component",
+      "identifier" : {
+        "type" : "Name",
+        "name" : ["PingPongSystem_i_Instance"],
+        "pos" : {
+          "type" : "Some",
+          "value" : {
+            "type" : "Position",
+            "uriOpt" : {
+              "type" : "Some",
+              "value" : "PingPong\/packages\/PingPong.aadl"
+            },
+            "beginLine" : 8,
+            "beginColumn" : 2,
+            "endLine" : 11,
+            "endColumn" : 23,
+            "offset" : 91,
+            "length" : 110
+          }
+        }
+      },
+      "category" : {
+        "type" : "ComponentCategory",
+        "value" : "System"
+      },
+      "classifier" : {
+        "type" : "None"
+      },
+      "features" : [
+      ],
+      "subComponents" : [
+        {
+          "type" : "Component",
+          "identifier" : {
+            "type" : "Name",
+            "name" : ["PingPongSystem_i_Instance", "p"],
+            "pos" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Position",
+                "uriOpt" : {
+                  "type" : "Some",
+                  "value" : "PingPong\/packages\/PingPong.aadl"
+                },
+                "beginLine" : 10,
+                "beginColumn" : 4,
+                "endLine" : 10,
+                "endColumn" : 33,
+                "offset" : 149,
+                "length" : 29
+              }
+            }
+          },
+          "category" : {
+            "type" : "ComponentCategory",
+            "value" : "Process"
+          },
+          "classifier" : {
+            "type" : "Some",
+            "value" : {
+              "type" : "Classifier",
+              "name" : "PingPong::PingPongProcess.i"
+            }
+          },
+          "features" : [
+          ],
+          "subComponents" : [
+            {
+              "type" : "Component",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["PingPongSystem_i_Instance", "p", "ping"],
+                "pos" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Position",
+                    "uriOpt" : {
+                      "type" : "Some",
+                      "value" : "PingPong\/packages\/PingPong.aadl"
+                    },
+                    "beginLine" : 19,
+                    "beginColumn" : 4,
+                    "endLine" : 19,
+                    "endColumn" : 24,
+                    "offset" : 316,
+                    "length" : 20
+                  }
+                }
+              },
+              "category" : {
+                "type" : "ComponentCategory",
+                "value" : "Thread"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "PingPong::Ping.i"
+                }
+              },
+              "features" : [
+                {
+                  "type" : "FeatureEnd",
+                  "identifier" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_inn"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 28,
+                        "beginColumn" : 4,
+                        "endLine" : 28,
+                        "endColumn" : 49,
+                        "offset" : 516,
+                        "length" : 45
+                      }
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Direction",
+                    "value" : "In"
+                  },
+                  "category" : {
+                    "type" : "FeatureCategory",
+                    "value" : "DataPort"
+                  },
+                  "classifier" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Classifier",
+                      "name" : "Base_Types::Integer_8"
+                    }
+                  },
+                  "properties" : [
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_inn", "Data_Model::Number_Representation"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                            },
+                            "beginLine" : 78,
+                            "beginColumn" : 4,
+                            "endLine" : 78,
+                            "endColumn" : 88,
+                            "offset" : 3653,
+                            "length" : 84
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "Signed"
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_inn", "Memory_Properties::Data_Size"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Memory_Properties.aadl"
+                            },
+                            "beginLine" : 91,
+                            "beginColumn" : 2,
+                            "endLine" : 92,
+                            "endColumn" : 137,
+                            "offset" : 4757,
+                            "length" : 152
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "UnitProp",
+                          "value" : "8.0",
+                          "unit" : {
+                            "type" : "Some",
+                            "value" : "bits"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_inn", "Data_Model::Data_Representation"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                            },
+                            "beginLine" : 26,
+                            "beginColumn" : 4,
+                            "endLine" : 29,
+                            "endColumn" : 36,
+                            "offset" : 1108,
+                            "length" : 162
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "Integer"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type" : "FeatureEnd",
+                  "identifier" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_out"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 29,
+                        "beginColumn" : 4,
+                        "endLine" : 29,
+                        "endColumn" : 50,
+                        "offset" : 565,
+                        "length" : 46
+                      }
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Direction",
+                    "value" : "Out"
+                  },
+                  "category" : {
+                    "type" : "FeatureCategory",
+                    "value" : "DataPort"
+                  },
+                  "classifier" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Classifier",
+                      "name" : "Base_Types::Integer_8"
+                    }
+                  },
+                  "properties" : [
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_out", "Data_Model::Number_Representation"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                            },
+                            "beginLine" : 78,
+                            "beginColumn" : 4,
+                            "endLine" : 78,
+                            "endColumn" : 88,
+                            "offset" : 3653,
+                            "length" : 84
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "Signed"
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_out", "Memory_Properties::Data_Size"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Memory_Properties.aadl"
+                            },
+                            "beginLine" : 91,
+                            "beginColumn" : 2,
+                            "endLine" : 92,
+                            "endColumn" : 137,
+                            "offset" : 4757,
+                            "length" : 152
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "UnitProp",
+                          "value" : "8.0",
+                          "unit" : {
+                            "type" : "Some",
+                            "value" : "bits"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_out", "Data_Model::Data_Representation"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                            },
+                            "beginLine" : 26,
+                            "beginColumn" : 4,
+                            "endLine" : 29,
+                            "endColumn" : 36,
+                            "offset" : 1108,
+                            "length" : 162
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "Integer"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "subComponents" : [
+              ],
+              "connections" : [
+              ],
+              "connectionInstances" : [
+              ],
+              "properties" : [
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "ping", "Thread_Properties::Dispatch_Protocol"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Thread_Properties.aadl"
+                        },
+                        "beginLine" : 12,
+                        "beginColumn" : 2,
+                        "endLine" : 13,
+                        "endColumn" : 50,
+                        "offset" : 476,
+                        "length" : 97
+                      }
+                    }
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "Periodic"
+                    }
+                  ]
+                },
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "ping", "Timing_Properties::Period"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Timing_Properties.aadl"
+                        },
+                        "beginLine" : 191,
+                        "beginColumn" : 2,
+                        "endLine" : 192,
+                        "endColumn" : 99,
+                        "offset" : 11575,
+                        "length" : 119
+                      }
+                    }
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "UnitProp",
+                      "value" : "1.0E12",
+                      "unit" : {
+                        "type" : "Some",
+                        "value" : "ps"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "flows" : [
+              ],
+              "modes" : [
+              ],
+              "annexes" : [
+                {
+                  "type" : "Annex",
+                  "name" : "Emv2",
+                  "clause" : {
+                    "type" : "Emv2Clause",
+                    "libraries" : [
+                    ],
+                    "propagations" : [
+                    ],
+                    "flows" : [
+                    ],
+                    "componentBehavior" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Emv2BehaviorSection",
+                        "events" : [
+                        ],
+                        "transitions" : [
+                        ],
+                        "propagations" : [
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type" : "Component",
+              "identifier" : {
+                "type" : "Name",
+                "name" : ["PingPongSystem_i_Instance", "p", "pong"],
+                "pos" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Position",
+                    "uriOpt" : {
+                      "type" : "Some",
+                      "value" : "PingPong\/packages\/PingPong.aadl"
+                    },
+                    "beginLine" : 20,
+                    "beginColumn" : 4,
+                    "endLine" : 20,
+                    "endColumn" : 24,
+                    "offset" : 340,
+                    "length" : 20
+                  }
+                }
+              },
+              "category" : {
+                "type" : "ComponentCategory",
+                "value" : "Thread"
+              },
+              "classifier" : {
+                "type" : "Some",
+                "value" : {
+                  "type" : "Classifier",
+                  "name" : "PingPong::Pong.i"
+                }
+              },
+              "features" : [
+                {
+                  "type" : "FeatureEnd",
+                  "identifier" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_inn"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 40,
+                        "beginColumn" : 4,
+                        "endLine" : 40,
+                        "endColumn" : 49,
+                        "offset" : 773,
+                        "length" : 45
+                      }
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Direction",
+                    "value" : "In"
+                  },
+                  "category" : {
+                    "type" : "FeatureCategory",
+                    "value" : "DataPort"
+                  },
+                  "classifier" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Classifier",
+                      "name" : "Base_Types::Integer_8"
+                    }
+                  },
+                  "properties" : [
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_inn", "Data_Model::Number_Representation"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                            },
+                            "beginLine" : 78,
+                            "beginColumn" : 4,
+                            "endLine" : 78,
+                            "endColumn" : 88,
+                            "offset" : 3653,
+                            "length" : 84
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "Signed"
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_inn", "Memory_Properties::Data_Size"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Memory_Properties.aadl"
+                            },
+                            "beginLine" : 91,
+                            "beginColumn" : 2,
+                            "endLine" : 92,
+                            "endColumn" : 137,
+                            "offset" : 4757,
+                            "length" : 152
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "UnitProp",
+                          "value" : "8.0",
+                          "unit" : {
+                            "type" : "Some",
+                            "value" : "bits"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_inn", "Data_Model::Data_Representation"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                            },
+                            "beginLine" : 26,
+                            "beginColumn" : 4,
+                            "endLine" : 29,
+                            "endColumn" : 36,
+                            "offset" : 1108,
+                            "length" : 162
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "Integer"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type" : "FeatureEnd",
+                  "identifier" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_out"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 41,
+                        "beginColumn" : 4,
+                        "endLine" : 41,
+                        "endColumn" : 50,
+                        "offset" : 822,
+                        "length" : 46
+                      }
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Direction",
+                    "value" : "Out"
+                  },
+                  "category" : {
+                    "type" : "FeatureCategory",
+                    "value" : "DataPort"
+                  },
+                  "classifier" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Classifier",
+                      "name" : "Base_Types::Integer_8"
+                    }
+                  },
+                  "properties" : [
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_out", "Data_Model::Number_Representation"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                            },
+                            "beginLine" : 78,
+                            "beginColumn" : 4,
+                            "endLine" : 78,
+                            "endColumn" : 88,
+                            "offset" : 3653,
+                            "length" : 84
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "Signed"
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_out", "Memory_Properties::Data_Size"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Memory_Properties.aadl"
+                            },
+                            "beginLine" : 91,
+                            "beginColumn" : 2,
+                            "endLine" : 92,
+                            "endColumn" : 137,
+                            "offset" : 4757,
+                            "length" : 152
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "UnitProp",
+                          "value" : "8.0",
+                          "unit" : {
+                            "type" : "Some",
+                            "value" : "bits"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type" : "Property",
+                      "name" : {
+                        "type" : "Name",
+                        "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_out", "Data_Model::Data_Representation"],
+                        "pos" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                            },
+                            "beginLine" : 26,
+                            "beginColumn" : 4,
+                            "endLine" : 29,
+                            "endColumn" : 36,
+                            "offset" : 1108,
+                            "length" : 162
+                          }
+                        }
+                      },
+                      "propertyValues" : [
+                        {
+                          "type" : "ValueProp",
+                          "value" : "Integer"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "subComponents" : [
+              ],
+              "connections" : [
+              ],
+              "connectionInstances" : [
+              ],
+              "properties" : [
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "pong", "Thread_Properties::Dispatch_Protocol"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Thread_Properties.aadl"
+                        },
+                        "beginLine" : 12,
+                        "beginColumn" : 2,
+                        "endLine" : 13,
+                        "endColumn" : 50,
+                        "offset" : 476,
+                        "length" : 97
+                      }
+                    }
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "ValueProp",
+                      "value" : "Periodic"
+                    }
+                  ]
+                },
+                {
+                  "type" : "Property",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "pong", "Timing_Properties::Period"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Timing_Properties.aadl"
+                        },
+                        "beginLine" : 191,
+                        "beginColumn" : 2,
+                        "endLine" : 192,
+                        "endColumn" : 99,
+                        "offset" : 11575,
+                        "length" : 119
+                      }
+                    }
+                  },
+                  "propertyValues" : [
+                    {
+                      "type" : "UnitProp",
+                      "value" : "1.0E12",
+                      "unit" : {
+                        "type" : "Some",
+                        "value" : "ps"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "flows" : [
+              ],
+              "modes" : [
+              ],
+              "annexes" : [
+                {
+                  "type" : "Annex",
+                  "name" : "Emv2",
+                  "clause" : {
+                    "type" : "Emv2Clause",
+                    "libraries" : [
+                    ],
+                    "propagations" : [
+                    ],
+                    "flows" : [
+                    ],
+                    "componentBehavior" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Emv2BehaviorSection",
+                        "events" : [
+                        ],
+                        "transitions" : [
+                        ],
+                        "propagations" : [
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "connections" : [
+            {
+              "type" : "Connection",
+              "name" : {
+                "type" : "Name",
+                "name" : ["PingPongSystem_i_Instance", "p", "c1"],
+                "pos" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Position",
+                    "uriOpt" : {
+                      "type" : "Some",
+                      "value" : "PingPong\/packages\/PingPong.aadl"
+                    },
+                    "beginLine" : 22,
+                    "beginColumn" : 4,
+                    "endLine" : 22,
+                    "endColumn" : 44,
+                    "offset" : 378,
+                    "length" : 40
+                  }
+                }
+              },
+              "src" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "ping"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 19,
+                        "beginColumn" : 4,
+                        "endLine" : 19,
+                        "endColumn" : 24,
+                        "offset" : 316,
+                        "length" : 20
+                      }
+                    }
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_out"],
+                      "pos" : {
+                        "type" : "Some",
+                        "value" : {
+                          "type" : "Position",
+                          "uriOpt" : {
+                            "type" : "Some",
+                            "value" : "PingPong\/packages\/PingPong.aadl"
+                          },
+                          "beginLine" : 29,
+                          "beginColumn" : 4,
+                          "endLine" : 29,
+                          "endColumn" : 50,
+                          "offset" : 565,
+                          "length" : 46
+                        }
+                      }
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "Out"
+                    }
+                  }
+                }
+              ],
+              "dst" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "pong"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 20,
+                        "beginColumn" : 4,
+                        "endLine" : 20,
+                        "endColumn" : 24,
+                        "offset" : 340,
+                        "length" : 20
+                      }
+                    }
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_inn"],
+                      "pos" : {
+                        "type" : "Some",
+                        "value" : {
+                          "type" : "Position",
+                          "uriOpt" : {
+                            "type" : "Some",
+                            "value" : "PingPong\/packages\/PingPong.aadl"
+                          },
+                          "beginLine" : 40,
+                          "beginColumn" : 4,
+                          "endLine" : 40,
+                          "endColumn" : 49,
+                          "offset" : 773,
+                          "length" : 45
+                        }
+                      }
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "In"
+                    }
+                  }
+                }
+              ],
+              "kind" : {
+                "type" : "ConnectionKind",
+                "value" : "Port"
+              },
+              "isBiDirectional" : false,
+              "connectionInstances" : [
+                {
+                  "type" : "Name",
+                  "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_out -> pong", "pong_inn"],
+                  "pos" : {
+                    "type" : "None"
+                  }
+                }
+              ],
+              "properties" : [
+              ]
+            },
+            {
+              "type" : "Connection",
+              "name" : {
+                "type" : "Name",
+                "name" : ["PingPongSystem_i_Instance", "p", "c2"],
+                "pos" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Position",
+                    "uriOpt" : {
+                      "type" : "Some",
+                      "value" : "PingPong\/packages\/PingPong.aadl"
+                    },
+                    "beginLine" : 23,
+                    "beginColumn" : 4,
+                    "endLine" : 23,
+                    "endColumn" : 44,
+                    "offset" : 422,
+                    "length" : 40
+                  }
+                }
+              },
+              "src" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "pong"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 20,
+                        "beginColumn" : 4,
+                        "endLine" : 20,
+                        "endColumn" : 24,
+                        "offset" : 340,
+                        "length" : 20
+                      }
+                    }
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_out"],
+                      "pos" : {
+                        "type" : "Some",
+                        "value" : {
+                          "type" : "Position",
+                          "uriOpt" : {
+                            "type" : "Some",
+                            "value" : "PingPong\/packages\/PingPong.aadl"
+                          },
+                          "beginLine" : 41,
+                          "beginColumn" : 4,
+                          "endLine" : 41,
+                          "endColumn" : 50,
+                          "offset" : 822,
+                          "length" : 46
+                        }
+                      }
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "Out"
+                    }
+                  }
+                }
+              ],
+              "dst" : [
+                {
+                  "type" : "EndPoint",
+                  "component" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "ping"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 19,
+                        "beginColumn" : 4,
+                        "endLine" : 19,
+                        "endColumn" : 24,
+                        "offset" : 316,
+                        "length" : 20
+                      }
+                    }
+                  },
+                  "feature" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Name",
+                      "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_inn"],
+                      "pos" : {
+                        "type" : "Some",
+                        "value" : {
+                          "type" : "Position",
+                          "uriOpt" : {
+                            "type" : "Some",
+                            "value" : "PingPong\/packages\/PingPong.aadl"
+                          },
+                          "beginLine" : 28,
+                          "beginColumn" : 4,
+                          "endLine" : 28,
+                          "endColumn" : 49,
+                          "offset" : 516,
+                          "length" : 45
+                        }
+                      }
+                    }
+                  },
+                  "direction" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Direction",
+                      "value" : "In"
+                    }
+                  }
+                }
+              ],
+              "kind" : {
+                "type" : "ConnectionKind",
+                "value" : "Port"
+              },
+              "isBiDirectional" : false,
+              "connectionInstances" : [
+                {
+                  "type" : "Name",
+                  "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_out -> ping", "ping_inn"],
+                  "pos" : {
+                    "type" : "None"
+                  }
+                }
+              ],
+              "properties" : [
+              ]
+            }
+          ],
+          "connectionInstances" : [
+            {
+              "type" : "ConnectionInstance",
+              "name" : {
+                "type" : "Name",
+                "name" : ["PingPongSystem_i_Instance", "p", "ping.ping_out -> pong.pong_inn"],
+                "pos" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Position",
+                    "uriOpt" : {
+                      "type" : "Some",
+                      "value" : "PingPong\/packages\/PingPong.aadl"
+                    },
+                    "beginLine" : 22,
+                    "beginColumn" : 4,
+                    "endLine" : 22,
+                    "endColumn" : 44,
+                    "offset" : 378,
+                    "length" : 40
+                  }
+                }
+              },
+              "src" : {
+                "type" : "EndPoint",
+                "component" : {
+                  "type" : "Name",
+                  "name" : ["PingPongSystem_i_Instance", "p", "ping"],
+                  "pos" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Position",
+                      "uriOpt" : {
+                        "type" : "Some",
+                        "value" : "PingPong\/packages\/PingPong.aadl"
+                      },
+                      "beginLine" : 19,
+                      "beginColumn" : 4,
+                      "endLine" : 19,
+                      "endColumn" : 24,
+                      "offset" : 316,
+                      "length" : 20
+                    }
+                  }
+                },
+                "feature" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_out"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 29,
+                        "beginColumn" : 4,
+                        "endLine" : 29,
+                        "endColumn" : 50,
+                        "offset" : 565,
+                        "length" : 46
+                      }
+                    }
+                  }
+                },
+                "direction" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Direction",
+                    "value" : "Out"
+                  }
+                }
+              },
+              "dst" : {
+                "type" : "EndPoint",
+                "component" : {
+                  "type" : "Name",
+                  "name" : ["PingPongSystem_i_Instance", "p", "pong"],
+                  "pos" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Position",
+                      "uriOpt" : {
+                        "type" : "Some",
+                        "value" : "PingPong\/packages\/PingPong.aadl"
+                      },
+                      "beginLine" : 20,
+                      "beginColumn" : 4,
+                      "endLine" : 20,
+                      "endColumn" : 24,
+                      "offset" : 340,
+                      "length" : 20
+                    }
+                  }
+                },
+                "feature" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_inn"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 40,
+                        "beginColumn" : 4,
+                        "endLine" : 40,
+                        "endColumn" : 49,
+                        "offset" : 773,
+                        "length" : 45
+                      }
+                    }
+                  }
+                },
+                "direction" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Direction",
+                    "value" : "In"
+                  }
+                }
+              },
+              "kind" : {
+                "type" : "ConnectionKind",
+                "value" : "Port"
+              },
+              "connectionRefs" : [
+                {
+                  "type" : "ConnectionReference",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "c1"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 22,
+                        "beginColumn" : 4,
+                        "endLine" : 22,
+                        "endColumn" : 44,
+                        "offset" : 378,
+                        "length" : 40
+                      }
+                    }
+                  },
+                  "context" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 10,
+                        "beginColumn" : 4,
+                        "endLine" : 10,
+                        "endColumn" : 33,
+                        "offset" : 149,
+                        "length" : 29
+                      }
+                    }
+                  },
+                  "isParent" : true
+                }
+              ],
+              "properties" : [
+              ]
+            },
+            {
+              "type" : "ConnectionInstance",
+              "name" : {
+                "type" : "Name",
+                "name" : ["PingPongSystem_i_Instance", "p", "pong.pong_out -> ping.ping_inn"],
+                "pos" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Position",
+                    "uriOpt" : {
+                      "type" : "Some",
+                      "value" : "PingPong\/packages\/PingPong.aadl"
+                    },
+                    "beginLine" : 23,
+                    "beginColumn" : 4,
+                    "endLine" : 23,
+                    "endColumn" : 44,
+                    "offset" : 422,
+                    "length" : 40
+                  }
+                }
+              },
+              "src" : {
+                "type" : "EndPoint",
+                "component" : {
+                  "type" : "Name",
+                  "name" : ["PingPongSystem_i_Instance", "p", "pong"],
+                  "pos" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Position",
+                      "uriOpt" : {
+                        "type" : "Some",
+                        "value" : "PingPong\/packages\/PingPong.aadl"
+                      },
+                      "beginLine" : 20,
+                      "beginColumn" : 4,
+                      "endLine" : 20,
+                      "endColumn" : 24,
+                      "offset" : 340,
+                      "length" : 20
+                    }
+                  }
+                },
+                "feature" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "pong", "pong_out"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 41,
+                        "beginColumn" : 4,
+                        "endLine" : 41,
+                        "endColumn" : 50,
+                        "offset" : 822,
+                        "length" : 46
+                      }
+                    }
+                  }
+                },
+                "direction" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Direction",
+                    "value" : "Out"
+                  }
+                }
+              },
+              "dst" : {
+                "type" : "EndPoint",
+                "component" : {
+                  "type" : "Name",
+                  "name" : ["PingPongSystem_i_Instance", "p", "ping"],
+                  "pos" : {
+                    "type" : "Some",
+                    "value" : {
+                      "type" : "Position",
+                      "uriOpt" : {
+                        "type" : "Some",
+                        "value" : "PingPong\/packages\/PingPong.aadl"
+                      },
+                      "beginLine" : 19,
+                      "beginColumn" : 4,
+                      "endLine" : 19,
+                      "endColumn" : 24,
+                      "offset" : 316,
+                      "length" : 20
+                    }
+                  }
+                },
+                "feature" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "ping", "ping_inn"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 28,
+                        "beginColumn" : 4,
+                        "endLine" : 28,
+                        "endColumn" : 49,
+                        "offset" : 516,
+                        "length" : 45
+                      }
+                    }
+                  }
+                },
+                "direction" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Direction",
+                    "value" : "In"
+                  }
+                }
+              },
+              "kind" : {
+                "type" : "ConnectionKind",
+                "value" : "Port"
+              },
+              "connectionRefs" : [
+                {
+                  "type" : "ConnectionReference",
+                  "name" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p", "c2"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 23,
+                        "beginColumn" : 4,
+                        "endLine" : 23,
+                        "endColumn" : 44,
+                        "offset" : 422,
+                        "length" : 40
+                      }
+                    }
+                  },
+                  "context" : {
+                    "type" : "Name",
+                    "name" : ["PingPongSystem_i_Instance", "p"],
+                    "pos" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "PingPong\/packages\/PingPong.aadl"
+                        },
+                        "beginLine" : 10,
+                        "beginColumn" : 4,
+                        "endLine" : 10,
+                        "endColumn" : 33,
+                        "offset" : 149,
+                        "length" : 29
+                      }
+                    }
+                  },
+                  "isParent" : true
+                }
+              ],
+              "properties" : [
+              ]
+            }
+          ],
+          "properties" : [
+          ],
+          "flows" : [
+          ],
+          "modes" : [
+          ],
+          "annexes" : [
+            {
+              "type" : "Annex",
+              "name" : "Emv2",
+              "clause" : {
+                "type" : "Emv2Clause",
+                "libraries" : [
+                ],
+                "propagations" : [
+                ],
+                "flows" : [
+                ],
+                "componentBehavior" : {
+                  "type" : "Some",
+                  "value" : {
+                    "type" : "Emv2BehaviorSection",
+                    "events" : [
+                    ],
+                    "transitions" : [
+                    ],
+                    "propagations" : [
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "connections" : [
+      ],
+      "connectionInstances" : [
+      ],
+      "properties" : [
+      ],
+      "flows" : [
+      ],
+      "modes" : [
+      ],
+      "annexes" : [
+        {
+          "type" : "Annex",
+          "name" : "Emv2",
+          "clause" : {
+            "type" : "Emv2Clause",
+            "libraries" : [
+            ],
+            "propagations" : [
+            ],
+            "flows" : [
+            ],
+            "componentBehavior" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Emv2BehaviorSection",
+                "events" : [
+                ],
+                "transitions" : [
+                ],
+                "propagations" : [
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "errorLib" : [
+  ],
+  "dataComponents" : [
+    {
+      "type" : "Component",
+      "identifier" : {
+        "type" : "Name",
+        "name" : [],
+        "pos" : {
+          "type" : "None"
+        }
+      },
+      "category" : {
+        "type" : "ComponentCategory",
+        "value" : "Data"
+      },
+      "classifier" : {
+        "type" : "Some",
+        "value" : {
+          "type" : "Classifier",
+          "name" : "Base_Types::Integer_8"
+        }
+      },
+      "features" : [
+      ],
+      "subComponents" : [
+      ],
+      "connections" : [
+      ],
+      "connectionInstances" : [
+      ],
+      "properties" : [
+        {
+          "type" : "Property",
+          "name" : {
+            "type" : "Name",
+            "name" : ["Data_Model::Number_Representation"],
+            "pos" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Position",
+                "uriOpt" : {
+                  "type" : "Some",
+                  "value" : "plugin\/org.osate.contribution.sei\/resources\/properties\/Data_Model.aadl"
+                },
+                "beginLine" : 78,
+                "beginColumn" : 4,
+                "endLine" : 78,
+                "endColumn" : 88,
+                "offset" : 3653,
+                "length" : 84
+              }
+            }
+          },
+          "propertyValues" : [
+            {
+              "type" : "ValueProp",
+              "value" : "Signed"
+            }
+          ]
+        },
+        {
+          "type" : "Property",
+          "name" : {
+            "type" : "Name",
+            "name" : ["Memory_Properties::Data_Size"],
+            "pos" : {
+              "type" : "Some",
+              "value" : {
+                "type" : "Position",
+                "uriOpt" : {
+                  "type" : "Some",
+                  "value" : "plugin\/org.osate.workspace\/resources\/properties\/Predeclared_Property_Sets\/Memory_Properties.aadl"
+                },
+                "beginLine" : 91,
+                "beginColumn" : 2,
+                "endLine" : 92,
+                "endColumn" : 137,
+                "offset" : 4757,
+                "length" : 152
+              }
+            }
+          },
+          "propertyValues" : [
+            {
+              "type" : "UnitProp",
+              "value" : "8.0",
+              "unit" : {
+                "type" : "Some",
+                "value" : "bits"
+              }
+            }
+          ]
+        }
+      ],
+      "flows" : [
+      ],
+      "modes" : [
+      ],
+      "annexes" : [
+      ]
+    }
+  ]
+}

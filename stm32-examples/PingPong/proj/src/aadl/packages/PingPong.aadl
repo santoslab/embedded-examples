@@ -1,0 +1,49 @@
+package PingPong
+public
+	with Base_Types;
+	
+	system PingPongSystem
+	end PingPongSystem;
+	
+	system implementation PingPongSystem.i
+		subcomponents
+			p: process PingPongProcess.i;
+	end PingPongSystem.i;
+	
+	process PingPongProcess
+	end PingPongProcess;
+	
+	
+	process implementation PingPongProcess.i
+		subcomponents
+			ping: thread Ping.i;
+			pong: thread Pong.i;
+		connections
+			c1: port ping.ping_out -> pong.pong_inn;
+			c2: port pong.pong_out -> ping.ping_inn;
+	end PingPongProcess.i;
+	
+	thread Ping
+		features
+			ping_inn: in data port Base_Types::Integer_8;
+			ping_out: out data port Base_Types::Integer_8;
+		properties   
+			 Dispatch_Protocol => Periodic;
+			 Period => 1 sec;				
+	end Ping;
+	
+	thread implementation Ping.i
+	end Ping.i;
+	
+	thread Pong
+		features
+			pong_inn: in data port Base_Types::Integer_8;
+			pong_out: out data port Base_Types::Integer_8;
+		properties   
+			 Dispatch_Protocol => Periodic;
+			 Period => 1 sec;				
+	end Pong;
+	
+	thread implementation Pong.i
+	end Pong.i;
+end PingPong;
