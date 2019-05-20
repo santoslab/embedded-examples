@@ -19,10 +19,16 @@ Unit art_Art_connect(StackFrame caller, art_UPort from, art_UPort to);
 
 Unit art_Art_sendOutput(StackFrame caller, IS_82ABD8 eventPortIds, IS_82ABD8 dataPortIds);
 
+void art_Art_dispatchStatus(art_DispatchStatus result, StackFrame caller, Z bridgeId);
+
 Unit art_Art_receiveInput(StackFrame caller, IS_82ABD8 eventPortIds, IS_82ABD8 dataPortIds);
+
+void art_Art_getValue(Option_8E9F45 result, StackFrame caller, Z portId);
 
 Unit art_Art_putValue(StackFrame caller, Z portId, art_DataContent data);
 
-void art_Art_getValue(Option_8E9F45 result, StackFrame caller, Z portId);
+Unit art_Art_logInfo(StackFrame caller, Z bridgeId, String msg);
+
+void art_Art_bridge(art_Bridge result, StackFrame caller, Z bridgeId);
 
 #endif

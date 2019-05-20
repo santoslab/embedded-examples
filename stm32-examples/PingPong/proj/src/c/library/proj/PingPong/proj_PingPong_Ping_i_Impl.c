@@ -25,18 +25,17 @@ void proj_PingPong_Ping_i_Impl_cprint(proj_PingPong_Ping_i_Impl this, B isOut) {
 void proj_PingPong_Ping_i_Impl_apply(StackFrame caller, proj_PingPong_Ping_i_Impl this, proj_PingPong_Ping_i_Bridge_Api api) {
   DeclNewStackFrame(caller, "Ping_i_Impl.scala", "proj.PingPong.Ping_i_Impl", "apply", 0);
   Type_assign(&this->api, api, sizeof(struct proj_PingPong_Ping_i_Bridge_Api));
-  this->last = Z8_C(-1);
 }
 
 Unit proj_PingPong_Ping_i_Impl_initialise_(StackFrame caller, proj_PingPong_Ping_i_Impl this) {
   DeclNewStackFrame(caller, "Ping_i_Impl.scala", "proj.PingPong.Ping_i_Impl", "initialise", 0);
 
-  sfUpdateLoc(14);
+  sfUpdateLoc(13);
   DeclNewproj_Base_Types_Integer_8(t_0);
   proj_Base_Types_Integer_8_apply(sf, &t_0, Z8_C(0));
-  proj_PingPong_Ping_i_Bridge_Api_setping_out_(sf, proj_PingPong_Ping_i_Impl_api_(this), (proj_Base_Types_Integer_8) (&t_0));
+  proj_PingPong_Ping_i_Bridge_Api_sendping_out_(sf, proj_PingPong_Ping_i_Impl_api_(this), (proj_Base_Types_Integer_8) (&t_0));
 
-  sfUpdateLoc(17);
+  sfUpdateLoc(16);
   STATIC_ASSERT(0 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
   DeclNewIS_82ABD8(t_1);
   t_1.size = (int8_t) 0;
@@ -47,44 +46,24 @@ Unit proj_PingPong_Ping_i_Impl_initialise_(StackFrame caller, proj_PingPong_Ping
   art_Art_sendOutput(sf, (IS_82ABD8) (&t_1), (IS_82ABD8) (&t_2));
 }
 
-Unit proj_PingPong_Ping_i_Impl_timeTriggered_(StackFrame caller, proj_PingPong_Ping_i_Impl this) {
-  DeclNewStackFrame(caller, "Ping_i_Impl.scala", "proj.PingPong.Ping_i_Impl", "timeTriggered", 0);
+Unit proj_PingPong_Ping_i_Impl_handleping_inn_(StackFrame caller, proj_PingPong_Ping_i_Impl this, proj_Base_Types_Integer_8 value) {
+  DeclNewStackFrame(caller, "Ping_i_Impl.scala", "proj.PingPong.Ping_i_Impl", "handleping_inn", 0);
+
+  sfUpdateLoc(20);
+  DeclNewString(t_0);
+  String_string((String) &t_0, sf, string("Received "));
+  proj_Base_Types_Integer_8_string((String) &t_0, sf, value);
+  String_string((String) &t_0, sf, string(""));
+  proj_PingPong_Ping_i_Bridge_Api_logInfo_(sf, proj_PingPong_Ping_i_Impl_api_(this), (String) ((String) &t_0));
 
   sfUpdateLoc(22);
-  DeclNewOption_56AFA0(t_0);
-  proj_PingPong_Ping_i_Bridge_Api_getping_inn_((Option_56AFA0) &t_0, sf, proj_PingPong_Ping_i_Impl_api_(this));
-  DeclNewOption_56AFA0(t_1);
-  Type_assign(&t_1, ((Option_56AFA0) &t_0), sizeof(union Option_56AFA0));
-  B match_22 = F;
-  if (!match_22) {
-    match_22 = T;
-    proj_Base_Types_Integer_8 x_23_17;
-    match_22 = match_22 && Some_AA0E8F__is(sf, &t_1);
-    if (match_22) {
-      x_23_17 = (proj_Base_Types_Integer_8) Some_AA0E8F_value_(Some_AA0E8F__as(sf, &t_1));
-    }
-    if (match_22) {
+  proj_PingPong_PingExt_blinkRedLED(sf, proj_Base_Types_Integer_8_value_(value));
 
-      sfUpdateLoc(25);
-      if (Z8__ne(proj_PingPong_Ping_i_Impl_last_(this), proj_Base_Types_Integer_8_value_(x_23_17))) {
+  sfUpdateLoc(24);
+  Z8 _x = Z8__add(proj_Base_Types_Integer_8_value_(value), Z8_C(1));
 
-        sfUpdateLoc(26);
-        proj_PingPong_Ping_i_Impl_last_a(this,(Z8) proj_Base_Types_Integer_8_value_(x_23_17));
-
-        sfUpdateLoc(30);
-        Z8 _x = Z8__add(proj_Base_Types_Integer_8_value_(x_23_17), Z8_C(1));
-
-        sfUpdateLoc(32);
-        DeclNewproj_Base_Types_Integer_8(t_2);
-        proj_Base_Types_Integer_8_apply(sf, &t_2, _x);
-        proj_PingPong_Ping_i_Bridge_Api_setping_out_(sf, proj_PingPong_Ping_i_Impl_api_(this), (proj_Base_Types_Integer_8) (&t_2));
-      }
-    }
-  }
-  if (!match_22) {
-    match_22 = T;
-    if (match_22) {
-    }
-  }
-  sfAssert(match_22, "Error when pattern matching.");
+  sfUpdateLoc(26);
+  DeclNewproj_Base_Types_Integer_8(t_1);
+  proj_Base_Types_Integer_8_apply(sf, &t_1, _x);
+  proj_PingPong_Ping_i_Bridge_Api_sendping_out_(sf, proj_PingPong_Ping_i_Impl_api_(this), (proj_Base_Types_Integer_8) (&t_1));
 }

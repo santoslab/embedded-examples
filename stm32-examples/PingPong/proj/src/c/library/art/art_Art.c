@@ -268,11 +268,25 @@ Unit art_Art_sendOutput(StackFrame caller, IS_82ABD8 eventPortIds, IS_82ABD8 dat
   proj_ArtNix_sendOutput(sf, (IS_82ABD8) eventPortIds, (IS_82ABD8) dataPortIds);
 }
 
+void art_Art_dispatchStatus(art_DispatchStatus result, StackFrame caller, Z bridgeId) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "dispatchStatus", 0);
+  DeclNewart_DispatchStatus(t_0);
+  proj_ArtNix_dispatchStatus((art_DispatchStatus) &t_0, sf, bridgeId);
+  Type_assign(result, ((art_DispatchStatus) &t_0), sizeof(union art_DispatchStatus));
+}
+
 Unit art_Art_receiveInput(StackFrame caller, IS_82ABD8 eventPortIds, IS_82ABD8 dataPortIds) {
   DeclNewStackFrame(caller, "Art.scala", "art.Art", "receiveInput", 0);
 
   sfUpdateLoc(55);
   proj_ArtNix_receiveInput(sf, (IS_82ABD8) eventPortIds, (IS_82ABD8) dataPortIds);
+}
+
+void art_Art_getValue(Option_8E9F45 result, StackFrame caller, Z portId) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "getValue", 0);
+  DeclNewOption_8E9F45(t_0);
+  proj_ArtNix_getValue((Option_8E9F45) &t_0, sf, portId);
+  Type_assign(result, ((Option_8E9F45) &t_0), sizeof(union Option_8E9F45));
 }
 
 Unit art_Art_putValue(StackFrame caller, Z portId, art_DataContent data) {
@@ -282,9 +296,32 @@ Unit art_Art_putValue(StackFrame caller, Z portId, art_DataContent data) {
   proj_ArtNix_putValue(sf, portId, (art_DataContent) data);
 }
 
-void art_Art_getValue(Option_8E9F45 result, StackFrame caller, Z portId) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "getValue", 0);
-  DeclNewOption_8E9F45(t_0);
-  proj_ArtNix_getValue((Option_8E9F45) &t_0, sf, portId);
-  Type_assign(result, ((Option_8E9F45) &t_0), sizeof(union Option_8E9F45));
+Unit art_Art_logInfo(StackFrame caller, Z bridgeId, String msg) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "logInfo", 0);
+
+  sfUpdateLoc(71);
+  DeclNewart_Bridge(t_0);
+  art_Art_bridge((art_Bridge) &t_0, sf, bridgeId);
+  DeclNewString(t_1);
+  art_Bridge_name_((String) &t_1, sf, ((art_Bridge) &t_0));
+  proj_ArtNix_logInfo(sf, (String) ((String) &t_1), (String) msg);
+}
+
+void art_Art_bridge(art_Bridge result, StackFrame caller, Z bridgeId) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "bridge", 0);
+
+  sfUpdateLoc(21);
+  MOption_EA1D29 t_0;
+  t_0 = (MOption_EA1D29) MS_94FFA9_at(art_Art_bridges(sf), bridgeId);
+  B t_1 = T;
+  DeclNewart_Bridge(_r);
+  art_Bridge r = &_r;
+  {
+    t_1 = t_1 && MSome_D3D128__is(sf, t_0);
+    if (t_1) {
+      Type_assign(r, MSome_D3D128_value_(MSome_D3D128__as(sf, t_0)), sizeof(union art_Bridge));
+    }
+  }
+  sfAssert(t_1, "Error during var pattern matching.");
+  Type_assign(result, r, sizeof(union art_Bridge));
 }

@@ -15,7 +15,10 @@ import proj._
 
   def finalise(): Unit = {}
 
-  def timeTriggered() : Unit = {}
+  def handlepong_inn(value : Base_Types.Integer_8): Unit = {
+    api.logInfo(s"received ${value}")
+    api.logInfo("default pong_inn implementation")
+  }
 
   def activate(): Unit = {}
 

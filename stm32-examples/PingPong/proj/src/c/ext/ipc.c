@@ -1,40 +1,53 @@
 #include <all.h>
 #include <ipc.h>
 
-#if STM32
+#ifdef STM32
 #include <unistd.h>
 
-int16_t slangIncrement(int16_t arg){
-    int16_t ret = arg + 1;
-    return ret;
-}
+static union Option_8E9F45 camkes_buffer[7] = { 0 };
 
 Z proj_SharedMemory_create(StackFrame caller, Z id) {
-    return (Z) 0;
+    DeclNewNone_964667(t_0);
+    None_964667_apply(caller, &t_0);
+    Type_assign((camkes_buffer + id), (&t_0), sizeof(union Option_8E9F45));
+
+    return -1;
 }
 
 void proj_SharedMemory_receive(art_DataContent result, StackFrame caller, Z port) {
-
+    // NO IMPL
 }
 
 void proj_SharedMemory_receiveAsync(Option_8E9F45 result, StackFrame caller, Z port) {
+    union Option_8E9F45 p = camkes_buffer[port];
 
+    if (p.type == TSome_D29615) {
+        Type_assign(result, &p, sizeOf((Type) &p));
+        memset(camkes_buffer + port, 0, sizeof(union Option_8E9F45));
+    } else {
+        result->type = TNone_964667;
+    }
 }
 
 Unit proj_SharedMemory_send(StackFrame caller, Z destid, Z port, art_DataContent d) {
-
+    // NO IMPL
 }
 
 B proj_SharedMemory_sendAsync(StackFrame caller, Z destid, Z port, art_DataContent d) {
+
+    Option_8E9F45 p = (Option_8E9F45) camkes_buffer + port;
+    p->type = TSome_D29615;
+    Type_assign(&(p->Some_D29615.value), d, sizeOf((Type) d));
+
     return T;
 }
 
 Unit proj_SharedMemory_remove(StackFrame caller, Z id) {
-
+    // NO IMPL
 }
 
 Unit proj_Process_sleep(StackFrame caller, Z n) {
-
+    // NO IMPL
 }
 
 #else

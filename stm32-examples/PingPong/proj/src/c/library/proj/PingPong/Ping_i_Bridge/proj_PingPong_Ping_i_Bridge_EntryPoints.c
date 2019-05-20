@@ -45,23 +45,23 @@ void proj_PingPong_Ping_i_Bridge_EntryPoints_apply(StackFrame caller, proj_PingP
   this->ping_inn_Id = ping_inn_Id;
   this->ping_out_Id = ping_out_Id;
   Type_assign(&this->component, component, sizeof(struct proj_PingPong_Ping_i_Impl));
-  STATIC_ASSERT(1 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
+  STATIC_ASSERT(0 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
   DeclNewIS_82ABD8(t_0);
-  t_0.size = (int8_t) 1;
-  t_0.value[0] = proj_PingPong_Ping_i_Bridge_EntryPoints_ping_inn_Id_(this);
+  t_0.size = (int8_t) 0;
   Type_assign(&this->dataInPortIds, (&t_0), sizeof(struct IS_82ABD8));
-  STATIC_ASSERT(0 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
-  DeclNewIS_82ABD8(t_1);
-  t_1.size = (int8_t) 0;
-  Type_assign(&this->eventInPortIds, (&t_1), sizeof(struct IS_82ABD8));
   STATIC_ASSERT(1 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
-  DeclNewIS_82ABD8(t_2);
-  t_2.size = (int8_t) 1;
-  t_2.value[0] = proj_PingPong_Ping_i_Bridge_EntryPoints_ping_out_Id_(this);
-  Type_assign(&this->dataOutPortIds, (&t_2), sizeof(struct IS_82ABD8));
+  DeclNewIS_82ABD8(t_1);
+  t_1.size = (int8_t) 1;
+  t_1.value[0] = proj_PingPong_Ping_i_Bridge_EntryPoints_ping_inn_Id_(this);
+  Type_assign(&this->eventInPortIds, (&t_1), sizeof(struct IS_82ABD8));
   STATIC_ASSERT(0 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
+  DeclNewIS_82ABD8(t_2);
+  t_2.size = (int8_t) 0;
+  Type_assign(&this->dataOutPortIds, (&t_2), sizeof(struct IS_82ABD8));
+  STATIC_ASSERT(1 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
   DeclNewIS_82ABD8(t_3);
-  t_3.size = (int8_t) 0;
+  t_3.size = (int8_t) 1;
+  t_3.value[0] = proj_PingPong_Ping_i_Bridge_EntryPoints_ping_out_Id_(this);
   Type_assign(&this->eventOutPortIds, (&t_3), sizeof(struct IS_82ABD8));
 }
 
@@ -76,18 +76,64 @@ Unit proj_PingPong_Ping_i_Bridge_EntryPoints_compute_(StackFrame caller, proj_Pi
   DeclNewStackFrame(caller, "Ping_i_Bridge.scala", "proj.PingPong.Ping_i_Bridge.EntryPoints", "compute", 0);
 
   sfUpdateLoc(105);
-  art_Art_receiveInput(sf, (IS_82ABD8) proj_PingPong_Ping_i_Bridge_EntryPoints_eventInPortIds_(this), (IS_82ABD8) proj_PingPong_Ping_i_Bridge_EntryPoints_dataInPortIds_(this));
+  art_DispatchStatus t_0;
+  DeclNewart_DispatchStatus(t_1);
+  art_Art_dispatchStatus((art_DispatchStatus) &t_1, sf, proj_PingPong_Ping_i_Bridge_EntryPoints_Ping_i_BridgeId_(this));
+  t_0 = (art_DispatchStatus) ((art_DispatchStatus) &t_1);
+  B t_2 = T;
+  IS_82ABD8 portIds;
+  {
+    t_2 = t_2 && art_EventTriggered__is(sf, t_0);
+    if (t_2) {
+      portIds = (IS_82ABD8) art_EventTriggered_portIds_(art_EventTriggered__as(sf, t_0));
+    }
+  }
+  sfAssert(t_2, "Error during var pattern matching.");
 
   sfUpdateLoc(106);
-  proj_PingPong_Ping_i_Impl_timeTriggered_(sf, proj_PingPong_Ping_i_Bridge_EntryPoints_component_(this));
+  art_Art_receiveInput(sf, (IS_82ABD8) portIds, (IS_82ABD8) proj_PingPong_Ping_i_Bridge_EntryPoints_dataInPortIds_(this));
 
-  sfUpdateLoc(107);
+  sfUpdateLoc(108);
+  {
+    IS_82ABD8 t_6 = portIds;
+    int8_t t_7 = (portIds)->size;
+    for (int8_t t_8 = 0; t_8 < t_7; t_8++) {
+      Z portId = t_6->value[t_8];
+
+      sfUpdateLoc(110);
+      if (Z__eq(portId, proj_PingPong_Ping_i_Bridge_EntryPoints_ping_inn_Id_(this))) {
+
+        sfUpdateLoc(111);
+        Option_8E9F45 t_3;
+        DeclNewOption_8E9F45(t_4);
+        art_Art_getValue((Option_8E9F45) &t_4, sf, proj_PingPong_Ping_i_Bridge_EntryPoints_ping_inn_Id_(this));
+        t_3 = (Option_8E9F45) ((Option_8E9F45) &t_4);
+        B t_5 = T;
+        proj_Base_Types_Integer_8 value;
+        {
+          t_5 = t_5 && Some_D29615__is(sf, t_3);
+          if (t_5) {
+            t_5 = t_5 && proj_Base_Types_Integer_8_Payload__is(sf, Some_D29615_value_(Some_D29615__as(sf, t_3)));
+            if (t_5) {
+              value = (proj_Base_Types_Integer_8) proj_Base_Types_Integer_8_Payload_value_(proj_Base_Types_Integer_8_Payload__as(sf, Some_D29615_value_(Some_D29615__as(sf, t_3))));
+            }
+          }
+        }
+        sfAssert(t_5, "Error during var pattern matching.");
+
+        sfUpdateLoc(112);
+        proj_PingPong_Ping_i_Impl_handleping_inn_(sf, proj_PingPong_Ping_i_Bridge_EntryPoints_component_(this), (proj_Base_Types_Integer_8) value);
+      }
+    }
+  }
+
+  sfUpdateLoc(116);
   art_Art_sendOutput(sf, (IS_82ABD8) proj_PingPong_Ping_i_Bridge_EntryPoints_eventOutPortIds_(this), (IS_82ABD8) proj_PingPong_Ping_i_Bridge_EntryPoints_dataOutPortIds_(this));
 }
 
 Unit proj_PingPong_Ping_i_Bridge_EntryPoints_finalise_(StackFrame caller, proj_PingPong_Ping_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "Ping_i_Bridge.scala", "proj.PingPong.Ping_i_Bridge.EntryPoints", "finalise", 0);
 
-  sfUpdateLoc(123);
+  sfUpdateLoc(132);
   proj_PingPong_Ping_i_Impl_finalise_(sf, proj_PingPong_Ping_i_Bridge_EntryPoints_component_(this));
 }

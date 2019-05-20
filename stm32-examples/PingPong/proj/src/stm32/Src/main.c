@@ -156,12 +156,12 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of pingTask */
-  osThreadDef(pingTask, pingTaskFunction, osPriorityNormal, 0, 128);
+  osThreadDef(pingTask, pingTaskFunction, osPriorityNormal, 0, 256);
   pingTaskHandle = osThreadCreate(osThread(pingTask), NULL);
 
   /* definition and creation of pongTask */
-  osThreadDef(pongTask, pongTaskFunction, osPriorityIdle, 0, 128);
-  pongTaskHandle = osThreadCreate(osThread(pongTask), NULL);
+  //osThreadDef(pongTask, pongTaskFunction, osPriorityIdle, 0, 128);
+  //pongTaskHandle = osThreadCreate(osThread(pongTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -436,6 +436,8 @@ static void MX_GPIO_Init(void)
 
 }
 
+/* USER CODE BEGIN 4 */
+
 void blink(uint16_t pin, int16_t count){
     int16_t delay = 400;
 
@@ -455,8 +457,6 @@ void blinkOnBlue(int16_t count) {
     blink(GPIO_PIN_15, count);
 }
 
-
-/* USER CODE BEGIN 4 */
 const int16_t EMPTY = -1;
 
 int16_t ping_out_id = 0;
@@ -480,6 +480,7 @@ int16_t sendOutput(int16_t portId, int16_t data) {
     buffer[connections[portId]] = data;
 }
 
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_pingTaskFunction */
@@ -496,23 +497,24 @@ void pingTaskFunction(void const * argument)
 
   /* USER CODE BEGIN 5 */
 
-  StackFrame dummy;
-  int16_t seed = 1;
+    StackFrame dummy;
+    int16_t seed = 1;
 
   // init connections
-  connections[ping_out_id] = pong_in_id;
+  //connections[ping_out_id] = pong_in_id;
 
+  blinkOnBlue(2);
   // init slang connection
-  //proj_Ping_i_App_initialise(dummy, seed);
+   // proj_Ping_i_App_initialise(dummy, seed);
 
+  blinkOnGreen(2);
   // component initialize entry point
-  sendOutput(ping_out_id, 0);
-
-
+  //sendOutput(ping_out_id, 0);
 
   /* Infinite loop */
   for(;;)
   {
+      /*
       int16_t data = receiveInput(ping_in_id);
       if(data != EMPTY) {
 
@@ -524,7 +526,7 @@ void pingTaskFunction(void const * argument)
 
           sendOutput(ping_out_id, data);
       }
-
+      */
     osDelay(1);
   }
   /* USER CODE END 5 */ 
@@ -541,7 +543,7 @@ void pongTaskFunction(void const * argument)
 {
   /* USER CODE BEGIN pongTaskFunction */
     // init connections
-    connections[pong_out_id] = ping_in_id;
+    //connections[pong_out_id] = ping_in_id;
 
 
     // component initialize entry point
@@ -549,6 +551,7 @@ void pongTaskFunction(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+      /*
       int16_t data = receiveInput(pong_in_id);
       if(data != EMPTY) {
           blinkOnBlue(data);
@@ -558,7 +561,7 @@ void pongTaskFunction(void const * argument)
 
           sendOutput(pong_out_id, data);
       }
-
+*/
     osDelay(1);
   }
   /* USER CODE END pongTaskFunction */

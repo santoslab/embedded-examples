@@ -1,28 +1,8 @@
-#cmake_minimum_required(VERSION 3.6.2)
-cmake_minimum_required(VERSION 3.7)
+cmake_minimum_required(VERSION 3.6.2)
 
 project(main)
 
 set(CMAKE_C_STANDARD 99)
-
-SET(CMAKE_SYSTEM_NAME Generic)
-SET(CMAKE_SYSTEM_VERSION 1)
-
-# begin stm32
-# specify cross compilers and tools
-SET(CMAKE_C_COMPILER_WORKS 1)
-SET(CMAKE_C_COMPILER arm-none-eabi-gcc)
-SET(CMAKE_CXX_COMPILER_WORKS 1)
-SET(CMAKE_CXX_COMPILER arm-none-eabi-g++)
-set(CMAKE_ASM_COMPILER  arm-none-eabi-gcc)
-set(CMAKE_AR arm-none-eabi-ar)
-set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
-set(CMAKE_OBJDUMP arm-none-eabi-objdump)
-set(SIZE arm-none-eabi-size)
-
-set(CMAKE_RANLIB arm-none-eabi-ranlib)
-# end stm32
-
 
 add_compile_options(-Werror)
 
@@ -83,12 +63,21 @@ add_library(main STATIC
         library/art/DispatchPropertyProtocol/type-art_DispatchPropertyProtocol_Sporadic.h
         library/art/DispatchPropertyProtocol/art_DispatchPropertyProtocol_Sporadic.h
         library/art/DispatchPropertyProtocol/art_DispatchPropertyProtocol_Sporadic.c
+        library/art/type-art_DispatchStatus.h
+        library/art/art_DispatchStatus.h
+        library/art/art_DispatchStatus.c
         library/art/type-art_Empty.h
         library/art/art_Empty.h
         library/art/art_Empty.c
+        library/art/type-art_EventTriggered.h
+        library/art/art_EventTriggered.h
+        library/art/art_EventTriggered.c
         library/art/type-art_PortMode.h
         library/art/art_PortMode.h
         library/art/art_PortMode.c
+        library/art/type-art_TimeTriggered.h
+        library/art/art_TimeTriggered.h
+        library/art/art_TimeTriggered.c
         library/art/type-art_UConnection.h
         library/art/art_UConnection.h
         library/art/art_UConnection.c
@@ -125,6 +114,9 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_MS_2590FE.h
         library/org/sireum/org_sireum_MS_2590FE.h
         library/org/sireum/org_sireum_MS_2590FE.c
+        library/org/sireum/type-org_sireum_MS_30A5B4.h
+        library/org/sireum/org_sireum_MS_30A5B4.h
+        library/org/sireum/org_sireum_MS_30A5B4.c
         library/org/sireum/type-org_sireum_MS_852149.h
         library/org/sireum/org_sireum_MS_852149.h
         library/org/sireum/org_sireum_MS_852149.c
@@ -146,9 +138,6 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_None.h
         library/org/sireum/org_sireum_None.h
         library/org/sireum/org_sireum_None.c
-        library/org/sireum/type-org_sireum_None_0A8767.h
-        library/org/sireum/org_sireum_None_0A8767.h
-        library/org/sireum/org_sireum_None_0A8767.c
         library/org/sireum/type-org_sireum_None_39BC5F.h
         library/org/sireum/org_sireum_None_39BC5F.h
         library/org/sireum/org_sireum_None_39BC5F.c
@@ -167,9 +156,6 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_Option_02FA6D.h
         library/org/sireum/org_sireum_Option_02FA6D.h
         library/org/sireum/org_sireum_Option_02FA6D.c
-        library/org/sireum/type-org_sireum_Option_56AFA0.h
-        library/org/sireum/org_sireum_Option_56AFA0.h
-        library/org/sireum/org_sireum_Option_56AFA0.c
         library/org/sireum/type-org_sireum_Option_6239DB.h
         library/org/sireum/org_sireum_Option_6239DB.h
         library/org/sireum/org_sireum_Option_6239DB.c
@@ -188,9 +174,6 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_Some_488F47.h
         library/org/sireum/org_sireum_Some_488F47.h
         library/org/sireum/org_sireum_Some_488F47.c
-        library/org/sireum/type-org_sireum_Some_AA0E8F.h
-        library/org/sireum/org_sireum_Some_AA0E8F.h
-        library/org/sireum/org_sireum_Some_AA0E8F.c
         library/org/sireum/type-org_sireum_Some_D29615.h
         library/org/sireum/org_sireum_Some_D29615.h
         library/org/sireum/org_sireum_Some_D29615.c
@@ -224,6 +207,8 @@ add_library(main STATIC
         library/proj/type-proj_Main.h
         library/proj/proj_Main.h
         library/proj/proj_Main.c
+        library/proj/PingPong/type-proj_PingPong_PingExt.h
+        library/proj/PingPong/proj_PingPong_PingExt.h
         library/proj/PingPong/type-proj_PingPong_Ping_i.h
         library/proj/PingPong/proj_PingPong_Ping_i.h
         library/proj/PingPong/proj_PingPong_Ping_i.c
@@ -239,6 +224,8 @@ add_library(main STATIC
         library/proj/PingPong/type-proj_PingPong_Ping_i_Impl.h
         library/proj/PingPong/proj_PingPong_Ping_i_Impl.h
         library/proj/PingPong/proj_PingPong_Ping_i_Impl.c
+        library/proj/PingPong/type-proj_PingPong_PongExt.h
+        library/proj/PingPong/proj_PingPong_PongExt.h
         library/proj/PingPong/type-proj_PingPong_Pong_i.h
         library/proj/PingPong/proj_PingPong_Pong_i.h
         library/proj/PingPong/proj_PingPong_Pong_i.c
@@ -288,7 +275,7 @@ target_include_directories(main
         PUBLIC PUBLIC library/proj/PingPong/Pong_i_Bridge
         PUBLIC PUBLIC ext)
 
-#[[
+
 add_executable(Ping_i_App-bin app-Ping_i_App/Ping_i_App.c)
 
 target_link_libraries(Ping_i_App-bin LINK_PUBLIC main)
@@ -308,4 +295,3 @@ add_executable(Main-bin app-Main/Main.c)
 target_link_libraries(Main-bin LINK_PUBLIC main)
 
 set_target_properties(Main-bin PROPERTIES OUTPUT_NAME Main)
-]]#

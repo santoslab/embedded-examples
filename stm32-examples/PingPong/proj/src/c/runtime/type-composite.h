@@ -19,36 +19,37 @@ typedef enum {
   TMS_94FFA9 = 10, // MS[Z, MOption[art.Bridge]]
   TMS_2590FE = 11, // MS[Z, Option[art.DataContent]]
   TMS_F55A18 = 12, // MS[Z, Option[art.UPort]]
-  TMS_852149 = 13, // MS[Z, art.Bridge]
-  TMSome_D3D128 = 14, // MSome[art.Bridge]
-  TNone_93AA2B = 15, // None[(Z, art.DataContent)]
-  TNone_76463B = 16, // None[Z]
-  TNone_964667 = 17, // None[art.DataContent]
-  TNone_39BC5F = 18, // None[art.UPort]
-  TNone_0A8767 = 19, // None[proj.Base_Types.Integer_8]
+  TMS_30A5B4 = 13, // MS[Z, Z]
+  TMS_852149 = 14, // MS[Z, art.Bridge]
+  TMSome_D3D128 = 15, // MSome[art.Bridge]
+  TNone_93AA2B = 16, // None[(Z, art.DataContent)]
+  TNone_76463B = 17, // None[Z]
+  TNone_964667 = 18, // None[art.DataContent]
+  TNone_39BC5F = 19, // None[art.UPort]
   TSome_E9D1E5 = 20, // Some[(Z, art.DataContent)]
   TSome_488F47 = 21, // Some[Z]
   TSome_D29615 = 22, // Some[art.DataContent]
   TSome_3E197E = 23, // Some[art.UPort]
-  TSome_AA0E8F = 24, // Some[proj.Base_Types.Integer_8]
-  Tart_ArchitectureDescription = 25, // art.ArchitectureDescription
-  Tart_Bridge_Ports = 26, // art.Bridge.Ports
-  Tart_Connection_4C277C = 27, // art.Connection[proj.Base_Types.Integer_8]
-  Tart_DispatchPropertyProtocol_Periodic = 28, // art.DispatchPropertyProtocol.Periodic
-  Tart_DispatchPropertyProtocol_Sporadic = 29, // art.DispatchPropertyProtocol.Sporadic
-  Tart_Empty = 30, // art.Empty
+  Tart_ArchitectureDescription = 24, // art.ArchitectureDescription
+  Tart_Bridge_Ports = 25, // art.Bridge.Ports
+  Tart_Connection_4C277C = 26, // art.Connection[proj.Base_Types.Integer_8]
+  Tart_DispatchPropertyProtocol_Periodic = 27, // art.DispatchPropertyProtocol.Periodic
+  Tart_DispatchPropertyProtocol_Sporadic = 28, // art.DispatchPropertyProtocol.Sporadic
+  Tart_Empty = 29, // art.Empty
+  Tart_EventTriggered = 30, // art.EventTriggered
   Tart_Port_B84865 = 31, // art.Port[proj.Base_Types.Integer_8]
-  TString = 32, // org.sireum.String
-  Tproj_Base_Types_Integer_8 = 33, // proj.Base_Types.Integer_8
-  Tproj_Base_Types_Integer_8_Payload = 34, // proj.Base_Types.Integer_8_Payload
-  Tproj_PingPong_Ping_i_Bridge = 35, // proj.PingPong.Ping_i_Bridge
-  Tproj_PingPong_Ping_i_Bridge_Api = 36, // proj.PingPong.Ping_i_Bridge.Api
-  Tproj_PingPong_Ping_i_Bridge_EntryPoints = 37, // proj.PingPong.Ping_i_Bridge.EntryPoints
-  Tproj_PingPong_Ping_i_Impl = 38, // proj.PingPong.Ping_i_Impl
-  Tproj_PingPong_Pong_i_Bridge = 39, // proj.PingPong.Pong_i_Bridge
-  Tproj_PingPong_Pong_i_Bridge_Api = 40, // proj.PingPong.Pong_i_Bridge.Api
-  Tproj_PingPong_Pong_i_Bridge_EntryPoints = 41, // proj.PingPong.Pong_i_Bridge.EntryPoints
-  Tproj_PingPong_Pong_i_Impl = 42, // proj.PingPong.Pong_i_Impl
+  Tart_TimeTriggered = 32, // art.TimeTriggered
+  TString = 33, // org.sireum.String
+  Tproj_Base_Types_Integer_8 = 34, // proj.Base_Types.Integer_8
+  Tproj_Base_Types_Integer_8_Payload = 35, // proj.Base_Types.Integer_8_Payload
+  Tproj_PingPong_Ping_i_Bridge = 36, // proj.PingPong.Ping_i_Bridge
+  Tproj_PingPong_Ping_i_Bridge_Api = 37, // proj.PingPong.Ping_i_Bridge.Api
+  Tproj_PingPong_Ping_i_Bridge_EntryPoints = 38, // proj.PingPong.Ping_i_Bridge.EntryPoints
+  Tproj_PingPong_Ping_i_Impl = 39, // proj.PingPong.Ping_i_Impl
+  Tproj_PingPong_Pong_i_Bridge = 40, // proj.PingPong.Pong_i_Bridge
+  Tproj_PingPong_Pong_i_Bridge_Api = 41, // proj.PingPong.Pong_i_Bridge.Api
+  Tproj_PingPong_Pong_i_Bridge_EntryPoints = 42, // proj.PingPong.Pong_i_Bridge.EntryPoints
+  Tproj_PingPong_Pong_i_Impl = 43, // proj.PingPong.Pong_i_Impl
 } TYPE;
 
 char *TYPE_string(void *type);
@@ -58,7 +59,7 @@ struct Type {
   TYPE type;
 };
 
-#define MaxString 60
+#define MaxString 103
 
 typedef struct String *String;
 struct String {

@@ -14,7 +14,7 @@ Z proj_Pong_i_App_main(StackFrame caller, IS_948B60 args);
 
 Unit proj_Pong_i_App_atExit(StackFrame caller);
 
-Unit proj_Pong_i_App_initialise(StackFrame caller, Z seed);
+Unit proj_Pong_i_App_initialize(StackFrame caller, Z seed);
 
 Unit proj_Pong_i_App_compute(StackFrame caller);
 

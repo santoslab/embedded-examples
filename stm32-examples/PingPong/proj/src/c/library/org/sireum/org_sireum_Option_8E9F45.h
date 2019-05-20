@@ -12,4 +12,6 @@
 B Option_8E9F45__is(StackFrame caller, void *this);
 Option_8E9F45 Option_8E9F45__as(StackFrame caller, void *this);
 
+B Option_8E9F45_nonEmpty_(StackFrame caller, Option_8E9F45 this);
+
 #endif

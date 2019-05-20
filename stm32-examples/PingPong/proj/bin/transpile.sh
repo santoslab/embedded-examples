@@ -23,8 +23,7 @@ $TRANSPILER_JAR_HOME transpiler c \
   --forward "art.ArtNative=proj.ArtNix,proj.Platform=proj.PlatformNix" \
   --verbose \
   --bits 16 \
-  --string-size 60 \
+  --string-size 103 \
   --sequence-size 7 \
-  --sequence ISZ[org.sireumString]=2 \
   --output-dir $OUTPUT_DIR \
   --exts $EXTS

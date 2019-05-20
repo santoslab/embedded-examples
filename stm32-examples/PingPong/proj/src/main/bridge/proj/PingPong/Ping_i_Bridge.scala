@@ -21,13 +21,13 @@ import proj._
     all = ISZ(ping_inn,
               ping_out),
 
-    dataIns = ISZ(ping_inn),
+    dataIns = ISZ(),
 
-    dataOuts = ISZ(ping_out),
+    dataOuts = ISZ(),
 
-    eventIns = ISZ(),
+    eventIns = ISZ(ping_inn),
 
-    eventOuts = ISZ()
+    eventOuts = ISZ(ping_out)
   )
 
   val api : Ping_i_Bridge.Api =
@@ -55,7 +55,6 @@ object Ping_i_Bridge {
     ping_inn_Id : Art.PortId,
     ping_out_Id : Art.PortId) {
 
-
     def getping_inn() : Option[Base_Types.Integer_8] = {
       val value : Option[Base_Types.Integer_8] = Art.getValue(ping_inn_Id) match {
         case Some(Base_Types.Integer_8_Payload(v)) => Some(v)
@@ -64,9 +63,10 @@ object Ping_i_Bridge {
       return value
     }
 
-    def setping_out(value : Base_Types.Integer_8) : Unit = {
+    def sendping_out(value : Base_Types.Integer_8) : Unit = {
       Art.putValue(ping_out_Id, Base_Types.Integer_8_Payload(value))
     }
+
 
     def logInfo(msg: String): Unit = {
       Art.logInfo(id, msg)
@@ -89,21 +89,30 @@ object Ping_i_Bridge {
 
     component : Ping_i_Impl ) extends Bridge.EntryPoints {
 
-    val dataInPortIds: ISZ[Art.PortId] = ISZ(ping_inn_Id)
+    val dataInPortIds: ISZ[Art.PortId] = ISZ()
 
-    val eventInPortIds: ISZ[Art.PortId] = ISZ()
+    val eventInPortIds: ISZ[Art.PortId] = ISZ(ping_inn_Id)
 
-    val dataOutPortIds: ISZ[Art.PortId] = ISZ(ping_out_Id)
+    val dataOutPortIds: ISZ[Art.PortId] = ISZ()
 
-    val eventOutPortIds: ISZ[Art.PortId] = ISZ()
+    val eventOutPortIds: ISZ[Art.PortId] = ISZ(ping_out_Id)
 
     def initialise(): Unit = {
       component.initialise()
     }
 
     def compute(): Unit = {
-      Art.receiveInput(eventInPortIds, dataInPortIds)
-      component.timeTriggered()
+      val EventTriggered(portIds) = Art.dispatchStatus(Ping_i_BridgeId)
+      Art.receiveInput(portIds, dataInPortIds)
+
+      for(portId <- portIds) {
+
+        if(portId == ping_inn_Id){
+          val Some(Base_Types.Integer_8_Payload(value)) = Art.getValue(ping_inn_Id)
+          component.handleping_inn(value)
+        }
+      }
+
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 

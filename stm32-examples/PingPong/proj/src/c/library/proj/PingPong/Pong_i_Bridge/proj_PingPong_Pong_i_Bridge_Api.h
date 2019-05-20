@@ -26,8 +26,8 @@ static inline proj_PingPong_Pong_i_Bridge_Api proj_PingPong_Pong_i_Bridge_Api__a
 
 void proj_PingPong_Pong_i_Bridge_Api_apply(StackFrame caller, proj_PingPong_Pong_i_Bridge_Api this, Z id, Z pong_inn_Id, Z pong_out_Id);
 
-void proj_PingPong_Pong_i_Bridge_Api_getpong_inn_(Option_56AFA0 result, StackFrame caller, proj_PingPong_Pong_i_Bridge_Api this);
+Unit proj_PingPong_Pong_i_Bridge_Api_logInfo_(StackFrame caller, proj_PingPong_Pong_i_Bridge_Api this, String msg);
 
-Unit proj_PingPong_Pong_i_Bridge_Api_setpong_out_(StackFrame caller, proj_PingPong_Pong_i_Bridge_Api this, proj_Base_Types_Integer_8 value);
+Unit proj_PingPong_Pong_i_Bridge_Api_sendpong_out_(StackFrame caller, proj_PingPong_Pong_i_Bridge_Api this, proj_Base_Types_Integer_8 value);
 
 #endif

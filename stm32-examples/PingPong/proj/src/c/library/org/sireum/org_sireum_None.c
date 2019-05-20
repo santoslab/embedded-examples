@@ -15,3 +15,8 @@ B None_93AA2B_isEmpty_(StackFrame caller, None_93AA2B this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "isEmpty", 0);
   return T;
 }
+
+B None_964667_nonEmpty_(StackFrame caller, None_964667 this) {
+  DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "nonEmpty", 0);
+  return F;
+}

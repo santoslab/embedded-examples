@@ -11,8 +11,11 @@
 #include <type-art_DispatchPropertyProtocol.h>
 #include <type-art_DispatchPropertyProtocol_Periodic.h>
 #include <type-art_DispatchPropertyProtocol_Sporadic.h>
+#include <type-art_DispatchStatus.h>
 #include <type-art_Empty.h>
+#include <type-art_EventTriggered.h>
 #include <type-art_PortMode.h>
+#include <type-art_TimeTriggered.h>
 #include <type-art_UConnection.h>
 #include <type-art_UPort.h>
 #include <type-art_art_Connection_4C277C.h>
@@ -25,6 +28,7 @@
 #include <type-org_sireum_MNone_2A2E1D.h>
 #include <type-org_sireum_MOption_EA1D29.h>
 #include <type-org_sireum_MS_2590FE.h>
+#include <type-org_sireum_MS_30A5B4.h>
 #include <type-org_sireum_MS_852149.h>
 #include <type-org_sireum_MS_94FFA9.h>
 #include <type-org_sireum_MS_B5E3E6.h>
@@ -32,21 +36,18 @@
 #include <type-org_sireum_MS_F55A18.h>
 #include <type-org_sireum_MSome_D3D128.h>
 #include <type-org_sireum_None.h>
-#include <type-org_sireum_None_0A8767.h>
 #include <type-org_sireum_None_39BC5F.h>
 #include <type-org_sireum_None_76463B.h>
 #include <type-org_sireum_None_93AA2B.h>
 #include <type-org_sireum_None_964667.h>
 #include <type-org_sireum_Nothing.h>
 #include <type-org_sireum_Option_02FA6D.h>
-#include <type-org_sireum_Option_56AFA0.h>
 #include <type-org_sireum_Option_6239DB.h>
 #include <type-org_sireum_Option_882048.h>
 #include <type-org_sireum_Option_8E9F45.h>
 #include <type-org_sireum_Some.h>
 #include <type-org_sireum_Some_3E197E.h>
 #include <type-org_sireum_Some_488F47.h>
-#include <type-org_sireum_Some_AA0E8F.h>
 #include <type-org_sireum_Some_D29615.h>
 #include <type-org_sireum_Some_E9D1E5.h>
 #include <type-org_sireum_Tuple2_D0E3BB.h>
@@ -58,11 +59,13 @@
 #include <type-proj_Base_Types_Integer_8_Payload.h>
 #include <type-proj_IPCPorts.h>
 #include <type-proj_Main.h>
+#include <type-proj_PingPong_PingExt.h>
 #include <type-proj_PingPong_Ping_i.h>
 #include <type-proj_PingPong_Ping_i_Bridge.h>
 #include <type-proj_PingPong_Ping_i_Bridge_Api.h>
 #include <type-proj_PingPong_Ping_i_Bridge_EntryPoints.h>
 #include <type-proj_PingPong_Ping_i_Impl.h>
+#include <type-proj_PingPong_PongExt.h>
 #include <type-proj_PingPong_Pong_i.h>
 #include <type-proj_PingPong_Pong_i_Bridge.h>
 #include <type-proj_PingPong_Pong_i_Bridge_Api.h>
@@ -98,25 +101,26 @@ static inline size_t sizeOf(Type t) {
     case TMS_94FFA9: return sizeof(struct MS_94FFA9); // MS[Z, MOption[art.Bridge]]
     case TMS_2590FE: return sizeof(struct MS_2590FE); // MS[Z, Option[art.DataContent]]
     case TMS_F55A18: return sizeof(struct MS_F55A18); // MS[Z, Option[art.UPort]]
+    case TMS_30A5B4: return sizeof(struct MS_30A5B4); // MS[Z, Z]
     case TMS_852149: return sizeof(struct MS_852149); // MS[Z, art.Bridge]
     case TMSome_D3D128: return sizeof(struct MSome_D3D128); // MSome[art.Bridge]
     case TNone_93AA2B: return sizeof(struct None_93AA2B); // None[(Z, art.DataContent)]
     case TNone_76463B: return sizeof(struct None_76463B); // None[Z]
     case TNone_964667: return sizeof(struct None_964667); // None[art.DataContent]
     case TNone_39BC5F: return sizeof(struct None_39BC5F); // None[art.UPort]
-    case TNone_0A8767: return sizeof(struct None_0A8767); // None[proj.Base_Types.Integer_8]
     case TSome_E9D1E5: return sizeof(struct Some_E9D1E5); // Some[(Z, art.DataContent)]
     case TSome_488F47: return sizeof(struct Some_488F47); // Some[Z]
     case TSome_D29615: return sizeof(struct Some_D29615); // Some[art.DataContent]
     case TSome_3E197E: return sizeof(struct Some_3E197E); // Some[art.UPort]
-    case TSome_AA0E8F: return sizeof(struct Some_AA0E8F); // Some[proj.Base_Types.Integer_8]
     case Tart_ArchitectureDescription: return sizeof(struct art_ArchitectureDescription); // art.ArchitectureDescription
     case Tart_Bridge_Ports: return sizeof(struct art_Bridge_Ports); // art.Bridge.Ports
     case Tart_Connection_4C277C: return sizeof(struct art_Connection_4C277C); // art.Connection[proj.Base_Types.Integer_8]
     case Tart_DispatchPropertyProtocol_Periodic: return sizeof(struct art_DispatchPropertyProtocol_Periodic); // art.DispatchPropertyProtocol.Periodic
     case Tart_DispatchPropertyProtocol_Sporadic: return sizeof(struct art_DispatchPropertyProtocol_Sporadic); // art.DispatchPropertyProtocol.Sporadic
     case Tart_Empty: return sizeof(struct art_Empty); // art.Empty
+    case Tart_EventTriggered: return sizeof(struct art_EventTriggered); // art.EventTriggered
     case Tart_Port_B84865: return sizeof(struct art_Port_B84865); // art.Port[proj.Base_Types.Integer_8]
+    case Tart_TimeTriggered: return sizeof(struct art_TimeTriggered); // art.TimeTriggered
     case TString: return sizeof(struct String); // org.sireum.String
     case Tproj_Base_Types_Integer_8: return sizeof(struct proj_Base_Types_Integer_8); // proj.Base_Types.Integer_8
     case Tproj_Base_Types_Integer_8_Payload: return sizeof(struct proj_Base_Types_Integer_8_Payload); // proj.Base_Types.Integer_8_Payload

@@ -48,17 +48,7 @@ file(GLOB_RECURSE SOURCES "startup/*.*" "Middlewares/*.*" "Drivers/*.*" "Src/*.*
         "../c/ext/*.*" "../c/library/*.*" "../c/runtime/*.*"
 )
 
-include_directories(
-        Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        Middlewares/Third_Party/FreeRTOS/Source/include
-        Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
-        Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-        Middlewares/ST/STM32_USB_Host_Library/Core/Inc
-        Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc
-        Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Drivers/CMSIS/Include
+include_directories(Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Middlewares/Third_Party/FreeRTOS/Source/include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F Middlewares/ST/STM32_USB_Host_Library/Core/Inc Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include
 
         # slang-embedded include directories
         ../c/runtime

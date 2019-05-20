@@ -18,5 +18,11 @@ static inline B IS_82ABD8__ne(IS_82ABD8 this, IS_82ABD8 other) {
   return !IS_82ABD8__eq(this, other);
 }
 
+static inline void IS_82ABD8_toMS(MS_30A5B4 result, StackFrame caller, IS_82ABD8 this) {
+  STATIC_ASSERT(MaxMS_30A5B4 >= MaxIS_82ABD8, "Invalid cast from IS[Z, Z] to MS[...,...].");
+  result->type = TMS_30A5B4;
+  result->size = this->size;
+  memcpy(&result->value, &this->value, this->size * sizeof(Z));
+}
 
 #endif

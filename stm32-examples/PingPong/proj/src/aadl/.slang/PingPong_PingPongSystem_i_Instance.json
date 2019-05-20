@@ -119,9 +119,9 @@
                         "beginLine" : 28,
                         "beginColumn" : 4,
                         "endLine" : 28,
-                        "endColumn" : 49,
+                        "endColumn" : 55,
                         "offset" : 516,
-                        "length" : 45
+                        "length" : 51
                       }
                     }
                   },
@@ -131,7 +131,7 @@
                   },
                   "category" : {
                     "type" : "FeatureCategory",
-                    "value" : "DataPort"
+                    "value" : "EventDataPort"
                   },
                   "classifier" : {
                     "type" : "Some",
@@ -250,9 +250,9 @@
                         "beginLine" : 29,
                         "beginColumn" : 4,
                         "endLine" : 29,
-                        "endColumn" : 50,
-                        "offset" : 565,
-                        "length" : 46
+                        "endColumn" : 56,
+                        "offset" : 571,
+                        "length" : 52
                       }
                     }
                   },
@@ -262,7 +262,7 @@
                   },
                   "category" : {
                     "type" : "FeatureCategory",
-                    "value" : "DataPort"
+                    "value" : "EventDataPort"
                   },
                   "classifier" : {
                     "type" : "Some",
@@ -398,7 +398,7 @@
                   "propertyValues" : [
                     {
                       "type" : "ValueProp",
-                      "value" : "Periodic"
+                      "value" : "Sporadic"
                     }
                   ]
                 },
@@ -518,9 +518,9 @@
                         "beginLine" : 40,
                         "beginColumn" : 4,
                         "endLine" : 40,
-                        "endColumn" : 49,
-                        "offset" : 773,
-                        "length" : 45
+                        "endColumn" : 55,
+                        "offset" : 785,
+                        "length" : 51
                       }
                     }
                   },
@@ -530,7 +530,7 @@
                   },
                   "category" : {
                     "type" : "FeatureCategory",
-                    "value" : "DataPort"
+                    "value" : "EventDataPort"
                   },
                   "classifier" : {
                     "type" : "Some",
@@ -649,9 +649,9 @@
                         "beginLine" : 41,
                         "beginColumn" : 4,
                         "endLine" : 41,
-                        "endColumn" : 50,
-                        "offset" : 822,
-                        "length" : 46
+                        "endColumn" : 56,
+                        "offset" : 840,
+                        "length" : 52
                       }
                     }
                   },
@@ -661,7 +661,7 @@
                   },
                   "category" : {
                     "type" : "FeatureCategory",
-                    "value" : "DataPort"
+                    "value" : "EventDataPort"
                   },
                   "classifier" : {
                     "type" : "Some",
@@ -797,7 +797,7 @@
                   "propertyValues" : [
                     {
                       "type" : "ValueProp",
-                      "value" : "Periodic"
+                      "value" : "Sporadic"
                     }
                   ]
                 },
@@ -930,9 +930,9 @@
                           "beginLine" : 29,
                           "beginColumn" : 4,
                           "endLine" : 29,
-                          "endColumn" : 50,
-                          "offset" : 565,
-                          "length" : 46
+                          "endColumn" : 56,
+                          "offset" : 571,
+                          "length" : 52
                         }
                       }
                     }
@@ -985,9 +985,9 @@
                           "beginLine" : 40,
                           "beginColumn" : 4,
                           "endLine" : 40,
-                          "endColumn" : 49,
-                          "offset" : 773,
-                          "length" : 45
+                          "endColumn" : 55,
+                          "offset" : 785,
+                          "length" : 51
                         }
                       }
                     }
@@ -1079,9 +1079,9 @@
                           "beginLine" : 41,
                           "beginColumn" : 4,
                           "endLine" : 41,
-                          "endColumn" : 50,
-                          "offset" : 822,
-                          "length" : 46
+                          "endColumn" : 56,
+                          "offset" : 840,
+                          "length" : 52
                         }
                       }
                     }
@@ -1134,9 +1134,9 @@
                           "beginLine" : 28,
                           "beginColumn" : 4,
                           "endLine" : 28,
-                          "endColumn" : 49,
+                          "endColumn" : 55,
                           "offset" : 516,
-                          "length" : 45
+                          "length" : 51
                         }
                       }
                     }
@@ -1229,9 +1229,9 @@
                         "beginLine" : 29,
                         "beginColumn" : 4,
                         "endLine" : 29,
-                        "endColumn" : 50,
-                        "offset" : 565,
-                        "length" : 46
+                        "endColumn" : 56,
+                        "offset" : 571,
+                        "length" : 52
                       }
                     }
                   }
@@ -1282,9 +1282,9 @@
                         "beginLine" : 40,
                         "beginColumn" : 4,
                         "endLine" : 40,
-                        "endColumn" : 49,
-                        "offset" : 773,
-                        "length" : 45
+                        "endColumn" : 55,
+                        "offset" : 785,
+                        "length" : 51
                       }
                     }
                   }
@@ -1410,9 +1410,9 @@
                         "beginLine" : 41,
                         "beginColumn" : 4,
                         "endLine" : 41,
-                        "endColumn" : 50,
-                        "offset" : 822,
-                        "length" : 46
+                        "endColumn" : 56,
+                        "offset" : 840,
+                        "length" : 52
                       }
                     }
                   }
@@ -1463,9 +1463,9 @@
                         "beginLine" : 28,
                         "beginColumn" : 4,
                         "endLine" : 28,
-                        "endColumn" : 49,
+                        "endColumn" : 55,
                         "offset" : 516,
-                        "length" : 45
+                        "length" : 51
                       }
                     }
                   }

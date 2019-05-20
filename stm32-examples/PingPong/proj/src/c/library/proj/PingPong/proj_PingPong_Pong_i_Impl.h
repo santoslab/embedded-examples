@@ -5,8 +5,6 @@
 // proj.PingPong.Pong_i_Impl
 
 #define proj_PingPong_Pong_i_Impl_api_(this) ((proj_PingPong_Pong_i_Bridge_Api) &(this)->api)
-#define proj_PingPong_Pong_i_Impl_last_(this) ((this)->last)
-#define proj_PingPong_Pong_i_Impl_last_a(this, value) (this)->last = (value)
 
 B proj_PingPong_Pong_i_Impl__eq(proj_PingPong_Pong_i_Impl this, proj_PingPong_Pong_i_Impl other);
 static inline B proj_PingPong_Pong_i_Impl__ne(proj_PingPong_Pong_i_Impl this, proj_PingPong_Pong_i_Impl other) {
@@ -26,6 +24,6 @@ static inline proj_PingPong_Pong_i_Impl proj_PingPong_Pong_i_Impl__as(StackFrame
 
 void proj_PingPong_Pong_i_Impl_apply(StackFrame caller, proj_PingPong_Pong_i_Impl this, proj_PingPong_Pong_i_Bridge_Api api);
 
-Unit proj_PingPong_Pong_i_Impl_timeTriggered_(StackFrame caller, proj_PingPong_Pong_i_Impl this);
+Unit proj_PingPong_Pong_i_Impl_handlepong_inn_(StackFrame caller, proj_PingPong_Pong_i_Impl this, proj_Base_Types_Integer_8 value);
 
 #endif

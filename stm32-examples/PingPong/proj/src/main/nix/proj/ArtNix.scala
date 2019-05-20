@@ -26,6 +26,8 @@ object ArtNix {
     r
   }
   val eventInPorts: MS[Z, Art.PortId] = MSZ(
+    Arch.PingPongSystem_i_Instance_p_ping.ping_inn.id,
+    Arch.PingPongSystem_i_Instance_p_pong.pong_inn.id
   )
   var frozen: MS[Art.PortId, Option[DataContent]] = MS()
   var outgoing: MS[Art.PortId, Option[DataContent]] = MS.create(maxPortIds, None())

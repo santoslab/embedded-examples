@@ -6,7 +6,7 @@
         <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.1"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.0"/>
@@ -20,7 +20,7 @@
         </ownedValue>
         <propertyAssociation href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.1"/>
       </ownedPropertyAssociation>
-      <featureInstance name="ping_inn">
+      <featureInstance name="ping_inn" category="eventDataPort">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Number_Representation"/>
           <ownedValue>
@@ -48,9 +48,9 @@
           </ownedValue>
           <propertyAssociation href="../../../plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:EventDataPort" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.0"/>
       </featureInstance>
-      <featureInstance name="ping_out" direction="out">
+      <featureInstance name="ping_out" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Number_Representation"/>
           <ownedValue>
@@ -78,7 +78,7 @@
           </ownedValue>
           <propertyAssociation href="../../../plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.1"/>
+        <feature xsi:type="aadl2:EventDataPort" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.1"/>
       </featureInstance>
       <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedThreadSubcomponent.0"/>
       <index>0</index>
@@ -89,7 +89,7 @@
         <property href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../plugin/org.osate.workspace/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.1"/>
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
@@ -103,7 +103,7 @@
         </ownedValue>
         <propertyAssociation href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.1"/>
       </ownedPropertyAssociation>
-      <featureInstance name="pong_inn">
+      <featureInstance name="pong_inn" category="eventDataPort">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Number_Representation"/>
           <ownedValue>
@@ -131,9 +131,9 @@
           </ownedValue>
           <propertyAssociation href="../../../plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:EventDataPort" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedEventDataPort.0"/>
       </featureInstance>
-      <featureInstance name="pong_out" direction="out">
+      <featureInstance name="pong_out" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Number_Representation"/>
           <ownedValue>
@@ -161,7 +161,7 @@
           </ownedValue>
           <propertyAssociation href="../../../plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.1"/>
+        <feature xsi:type="aadl2:EventDataPort" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedEventDataPort.1"/>
       </featureInstance>
       <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../packages/PingPong.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedThreadSubcomponent.1"/>
       <index>0</index>

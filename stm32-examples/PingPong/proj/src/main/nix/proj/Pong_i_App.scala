@@ -17,20 +17,25 @@ object Pong_i_App extends App {
   val pong_innPortId: Art.PortId = Arch.PingPongSystem_i_Instance_p_pong.pong_inn.id
   val pong_innPortIdOpt: Option[Art.PortId] = Some(pong_innPortId)
 
-  def initialise(seed: Z): Unit = {
+  def initialize(seed: Z): Unit = {
     Platform.initialise(seed, appPortIdOpt)
     Platform.initialise(seed, pong_innPortIdOpt)
     Art.run(Arch.ad)
   }
 
   def compute(): Unit = {
+    var dispatch = F
     Platform.receiveAsync(pong_innPortIdOpt) match {
-      case Some((_, v: Base_Types.Integer_8_Payload)) => ArtNix.updateData(pong_innPortId, v)
+      case Some((_, v: Base_Types.Integer_8_Payload)) => ArtNix.updateData(pong_innPortId, v); dispatch = T
       case Some((_, v)) => halt(s"Unexpected payload on port ${pong_innPortId}.  Expecting something of type Base_Types.Integer_8_Payload but received ${v}")
       case None() => // do nothing
     }
-    entryPoints.compute()
-    Process.sleep(1000)
+    if (dispatch) {
+      entryPoints.compute()
+      Process.sleep(1000)
+    } else {
+      Process.sleep(10)
+    }
   }
 
   def main(args: ISZ[String]): Z = {
@@ -42,7 +47,7 @@ object Pong_i_App extends App {
       1
     }
 
-    initialise(seed)
+    initialize(seed)
 
     Platform.receive(appPortIdOpt)
 
@@ -52,7 +57,7 @@ object Pong_i_App extends App {
 
     println("Pong_i_App starting ...")
 
-    ArtNix.timeDispatch()
+    ArtNix.eventDispatch()
 
     var terminated = F
     while (!terminated) {
