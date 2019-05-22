@@ -35,18 +35,20 @@ SET(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-gc-sections,--print-memory-usage -T ${LINK
 PROJECT(nortos C CXX ASM)
 set(CMAKE_CXX_STANDARD 11)
 
+#add_definitions(-DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT=1)
+add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32F429xx)
 
+
+# slang
 add_definitions(-DSIREUM_NO_PRINT)
 add_definitions(-DSIREUM_NO_LOC)
 add_definitions(-DSTM32)
 
-#add_definitions(-DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT=1)
-add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32F429xx)
-
 file(GLOB_RECURSE SOURCES "startup/*.*" "Drivers/*.*" "Src/*.*" "Inc/*.*"
 
-        #slang-embedded
-        "../c/ext/*.*" "../c/library/*.*" "../c/runtime/*.*")
+        # slang
+        "../c/ext/*.*" "../c/library/*.*" "../c/runtime/*.*"
+)
 
 include_directories(Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include
 
@@ -62,6 +64,7 @@ include_directories(Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_D
         ../c/library/proj/PingPong/Ping_i_Bridge
         ../c/library/proj/PingPong/Pong_i_Bridge
         ../c/ext
+
         )
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})

@@ -42,6 +42,7 @@ add_definitions(${defines})
 # slang
 add_definitions(-DSIREUM_NO_PRINT)
 add_definitions(-DSIREUM_NO_LOC)
+add_definitions(-DSTM32)
 
 file(GLOB_RECURSE SOURCES ${sources}
 
