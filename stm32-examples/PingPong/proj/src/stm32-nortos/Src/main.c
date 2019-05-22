@@ -158,11 +158,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
       proj_Ping_i_App_compute(dummy);
 
       proj_Pong_i_App_compute(dummy);
+
+      /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
