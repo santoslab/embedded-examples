@@ -187,7 +187,7 @@ int main(void)
   // requires 2500 * 4 = 10,000 bytes so there's 31,152 bytes left
 
   /* add threads, ... */
-  if(pingTaskHandle == NULL) {
+  if(pingTaskHandle == NULL || pongTaskHandle == NULL) {
       // task creation failure
       blinkOnRedDelay(10, 50);
       exit(-1);
