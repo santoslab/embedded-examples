@@ -1,0 +1,40 @@
+#ifndef SIREUM_H_building_control_BuildingControl_TempControl_i_Bridge_EntryPoints
+#define SIREUM_H_building_control_BuildingControl_TempControl_i_Bridge_EntryPoints
+#include <types.h>
+
+// building_control.BuildingControl.TempControl_i_Bridge.EntryPoints
+
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_TempControl_i_BridgeId_(this) ((this)->TempControl_i_BridgeId)
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_currentTemp_Id_(this) ((this)->currentTemp_Id)
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_fanCmd_Id_(this) ((this)->fanCmd_Id)
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_component_(this) ((building_control_BuildingControl_TempControl_i_Impl) &(this)->component)
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_dataInPortIds_(this) ((IS_82ABD8) &(this)->dataInPortIds)
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_eventInPortIds_(this) ((IS_82ABD8) &(this)->eventInPortIds)
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_dataOutPortIds_(this) ((IS_82ABD8) &(this)->dataOutPortIds)
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_eventOutPortIds_(this) ((IS_82ABD8) &(this)->eventOutPortIds)
+
+B building_control_BuildingControl_TempControl_i_Bridge_EntryPoints__eq(building_control_BuildingControl_TempControl_i_Bridge_EntryPoints this, building_control_BuildingControl_TempControl_i_Bridge_EntryPoints other);
+static inline B building_control_BuildingControl_TempControl_i_Bridge_EntryPoints__ne(building_control_BuildingControl_TempControl_i_Bridge_EntryPoints this, building_control_BuildingControl_TempControl_i_Bridge_EntryPoints other) {
+  return !building_control_BuildingControl_TempControl_i_Bridge_EntryPoints__eq(this, other);
+};
+void building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_cprint(building_control_BuildingControl_TempControl_i_Bridge_EntryPoints this, B isOut);
+void building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_string(String result, StackFrame caller, building_control_BuildingControl_TempControl_i_Bridge_EntryPoints this);
+
+#define building_control_BuildingControl_TempControl_i_Bridge_EntryPoints__is(sf, this) (((building_control_BuildingControl_TempControl_i_Bridge_EntryPoints) this)->type == Tbuilding_control_BuildingControl_TempControl_i_Bridge_EntryPoints)
+
+static inline building_control_BuildingControl_TempControl_i_Bridge_EntryPoints building_control_BuildingControl_TempControl_i_Bridge_EntryPoints__as(StackFrame caller, void *this) {
+  if (building_control_BuildingControl_TempControl_i_Bridge_EntryPoints__is(caller, this)) return (building_control_BuildingControl_TempControl_i_Bridge_EntryPoints) this;
+  fprintf(stderr, "Invalid case from %s to building_control.BuildingControl.TempControl_i_Bridge.EntryPoints.", TYPE_string(this));
+  sfAbortImpl(caller, "");
+  abort();
+}
+
+void building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_apply(StackFrame caller, building_control_BuildingControl_TempControl_i_Bridge_EntryPoints this, Z TempControl_i_BridgeId, Z currentTemp_Id, Z fanCmd_Id, building_control_BuildingControl_TempControl_i_Impl component);
+
+Unit building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_initialise_(StackFrame caller, building_control_BuildingControl_TempControl_i_Bridge_EntryPoints this);
+
+Unit building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_compute_(StackFrame caller, building_control_BuildingControl_TempControl_i_Bridge_EntryPoints this);
+
+Unit building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_finalise_(StackFrame caller, building_control_BuildingControl_TempControl_i_Bridge_EntryPoints this);
+
+#endif

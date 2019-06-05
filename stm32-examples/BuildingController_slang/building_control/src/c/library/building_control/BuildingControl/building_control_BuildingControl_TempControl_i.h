@@ -1,0 +1,9 @@
+#ifndef SIREUM_H_building_control_BuildingControl_TempControl_i
+#define SIREUM_H_building_control_BuildingControl_TempControl_i
+#include <types.h>
+
+Unit building_control_BuildingControl_TempControl_i_Impl_initialise_(StackFrame caller, building_control_BuildingControl_TempControl_i_Impl this);
+
+Unit building_control_BuildingControl_TempControl_i_Impl_finalise_(StackFrame caller, building_control_BuildingControl_TempControl_i_Impl this);
+
+#endif

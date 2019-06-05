@@ -1,0 +1,6 @@
+#ifndef SIREUM_TYPE_H_building_control_BuildingControl_FanNative
+#define SIREUM_TYPE_H_building_control_BuildingControl_FanNative
+#include <misc.h>
+
+
+#endif

@@ -1,0 +1,7 @@
+#ifndef SIREUM_H_building_control_BuildingControl_FanNative
+#define SIREUM_H_building_control_BuildingControl_FanNative
+#include <types.h>
+
+Unit building_control_BuildingControl_FanNative_fanController(StackFrame caller, B turnOn);
+
+#endif

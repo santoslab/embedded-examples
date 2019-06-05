@@ -1,0 +1,6 @@
+#ifndef SIREUM_TYPE_H_building_control_BuildingControl_TempSensor_i
+#define SIREUM_TYPE_H_building_control_BuildingControl_TempSensor_i
+#include <misc.h>
+
+
+#endif
