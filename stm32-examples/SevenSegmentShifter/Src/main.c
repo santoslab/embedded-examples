@@ -55,6 +55,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdlib.h>
+#include <stdbool.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -129,6 +131,53 @@ void blinkOnRed(int16_t count) { blinkOnRedDelay(count, LED_DELAY); }
 
 void blinkOnBlueDelay(int16_t count, int16_t delay) { blink(BLUE_BANK, BLUE_LED_PIN, count, delay); }
 void blinkOnBlue(int16_t count) { blinkOnBlueDelay(count, LED_DELAY); }
+
+
+//
+
+uint8_t table[] =
+        { 0x3f, 0x06, 0x5b, 0x4f,
+          0x66, 0x6d, 0x7d, 0x07,
+          0x7f, 0x6f, 0x77, 0x7c,
+          0x39, 0x5e, 0x79, 0x71,
+          0x00 };
+
+void shiftOut(GPIO_TypeDef * dataBank, uint16_t dataPin,
+              GPIO_TypeDef * clockBank, uint16_t clockPin,
+              bool MSBFIRST, uint8_t val) {
+    uint8_t i;
+
+    for (i = 0; i < 8; i++) {
+        if(MSBFIRST) {
+            HAL_GPIO_WritePin(dataBank, dataPin, !!(val & (1 << (7 - i))));
+        }
+        else {
+            HAL_GPIO_WritePin(dataBank, dataPin, !!(val & (1 << i)));
+        }
+
+        // pulse the clock pin (at least one HAL_Delay(1) is neeeded)
+        HAL_GPIO_WritePin(clockBank, clockPin, GPIO_PIN_SET);
+        HAL_Delay(1);
+        HAL_GPIO_WritePin(clockBank, clockPin, GPIO_PIN_RESET);
+        HAL_Delay(1);
+    }
+}
+
+void display(uint8_t num) {
+
+    HAL_GPIO_WritePin(STCP_GPIO_Port, STCP_Pin, GPIO_PIN_RESET);
+
+    uint8_t value = table[num];
+
+    shiftOut(DS_GPIO_Port, DS_Pin,
+             SHCP_GPIO_Port, SHCP_Pin,
+             true,
+             value
+    );
+
+    HAL_GPIO_WritePin(STCP_GPIO_Port, STCP_Pin, GPIO_PIN_SET);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -187,7 +236,6 @@ int main(void)
       blinkOnRedDelay(10, 100);
       exit(-1);
   }
-
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -379,8 +427,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -388,8 +436,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOG_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3 
-                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOE, STCP_Pin|SHCP_Pin|DS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
@@ -400,20 +447,18 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pins : STCP_Pin SHCP_Pin DS_Pin */
+  GPIO_InitStruct.Pin = STCP_Pin|SHCP_Pin|DS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+
   /*Configure GPIO pin : USER_Btn_Pin */
   GPIO_InitStruct.Pin = USER_Btn_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PF0 PF1 PF2 PF3 
-                           PF4 PF5 PF6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3 
-                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LD3_Pin LD2_Pin */
   GPIO_InitStruct.Pin = LD3_Pin|LD2_Pin;
@@ -459,29 +504,14 @@ void StartDefaultTask(void const * argument)
 {
 
   /* USER CODE BEGIN 5 */
-
-  // LED segments    Wiring
-  // ------------    --------
-  //     a           PF0 -> a
-  //   f   b         PF1 -> b
-  //     g           PF2 -> c
-  //   e   c         PF3 -> d
-  //     d           PF4 -> e
-  //                 PF5 -> f
-  //                 PF6 -> g
-
-  unsigned char table[] = { 0x3f, 0x06, 0x5b, 0x4f,
-                            0x66, 0x6d, 0x7d, 0x07,
-                            0x7f, 0x6f, 0x77, 0x7c,
-                            0x39, 0x5e, 0x79, 0x71 };
-
-  // 0x3f = 011 1111.  0 written to PF6, 1's written to other 5 segments so "0" is displayed
-
   /* Infinite loop */
-  for(int i = 0;; i++)
+
+  for(;;)
   {
-      GPIOF->ODR = table[i % 15];
-      HAL_Delay(1000);
+      for(int i = 0; i < 16; i++) {
+          display(i);
+          osDelay(300);
+      }
   }
   /* USER CODE END 5 */ 
 }
