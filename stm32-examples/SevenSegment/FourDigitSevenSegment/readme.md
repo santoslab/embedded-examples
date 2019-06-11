@@ -2,7 +2,7 @@
 
 This is a work in progress attempting to show different digits on a 
 four 7-segment display.  It currently works, but there is significant
-flickering.  See [circuit-diagram](circuit-diagram.jpeg).
+flickering.  See [circuit-diagram](circuit-diagram.jpg).
 
 ## Support for *printf* statements
 
