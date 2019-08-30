@@ -112,7 +112,6 @@ void tempControlTaskFunction(void const * argument);
 
 #define LED_DELAY 400
 
-// cubemx has incorrect mapping for green led
 #define GREEN_LED_PIN LD4_Pin
 #define GREEN_BANK    LD4_GPIO_Port
 
@@ -126,7 +125,7 @@ void tempControlTaskFunction(void const * argument);
 #define ORANGE_BANK    LD3_GPIO_Port
 
 #define FAN_GPIO_Port ORANGE_BANK
-#define FAN_Pin ORANGE_LED_PIN
+#define FAN_Pin       ORANGE_LED_PIN
 
 void blink(GPIO_TypeDef * bank, uint16_t pin, int16_t count, int16_t delay){
     for(int16_t i = 0; i < count; i++) {
@@ -164,10 +163,15 @@ int map(int  ymin, int ymax, int x) {
     }
 }
 
+int fanIsOn = 0;
+
 void fanLED(int turnOn) {
+    fanIsOn = turnOn;
     HAL_GPIO_WritePin(FAN_GPIO_Port, FAN_Pin, turnOn == 0 ? GPIO_PIN_RESET : GPIO_PIN_SET);
 }
 
+
+int currentTemp = LOW_TEMP;
 
 uint32_t pollPotentiometer() {
     uint32_t sum = 0;
@@ -180,6 +184,24 @@ uint32_t pollPotentiometer() {
     uint32_t ts_val = map(LOW_TEMP, HIGH_TEMP, (sum / 100.00));
 
     return ts_val;
+    //return currentTemp;
+}
+
+#define DELTA 5
+int delta = DELTA;
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+    switch(GPIO_Pin) {
+        case B1_Pin:
+            currentTemp = currentTemp + delta;
+
+            delta = (fanIsOn ? -DELTA : DELTA);
+
+            if(delta < 0) blinkOnBlue(1);
+            else blinkOnRed(1);
+
+            break;
+    }
 }
 
 int seed = 1;
@@ -540,7 +562,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
@@ -578,6 +600,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(MEMS_INT2_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
 }
 
