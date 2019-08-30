@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ASCII"?>
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="7">
+  <element uuid="2dc6b2bb-f4a7-4357-affe-4c349bbde659" manual="true">
+    <element uuid="dc8d5be8-be89-4010-ba45-50dd38cdfde1">
+      <element uuid="1324ef4c-4056-4353-9776-41f209b7b8cd">
+        <bo>
+          <seg>tag</seg>
+          <seg>unidirectional</seg>
+        </bo>
+        <contentFilters/>
+      </element>
+      <bo>
+        <seg>connection</seg>
+        <seg>ct</seg>
+      </bo>
+      <contentFilters/>
+    </element>
+    <element uuid="55788304-5bfa-49b7-b542-b57ab1cb0b81">
+      <element uuid="212ed42f-36f3-4550-a20a-6483d1d59bab">
+        <bo>
+          <seg>tag</seg>
+          <seg>unidirectional</seg>
+        </bo>
+        <contentFilters/>
+      </element>
+      <bo>
+        <seg>connection</seg>
+        <seg>fc</seg>
+      </bo>
+      <contentFilters/>
+    </element>
+    <element uuid="bc574a31-eb92-4731-ab6b-53cc0f2e4572">
+      <element uuid="56e0ec8b-7f0d-45cb-880f-3afbc4ee78d0" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>fancmd</seg>
+        </bo>
+        <position y="10.0"/>
+        <contentFilters/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>fan</seg>
+      </bo>
+      <position x="656.0" y="63.0"/>
+      <size width="214.0" height="60.0"/>
+      <contentFilters>
+        <filter>features</filter>
+        <filter>internalFeatures</filter>
+        <filter>processorFeatures</filter>
+        <filter>connections</filter>
+        <filter>flowSpecifications</filter>
+      </contentFilters>
+    </element>
+    <element uuid="db47e4e3-9909-4a7a-b977-ac4227b828ef">
+      <element uuid="7476562a-23a1-459b-b9b7-d27fc3841dc7" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>currenttemp</seg>
+        </bo>
+        <position y="10.0"/>
+        <contentFilters/>
+      </element>
+      <element uuid="b1b04cf2-b0d9-4dca-bcd8-53ee9e212f75" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>fanack</seg>
+        </bo>
+        <position y="60.0"/>
+        <contentFilters/>
+      </element>
+      <element uuid="ceb1cca1-4d8a-48f7-81e9-45464d924b73" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>fancmd</seg>
+        </bo>
+        <position x="207.0" y="35.0"/>
+        <contentFilters/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>tcp</seg>
+      </bo>
+      <position x="362.0" y="38.0"/>
+      <size width="274.0" height="110.0"/>
+      <contentFilters>
+        <filter>features</filter>
+        <filter>internalFeatures</filter>
+        <filter>processorFeatures</filter>
+        <filter>connections</filter>
+        <filter>flowSpecifications</filter>
+      </contentFilters>
+    </element>
+    <element uuid="5b036c42-6424-4263-bfb0-7b678653fb51">
+      <element uuid="2130b3f7-beba-47b3-8c1d-b076262b3939" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>currenttemp</seg>
+        </bo>
+        <position x="233.0" y="10.0"/>
+        <contentFilters/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>tempsensor</seg>
+      </bo>
+      <position x="12.0" y="38.0"/>
+      <size width="330.0" height="60.0"/>
+      <contentFilters>
+        <filter>features</filter>
+        <filter>internalFeatures</filter>
+        <filter>processorFeatures</filter>
+        <filter>connections</filter>
+        <filter>flowSpecifications</filter>
+      </contentFilters>
+    </element>
+    <bo>
+      <seg>classifier</seg>
+      <seg>buildingcontroldemo.i</seg>
+    </bo>
+    <position x="12.0" y="12.0"/>
+    <size width="882.0" height="160.0"/>
+    <contentFilters>
+      <filter>features</filter>
+      <filter>internalFeatures</filter>
+      <filter>processorFeatures</filter>
+      <filter>connections</filter>
+      <filter>flowSpecifications</filter>
+      <filter>subcomponents</filter>
+    </contentFilters>
+  </element>
+  <config type="structure" connectionPrimaryLabelsVisible="false">
+    <enabledAadlProperties/>
+    <context>
+      <seg>classifier</seg>
+      <seg>buildingcontrol::buildingcontroldemo.i</seg>
+    </context>
+  </config>
+</diagram:Diagram>
