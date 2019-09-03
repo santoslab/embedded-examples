@@ -1,6 +1,10 @@
 #include <all.h>
 
 // IS[Z, (Z, Z)]
+Tuple2_EC3B57 IS_AA0F82_at(IS_AA0F82 this, Z i);
+void IS_AA0F82_up(IS_AA0F82 this, Z i, Tuple2_EC3B57 e);
+Z IS_AA0F82_size(STACK_FRAME IS_AA0F82 this);
+Z IS_AA0F82_zize(STACK_FRAME IS_AA0F82 this);
 
 B IS_AA0F82__eq(IS_AA0F82 this, IS_AA0F82 other) {
   int8_t size = this->size;
@@ -11,7 +15,7 @@ B IS_AA0F82__eq(IS_AA0F82 this, IS_AA0F82 other) {
   return T;
 }
 
-void IS_AA0F82_create(IS_AA0F82 result, StackFrame caller, Z size, Tuple2_EC3B57 dflt) {
+void IS_AA0F82_create(STACK_FRAME IS_AA0F82 result, Z size, Tuple2_EC3B57 dflt) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "create", 0);
   sfAssert(size <= MaxIS_AA0F82, "Insufficient maximum for IS[Z, (Z, Z)] elements.");
   int8_t zize = (int8_t) size;
@@ -21,7 +25,7 @@ void IS_AA0F82_create(IS_AA0F82 result, StackFrame caller, Z size, Tuple2_EC3B57
   result->size = zize;
 }
 
-void IS_AA0F82_zreate(IS_AA0F82 result, StackFrame caller, Z size, Tuple2_EC3B57 dflt) {
+void IS_AA0F82_zreate(STACK_FRAME IS_AA0F82 result, Z size, Tuple2_EC3B57 dflt) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "zreate", 0);
   sfAssert(size <= MaxIS_AA0F82, "Insufficient maximum for IS[Z, (Z, Z)] elements.");
   int8_t zize = (int8_t) size;
@@ -31,7 +35,7 @@ void IS_AA0F82_zreate(IS_AA0F82 result, StackFrame caller, Z size, Tuple2_EC3B57
   result->size = zize;
 }
 
-void IS_AA0F82__append(IS_AA0F82 result, StackFrame caller, IS_AA0F82 this, Tuple2_EC3B57 value) {
+void IS_AA0F82__append(STACK_FRAME IS_AA0F82 result, IS_AA0F82 this, Tuple2_EC3B57 value) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", ":+", 0);
   sfAssert(this->size + 1 <= MaxIS_AA0F82, "Insufficient maximum for IS[Z, (Z, Z)] elements.");
   int8_t thisSize = this->size;
@@ -40,7 +44,7 @@ void IS_AA0F82__append(IS_AA0F82 result, StackFrame caller, IS_AA0F82 this, Tupl
   result->size = (int8_t) (thisSize + 1);
 }
 
-void IS_AA0F82__prepend(IS_AA0F82 result, StackFrame caller, IS_AA0F82 this, Tuple2_EC3B57 value) {
+void IS_AA0F82__prepend(STACK_FRAME IS_AA0F82 result, IS_AA0F82 this, Tuple2_EC3B57 value) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "+:", 0);
   sfAssert(this->size + 1 <= MaxIS_AA0F82, "Insufficient maximum for IS[Z, (Z, Z)] elements.");
   int8_t thisSize = this->size;
@@ -50,18 +54,18 @@ void IS_AA0F82__prepend(IS_AA0F82 result, StackFrame caller, IS_AA0F82 this, Tup
   result->size = (int8_t) thisSize + 1;
 }
 
-void IS_AA0F82__appendAll(IS_AA0F82 result, StackFrame caller, IS_AA0F82 this, IS_AA0F82 other) {
+void IS_AA0F82__appendAll(STACK_FRAME IS_AA0F82 result, IS_AA0F82 this, IS_AA0F82 other) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "++", 0);
   sfAssert(this->size + other->size <= MaxIS_AA0F82, "Insufficient maximum for IS[Z, (Z, Z)] elements.");
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
   Type_assign(result, this, sizeof(struct IS_AA0F82));
-  for (int8_t i = 0; i < otherSize; i++)
-    Type_assign(&result->value[thisSize + i], &other->value[i], sizeof(struct Tuple2_EC3B57));
   result->size = (int8_t) thisSize + otherSize;
+  for (int8_t i = 0; i < otherSize; i++)
+    Type_assign(&result->value[thisSize + i], &other->value[i + 1], sizeof(struct Tuple2_EC3B57));
 }
 
-void IS_AA0F82__remove(IS_AA0F82 result, StackFrame caller, IS_AA0F82 this, Tuple2_EC3B57 value) {
+void IS_AA0F82__sub(STACK_FRAME IS_AA0F82 result, IS_AA0F82 this, Tuple2_EC3B57 value) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "-", 0);
   int8_t thisSize = this->size;
   int8_t k = 0;
@@ -73,7 +77,7 @@ void IS_AA0F82__remove(IS_AA0F82 result, StackFrame caller, IS_AA0F82 this, Tupl
   result->size = k;
 }
 
-void IS_AA0F82__removeAll(IS_AA0F82 result, StackFrame caller, IS_AA0F82 this, IS_AA0F82 other) {
+void IS_AA0F82__removeAll(STACK_FRAME IS_AA0F82 result, IS_AA0F82 this, IS_AA0F82 other) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "--", 0);
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
@@ -107,20 +111,22 @@ void IS_AA0F82_cprint(IS_AA0F82 this, B isOut) {
   #endif
 }
 
-void IS_AA0F82_string(String result, StackFrame caller, IS_AA0F82 this) {
+void IS_AA0F82_string_(STACK_FRAME String result, IS_AA0F82 this) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "string", 0);
-  String_string(result, sf, string("["));
+  String_string_(SF result, string("["));
   int8_t size = this->size;
   if (size > 0) {
     struct Tuple2_EC3B57 *value = this->value;
     String space = string(" ");
-    String_string(result, sf, space);
-    Tuple2_EC3B57_string(result, sf, (Tuple2_EC3B57) &(value[0]));
+    String_string_(SF result, space);
+    Tuple2_EC3B57_string_(SF result, (Tuple2_EC3B57) &(value[0]));
     for (int8_t i = 1; i < size; i++) {
-      String_string(result, sf, string(", "));
-      Tuple2_EC3B57_string(result, sf, (Tuple2_EC3B57) &(value[i]));
+      String_string_(SF result, string(", "));
+      Tuple2_EC3B57_string_(SF result, (Tuple2_EC3B57) &(value[i]));
     }
-    String_string(result, sf, space);
+    String_string_(SF result, space);
   }
-  String_string(result, sf, string("]"));
+  String_string_(SF result, string("]"));
 }
+
+B IS_AA0F82__ne(IS_AA0F82 this, IS_AA0F82 other);

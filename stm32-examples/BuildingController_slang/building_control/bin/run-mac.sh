@@ -5,7 +5,7 @@
 set -e
 export SCRIPT_HOME=$( cd "$( dirname "$0" )" &> /dev/null && pwd )
 cd $SCRIPT_HOME
-open -a Terminal mac/TempSensor_i_App &
+#open -a Terminal mac/TempSensor_i_App &
 open -a Terminal mac/Fan_i_App &
 open -a Terminal mac/TempControl_i_App &
 read -p "Press enter to initialise components ..."

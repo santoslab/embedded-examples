@@ -6,10 +6,12 @@ B None_76463B__eq(None_76463B this, None_76463B other) {
   return T;
 }
 
-void None_76463B_string(String result, StackFrame caller, None_76463B this) {
+B None_76463B__ne(None_76463B this, None_76463B other);
+
+void None_76463B_string_(STACK_FRAME String result, None_76463B this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "string", 0);
-  String_string(result, sf, string("None("));
-  String_string(result, sf, string(")"));
+  String_string_(SF result, string("None("));
+  String_string_(SF result, string(")"));
 }
 
 void None_76463B_cprint(None_76463B this, B isOut) {
@@ -19,6 +21,9 @@ void None_76463B_cprint(None_76463B this, B isOut) {
   #endif
 }
 
-void None_76463B_apply(StackFrame caller, None_76463B this) {
+B None_76463B__is(STACK_FRAME void* this);
+None_76463B None_76463B__as(STACK_FRAME void *this);
+
+void None_76463B_apply(STACK_FRAME None_76463B this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.None_76463B", "apply", 0);
 }

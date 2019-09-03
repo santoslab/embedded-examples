@@ -13,5 +13,4 @@ struct building_control_BuildingControl_TempSensor_i_Impl {
 
 #define DeclNewbuilding_control_BuildingControl_TempSensor_i_Impl(x) struct building_control_BuildingControl_TempSensor_i_Impl x = { .type = Tbuilding_control_BuildingControl_TempSensor_i_Impl }
 
-
 #endif

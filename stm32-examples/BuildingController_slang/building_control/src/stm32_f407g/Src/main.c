@@ -183,8 +183,8 @@ uint32_t pollPotentiometer() {
     }
     uint32_t ts_val = map(LOW_TEMP, HIGH_TEMP, (sum / 100.00));
 
-    return ts_val;
-    //return currentTemp;
+    //return ts_val;
+    return currentTemp;
 }
 
 #define DELTA 5
@@ -625,24 +625,24 @@ void fanTaskFunction(void const * argument)
 
   /* USER CODE BEGIN 5 */
   // init fan
-  building_control_Fan_i_App_initialize(sf, seed);
+  building_control_Fan_i_App_initialize(SF seed);
 
   // init temp sensor
-  building_control_TempControl_i_App_initialize(sf, seed);
+  building_control_TempControl_i_App_initialize(SF seed);
 
   // init temp control
-  building_control_TempSensor_i_App_initialize(sf, seed);
+  building_control_TempSensor_i_App_initialize(SF seed);
 
   blinkOnRedDelay(5, 100);
   /* Infinite loop */
 
 
   // call fan's initialize entrypoint
-  art_Bridge_EntryPoints_initialise_(sf, building_control_Fan_i_App_entryPoints(sf));
+  art_Bridge_EntryPoints_initialise_(SF building_control_Fan_i_App_entryPoints(SF));
 
   for(;;)
   {
-    building_control_Fan_i_App_compute(sf);
+    building_control_Fan_i_App_compute(SF);
 
     osDelay(1);
   }
@@ -662,12 +662,12 @@ void tempSensorTaskFunction(void const * argument)
   /* Infinite loop */
 
   // call temp sensor's initialize entrypoint
-  art_Bridge_EntryPoints_initialise_(sf, building_control_TempSensor_i_App_entryPoints(sf));
+  art_Bridge_EntryPoints_initialise_(SF building_control_TempSensor_i_App_entryPoints(SF));
 
   blinkOnBlueDelay(5, 100);
   for(;;)
   {
-    building_control_TempSensor_i_App_compute(sf);
+    building_control_TempSensor_i_App_compute(SF);
 
     osDelay(1);
   }
@@ -687,12 +687,12 @@ void tempControlTaskFunction(void const * argument)
   /* Infinite loop */
 
   // call temp control's initialize entrypoint
-  art_Bridge_EntryPoints_initialise_(sf, building_control_TempControl_i_App_entryPoints(sf));
+  art_Bridge_EntryPoints_initialise_(SF building_control_TempControl_i_App_entryPoints(SF));
 
   blinkOnGreenDelay(5, 100);
   for(;;)
   {
-    building_control_TempControl_i_App_compute(sf);
+    building_control_TempControl_i_App_compute(SF);
 
     osDelay(1);
   }

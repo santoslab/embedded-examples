@@ -8,14 +8,16 @@ B art_Connection_2385F4__eq(art_Connection_2385F4 this, art_Connection_2385F4 ot
   return T;
 }
 
-void art_Connection_2385F4_string(String result, StackFrame caller, art_Connection_2385F4 this) {
+B art_Connection_2385F4__ne(art_Connection_2385F4 this, art_Connection_2385F4 other);
+
+void art_Connection_2385F4_string_(STACK_FRAME String result, art_Connection_2385F4 this) {
   DeclNewStackFrame(caller, "ArchitectureDescription.scala", "art.Connection", "string", 0);
-  String_string(result, sf, string("Connection("));
+  String_string_(SF result, string("Connection("));
   String sep = string(", ");
-  art_Port_C61295_string(result, sf, (art_Port_C61295) &this->from);
-  String_string(result, sf, sep);
-  art_Port_C61295_string(result, sf, (art_Port_C61295) &this->to);
-  String_string(result, sf, string(")"));
+  art_Port_C61295_string_(SF result, (art_Port_C61295) &this->from);
+  String_string_(SF result, sep);
+  art_Port_C61295_string_(SF result, (art_Port_C61295) &this->to);
+  String_string_(SF result, string(")"));
 }
 
 void art_Connection_2385F4_cprint(art_Connection_2385F4 this, B isOut) {
@@ -29,7 +31,10 @@ void art_Connection_2385F4_cprint(art_Connection_2385F4 this, B isOut) {
   #endif
 }
 
-void art_Connection_2385F4_apply(StackFrame caller, art_Connection_2385F4 this, art_Port_C61295 from, art_Port_C61295 to) {
+B art_Connection_2385F4__is(STACK_FRAME void* this);
+art_Connection_2385F4 art_Connection_2385F4__as(STACK_FRAME void *this);
+
+void art_Connection_2385F4_apply(STACK_FRAME art_Connection_2385F4 this, art_Port_C61295 from, art_Port_C61295 to) {
   DeclNewStackFrame(caller, "ArchitectureDescription.scala", "art.art_Connection_2385F4", "apply", 0);
   Type_assign(&this->from, from, sizeof(struct art_Port_C61295));
   Type_assign(&this->to, to, sizeof(struct art_Port_C61295));

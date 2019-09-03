@@ -7,13 +7,14 @@
 #define art_UConnection__eq(this, other) Type__eq(this, other)
 #define art_UConnection__ne(this, other) (!Type__eq(this, other))
 #define art_UConnection_cprint(this, isOut) Type_cprint(this, isOut)
-#define art_UConnection_string(result, caller, this) Type_string(result, caller, this)
+B art_UConnection__is(STACK_FRAME void *this);
+art_UConnection art_UConnection__as(STACK_FRAME void *this);
+inline void art_UConnection_string_(STACK_FRAME String result, art_UConnection this) {
+  Type_string_(CALLER result, this);
+}
 
-B art_UConnection__is(StackFrame caller, void *this);
-art_UConnection art_UConnection__as(StackFrame caller, void *this);
+void art_UConnection_from_(STACK_FRAME art_UPort result, art_UConnection this);
 
-void art_UConnection_from_(art_UPort result, StackFrame caller, art_UConnection this);
-
-void art_UConnection_to_(art_UPort result, StackFrame caller, art_UConnection this);
+void art_UConnection_to_(STACK_FRAME art_UPort result, art_UConnection this);
 
 #endif

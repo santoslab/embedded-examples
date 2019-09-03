@@ -13,5 +13,4 @@ struct Some_3E197E {
 
 #define DeclNewSome_3E197E(x) struct Some_3E197E x = { .type = TSome_3E197E }
 
-
 #endif

@@ -7,9 +7,10 @@
 #define art_DataContent__eq(this, other) Type__eq(this, other)
 #define art_DataContent__ne(this, other) (!Type__eq(this, other))
 #define art_DataContent_cprint(this, isOut) Type_cprint(this, isOut)
-#define art_DataContent_string(result, caller, this) Type_string(result, caller, this)
-
-B art_DataContent__is(StackFrame caller, void *this);
-art_DataContent art_DataContent__as(StackFrame caller, void *this);
+B art_DataContent__is(STACK_FRAME void *this);
+art_DataContent art_DataContent__as(STACK_FRAME void *this);
+inline void art_DataContent_string_(STACK_FRAME String result, art_DataContent this) {
+  Type_string_(CALLER result, this);
+}
 
 #endif

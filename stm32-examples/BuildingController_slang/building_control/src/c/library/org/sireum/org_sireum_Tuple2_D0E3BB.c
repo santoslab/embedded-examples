@@ -2,7 +2,12 @@
 
 // (Z, art.DataContent)
 
-void Tuple2_D0E3BB_apply(StackFrame caller, Tuple2_D0E3BB this, Z _1, art_DataContent _2) {
+Z Tuple2_D0E3BB_1(Tuple2_D0E3BB this);
+art_DataContent Tuple2_D0E3BB_2(Tuple2_D0E3BB this);
+
+B Tuple2_D0E3BB__ne(Tuple2_D0E3BB this, Tuple2_D0E3BB other);
+
+void Tuple2_D0E3BB_apply(STACK_FRAME Tuple2_D0E3BB this, Z _1, art_DataContent _2) {
   DeclNewStackFrame(caller, "Tuple2.scala", "org.sireum.Tuple2", "apply", 0);
   this->_1 = _1;
   Type_assign(&(this->_2), _2, sizeof(union art_DataContent));
@@ -25,12 +30,12 @@ void Tuple2_D0E3BB_cprint(Tuple2_D0E3BB this, B isOut) {
   #endif
 }
 
-void Tuple2_D0E3BB_string(String result, StackFrame caller, Tuple2_D0E3BB this) {
+void Tuple2_D0E3BB_string_(STACK_FRAME String result, Tuple2_D0E3BB this) {
   DeclNewStackFrame(caller, "Tuple2.scala", "org.sireum.Tuple2", "string", 0);
   String sep = string(", ");
-  String_string(result, sf, string("("));
-  Z_string(result, sf, this->_1);
-  String_string(result, sf, sep);
-  art_DataContent_string(result, sf, (art_DataContent) &this->_2);
-  String_string(result, sf, string(")"));
+  String_string_(SF result, string("("));
+  Z_string_(SF result, this->_1);
+  String_string_(SF result, sep);
+  art_DataContent_string_(SF result, (art_DataContent) &this->_2);
+  String_string_(SF result, string(")"));
 }

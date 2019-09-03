@@ -11,13 +11,10 @@
 typedef struct MS_E444B2 *MS_E444B2;
 struct MS_E444B2 {
   TYPE type;
-  int8_t size;
+  MS_E444B2SizeT size;
   struct IS_82ABD8 value[MaxMS_E444B2];
 };
 
 #define DeclNewMS_E444B2(x) struct MS_E444B2 x = { .type = TMS_E444B2 }
-#define MS_E444B2_size(sf, this) ((Z) (this)->size)
-#define MS_E444B2_zize(sf, this) ((Z) (this)->size)
-#define MS_E444B2_at(this, i) ((IS_82ABD8) &((this)->value[(int8_t) (i)]))
 
 #endif

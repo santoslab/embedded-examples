@@ -2,23 +2,25 @@
 
 // art.DataContent
 
-B art_DataContent__is(StackFrame caller, void *this) {
+B art_DataContent__is(STACK_FRAME void *this) {
   switch(((Type) this)->type) {
-    case Tart_Empty: return T;
-    case Tbuilding_control_Base_Types_Boolean_Payload: return T;
     case Tbuilding_control_Base_Types_Integer_16_Payload: return T;
+    case Tbuilding_control_Base_Types_Boolean_Payload: return T;
+    case Tart_Empty: return T;
     default: return F;
   }
 }
 
-art_DataContent art_DataContent__as(StackFrame caller, void *this) {
+art_DataContent art_DataContent__as(STACK_FRAME void *this) {
   switch(((Type) this)->type) {
-    case Tart_Empty: break;
-    case Tbuilding_control_Base_Types_Boolean_Payload: break;
     case Tbuilding_control_Base_Types_Integer_16_Payload: break;
+    case Tbuilding_control_Base_Types_Boolean_Payload: break;
+    case Tart_Empty: break;
     default:
-      fprintf(stderr, "Invalid cast from %s to art.DataContent.", TYPE_string(this));
-      sfAbortImpl(caller, "");
+      fprintf(stderr, "Invalid cast from %s to art.DataContent.", TYPE_string_(this));
+      sfAbortImpl(CALLER "");
   }
   return (art_DataContent) this;
 }
+
+void art_DataContent_string_(STACK_FRAME String result, art_DataContent this);

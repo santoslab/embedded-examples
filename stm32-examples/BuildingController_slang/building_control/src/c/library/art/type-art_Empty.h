@@ -11,5 +11,4 @@ struct art_Empty {
 
 #define DeclNewart_Empty(x) struct art_Empty x = { .type = Tart_Empty }
 
-
 #endif

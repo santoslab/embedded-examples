@@ -9,12 +9,12 @@ extern void fanLED(int turnOn);
 extern uint32_t pollPotentiometer();
 
 
-Unit building_control_BuildingControl_FanNative_fanController(StackFrame caller, B turnOn){
+Unit building_control_BuildingControl_FanNative_fanController(STACK_FRAME B turnOn){
   fanLED(turnOn);
 }
 
 
-Z16 building_control_BuildingControl_TempSensorNative_currentTempGet(StackFrame caller){
+Z16 building_control_BuildingControl_TempSensorNative_currentTempGet(STACK_FRAME){
   Z16 temp = (Z16) pollPotentiometer();
 
   return temp;
@@ -28,12 +28,12 @@ Z16 building_control_BuildingControl_TempSensorNative_currentTempGet(StackFrame 
 static int temp = 0;
 static int delta = 4;
 
-Unit building_control_BuildingControl_FanNative_fanController(StackFrame caller, B turnOn){
+Unit building_control_BuildingControl_FanNative_fanController(STACK_FRAME B turnOn){
   printf("fan native received %i\n", turnOn);
 }
 
 
-Z16 building_control_BuildingControl_TempSensorNative_currentTempGet(StackFrame caller){
+Z16 building_control_BuildingControl_TempSensorNative_currentTempGet(STACK_FRAME){
   if (temp == 0) {
     temp = MIN_TEMP;
   }

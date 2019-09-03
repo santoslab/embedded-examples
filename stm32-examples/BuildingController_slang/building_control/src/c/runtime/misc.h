@@ -1,18 +1,60 @@
-#ifndef SIREUM_PRINT_H
-#define SIREUM_PRINT_H
+/*
+ Copyright (c) 2019, Robby, Kansas State University
+ All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+
+ 1. Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+#ifndef SIREUM_MISC_H
+#define SIREUM_MISC_H
 
 #include <memory.h>
 #include <stdio.h>
 #include <type-composite.h>
 
-static inline void String_assign(String dest, String src) {
+inline B _T(STACK_FRAME_ONLY) {
+  return T;
+}
+
+inline B _F(STACK_FRAME_ONLY) {
+    return F;
+}
+
+inline void String_assign(String dest, String src) {
   dest->type = src->type;
   Z srcSize = src->size;
   dest->size = srcSize;
   memcpy(dest->value, src->value, srcSize + 1);
 }
 
-void String__append(String dest, StackFrame sf, String src);
+inline B String__eq(String this, String other) {
+  Z thisSize = this->size;
+  if (thisSize != other->size) return F;
+  return memcmp(this->value, other->value, (size_t) thisSize) == 0;
+}
+
+inline B String__ne(String this, String other) {
+  return !String__eq(this, other);
+}
+
+void String__append(STACK_FRAME_SF String dest, String src);
 
 #ifdef SIREUM_NO_PRINT
 
@@ -60,12 +102,14 @@ void String__append(String dest, StackFrame sf, String src);
 
 #endif
 
-void B_string(String result, StackFrame caller, B this);
-void C_string(String result, StackFrame caller, C this);
-void Z_string(String result, StackFrame caller, Z this);
-void F32_string(String result, StackFrame caller, F32 this);
-void F64_string(String result, StackFrame caller, F64 this);
-void R_string(String result, StackFrame caller, R this);
-void String_string(String result, StackFrame caller, String this);
-
+void B_string_(STACK_FRAME String result, B this);
+void C_string_(STACK_FRAME String result, C this);
+void Z_string_(STACK_FRAME String result, Z this);
+void F32_string_(STACK_FRAME String result, F32 this);
+void F64_string_(STACK_FRAME String result, F64 this);
+void R_string_(STACK_FRAME String result, R this);
+void String_string_(STACK_FRAME String result, String this);
+void Type_string_(STACK_FRAME String result, void* this);
+void Type_cprint(void *this, B isOut);
+B Type__eq(void *t1, void *t2);
 #endif

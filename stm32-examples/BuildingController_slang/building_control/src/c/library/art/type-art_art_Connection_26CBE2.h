@@ -15,5 +15,4 @@ struct art_Connection_26CBE2 {
 
 #define DeclNewart_Connection_26CBE2(x) struct art_Connection_26CBE2 x = { .type = Tart_Connection_26CBE2 }
 
-
 #endif

@@ -13,5 +13,4 @@ struct building_control_Base_Types_Boolean_Payload {
 
 #define DeclNewbuilding_control_Base_Types_Boolean_Payload(x) struct building_control_Base_Types_Boolean_Payload x = { .type = Tbuilding_control_Base_Types_Boolean_Payload }
 
-
 #endif

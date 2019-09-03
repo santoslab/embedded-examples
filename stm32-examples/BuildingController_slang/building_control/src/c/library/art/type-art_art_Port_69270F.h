@@ -14,5 +14,4 @@ struct art_Port_69270F {
 
 #define DeclNewart_Port_69270F(x) struct art_Port_69270F x = { .type = Tart_Port_69270F }
 
-
 #endif

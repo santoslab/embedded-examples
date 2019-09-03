@@ -7,11 +7,13 @@ B building_control_Base_Types_Integer_16__eq(building_control_Base_Types_Integer
   return T;
 }
 
-void building_control_Base_Types_Integer_16_string(String result, StackFrame caller, building_control_Base_Types_Integer_16 this) {
+B building_control_Base_Types_Integer_16__ne(building_control_Base_Types_Integer_16 this, building_control_Base_Types_Integer_16 other);
+
+void building_control_Base_Types_Integer_16_string_(STACK_FRAME String result, building_control_Base_Types_Integer_16 this) {
   DeclNewStackFrame(caller, "Integer_16.scala", "building_control.Base_Types.Integer_16", "string", 0);
-  String_string(result, sf, string("Integer_16("));
-  Z16_string(result, sf, this->value);
-  String_string(result, sf, string(")"));
+  String_string_(SF result, string("Integer_16("));
+  Z16_string_(SF result, this->value);
+  String_string_(SF result, string(")"));
 }
 
 void building_control_Base_Types_Integer_16_cprint(building_control_Base_Types_Integer_16 this, B isOut) {
@@ -22,7 +24,10 @@ void building_control_Base_Types_Integer_16_cprint(building_control_Base_Types_I
   #endif
 }
 
-void building_control_Base_Types_Integer_16_apply(StackFrame caller, building_control_Base_Types_Integer_16 this, Z16 value) {
+B building_control_Base_Types_Integer_16__is(STACK_FRAME void* this);
+building_control_Base_Types_Integer_16 building_control_Base_Types_Integer_16__as(STACK_FRAME void *this);
+
+void building_control_Base_Types_Integer_16_apply(STACK_FRAME building_control_Base_Types_Integer_16 this, Z16 value) {
   DeclNewStackFrame(caller, "Integer_16.scala", "building_control.Base_Types.Integer_16", "apply", 0);
   this->value = value;
 }

@@ -7,11 +7,13 @@ B art_EventTriggered__eq(art_EventTriggered this, art_EventTriggered other) {
   return T;
 }
 
-void art_EventTriggered_string(String result, StackFrame caller, art_EventTriggered this) {
+B art_EventTriggered__ne(art_EventTriggered this, art_EventTriggered other);
+
+void art_EventTriggered_string_(STACK_FRAME String result, art_EventTriggered this) {
   DeclNewStackFrame(caller, "ArchitectureDescription.scala", "art.EventTriggered", "string", 0);
-  String_string(result, sf, string("EventTriggered("));
-  IS_82ABD8_string(result, sf, (IS_82ABD8) &this->portIds);
-  String_string(result, sf, string(")"));
+  String_string_(SF result, string("EventTriggered("));
+  IS_82ABD8_string_(SF result, (IS_82ABD8) &this->portIds);
+  String_string_(SF result, string(")"));
 }
 
 void art_EventTriggered_cprint(art_EventTriggered this, B isOut) {
@@ -22,7 +24,10 @@ void art_EventTriggered_cprint(art_EventTriggered this, B isOut) {
   #endif
 }
 
-void art_EventTriggered_apply(StackFrame caller, art_EventTriggered this, IS_82ABD8 portIds) {
+B art_EventTriggered__is(STACK_FRAME void* this);
+art_EventTriggered art_EventTriggered__as(STACK_FRAME void *this);
+
+void art_EventTriggered_apply(STACK_FRAME art_EventTriggered this, IS_82ABD8 portIds) {
   DeclNewStackFrame(caller, "ArchitectureDescription.scala", "art.EventTriggered", "apply", 0);
   Type_assign(&this->portIds, portIds, sizeof(struct IS_82ABD8));
 }

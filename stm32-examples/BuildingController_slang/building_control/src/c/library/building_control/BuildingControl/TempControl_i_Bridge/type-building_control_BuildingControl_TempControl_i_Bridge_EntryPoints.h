@@ -24,5 +24,4 @@ struct building_control_BuildingControl_TempControl_i_Bridge_EntryPoints {
 
 #define DeclNewbuilding_control_BuildingControl_TempControl_i_Bridge_EntryPoints(x) struct building_control_BuildingControl_TempControl_i_Bridge_EntryPoints x = { .type = Tbuilding_control_BuildingControl_TempControl_i_Bridge_EntryPoints }
 
-
 #endif

@@ -7,11 +7,12 @@
 #define Option_02FA6D__eq(this, other) Type__eq(this, other)
 #define Option_02FA6D__ne(this, other) (!Type__eq(this, other))
 #define Option_02FA6D_cprint(this, isOut) Type_cprint(this, isOut)
-#define Option_02FA6D_string(result, caller, this) Type_string(result, caller, this)
+B Option_02FA6D__is(STACK_FRAME void *this);
+Option_02FA6D Option_02FA6D__as(STACK_FRAME void *this);
+inline void Option_02FA6D_string_(STACK_FRAME String result, Option_02FA6D this) {
+  Type_string_(CALLER result, this);
+}
 
-B Option_02FA6D__is(StackFrame caller, void *this);
-Option_02FA6D Option_02FA6D__as(StackFrame caller, void *this);
-
-B Option_02FA6D_isEmpty_(StackFrame caller, Option_02FA6D this);
+B Option_02FA6D_isEmpty_(STACK_FRAME Option_02FA6D this);
 
 #endif

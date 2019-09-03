@@ -1,6 +1,10 @@
 #include <all.h>
 
 // MS[Z, art.Bridge]
+art_Bridge MS_852149_at(MS_852149 this, Z i);
+void MS_852149_up(MS_852149 this, Z i, art_Bridge e);
+Z MS_852149_size(STACK_FRAME MS_852149 this);
+Z MS_852149_zize(STACK_FRAME MS_852149 this);
 
 B MS_852149__eq(MS_852149 this, MS_852149 other) {
   int8_t size = this->size;
@@ -11,7 +15,7 @@ B MS_852149__eq(MS_852149 this, MS_852149 other) {
   return T;
 }
 
-void MS_852149_create(MS_852149 result, StackFrame caller, Z size, art_Bridge dflt) {
+void MS_852149_create(STACK_FRAME MS_852149 result, Z size, art_Bridge dflt) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "create", 0);
   sfAssert(size <= MaxMS_852149, "Insufficient maximum for MS[Z, art.Bridge] elements.");
   int8_t zize = (int8_t) size;
@@ -21,7 +25,7 @@ void MS_852149_create(MS_852149 result, StackFrame caller, Z size, art_Bridge df
   result->size = zize;
 }
 
-void MS_852149_zreate(MS_852149 result, StackFrame caller, Z size, art_Bridge dflt) {
+void MS_852149_zreate(STACK_FRAME MS_852149 result, Z size, art_Bridge dflt) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "zreate", 0);
   sfAssert(size <= MaxMS_852149, "Insufficient maximum for MS[Z, art.Bridge] elements.");
   int8_t zize = (int8_t) size;
@@ -31,7 +35,7 @@ void MS_852149_zreate(MS_852149 result, StackFrame caller, Z size, art_Bridge df
   result->size = zize;
 }
 
-void MS_852149__append(MS_852149 result, StackFrame caller, MS_852149 this, art_Bridge value) {
+void MS_852149__append(STACK_FRAME MS_852149 result, MS_852149 this, art_Bridge value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", ":+", 0);
   sfAssert(this->size + 1 <= MaxMS_852149, "Insufficient maximum for MS[Z, art.Bridge] elements.");
   int8_t thisSize = this->size;
@@ -40,7 +44,7 @@ void MS_852149__append(MS_852149 result, StackFrame caller, MS_852149 this, art_
   result->size = (int8_t) (thisSize + 1);
 }
 
-void MS_852149__prepend(MS_852149 result, StackFrame caller, MS_852149 this, art_Bridge value) {
+void MS_852149__prepend(STACK_FRAME MS_852149 result, MS_852149 this, art_Bridge value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "+:", 0);
   sfAssert(this->size + 1 <= MaxMS_852149, "Insufficient maximum for MS[Z, art.Bridge] elements.");
   int8_t thisSize = this->size;
@@ -50,18 +54,18 @@ void MS_852149__prepend(MS_852149 result, StackFrame caller, MS_852149 this, art
   result->size = (int8_t) thisSize + 1;
 }
 
-void MS_852149__appendAll(MS_852149 result, StackFrame caller, MS_852149 this, MS_852149 other) {
+void MS_852149__appendAll(STACK_FRAME MS_852149 result, MS_852149 this, MS_852149 other) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "++", 0);
   sfAssert(this->size + other->size <= MaxMS_852149, "Insufficient maximum for MS[Z, art.Bridge] elements.");
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
   Type_assign(result, this, sizeof(struct MS_852149));
-  for (int8_t i = 0; i < otherSize; i++)
-    Type_assign(&result->value[thisSize + i], &other->value[i], sizeof(union art_Bridge));
   result->size = (int8_t) thisSize + otherSize;
+  for (int8_t i = 0; i < otherSize; i++)
+    Type_assign(&result->value[thisSize + i], &other->value[i + 1], sizeof(union art_Bridge));
 }
 
-void MS_852149__remove(MS_852149 result, StackFrame caller, MS_852149 this, art_Bridge value) {
+void MS_852149__sub(STACK_FRAME MS_852149 result, MS_852149 this, art_Bridge value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "-", 0);
   int8_t thisSize = this->size;
   int8_t k = 0;
@@ -73,7 +77,7 @@ void MS_852149__remove(MS_852149 result, StackFrame caller, MS_852149 this, art_
   result->size = k;
 }
 
-void MS_852149__removeAll(MS_852149 result, StackFrame caller, MS_852149 this, MS_852149 other) {
+void MS_852149__removeAll(STACK_FRAME MS_852149 result, MS_852149 this, MS_852149 other) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "--", 0);
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
@@ -107,20 +111,22 @@ void MS_852149_cprint(MS_852149 this, B isOut) {
   #endif
 }
 
-void MS_852149_string(String result, StackFrame caller, MS_852149 this) {
+void MS_852149_string_(STACK_FRAME String result, MS_852149 this) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "string", 0);
-  String_string(result, sf, string("["));
+  String_string_(SF result, string("["));
   int8_t size = this->size;
   if (size > 0) {
     union art_Bridge *value = this->value;
     String space = string(" ");
-    String_string(result, sf, space);
-    art_Bridge_string(result, sf, (art_Bridge) &(value[0]));
+    String_string_(SF result, space);
+    art_Bridge_string_(SF result, (art_Bridge) &(value[0]));
     for (int8_t i = 1; i < size; i++) {
-      String_string(result, sf, string(", "));
-      art_Bridge_string(result, sf, (art_Bridge) &(value[i]));
+      String_string_(SF result, string(", "));
+      art_Bridge_string_(SF result, (art_Bridge) &(value[i]));
     }
-    String_string(result, sf, space);
+    String_string_(SF result, space);
   }
-  String_string(result, sf, string("]"));
+  String_string_(SF result, string("]"));
 }
+
+B MS_852149__ne(MS_852149 this, MS_852149 other);

@@ -1,5 +1,7 @@
 #include <types.h>
 
+size_t sizeOf(Type t);
+
 void Type_assign(void *dest, void *src, size_t destSize) {
   Type srcType = (Type) src;
   if (srcType->type == TString) {
@@ -11,7 +13,7 @@ void Type_assign(void *dest, void *src, size_t destSize) {
   memset(((char *) dest) + srcSize, 0, destSize - srcSize);
 }
 
-char *TYPE_string(void *type) {
+char *TYPE_string_(void *type) {
   static char *strings[] = {
     "(Z, Z)",
     "(Z, art.DataContent)",

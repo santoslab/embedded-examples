@@ -10,19 +10,19 @@ typedef enum {
   art_PortMode_EventOut = 3
 } art_PortMode;
 
-static inline B art_PortMode__eq(art_PortMode this, art_PortMode other) {
+inline B art_PortMode__eq(art_PortMode this, art_PortMode other) {
   return this == other;
 }
 
-static inline B art_PortMode__ne(art_PortMode this, art_PortMode other) {
+inline B art_PortMode__ne(art_PortMode this, art_PortMode other) {
   return this != other;
 }
 
-static inline Z art_PortMode__ordinal(art_PortMode this) {
+inline Z art_PortMode__ordinal(art_PortMode this) {
   return (Z) this;
 }
 
-static inline void art_PortMode_name(String result, art_PortMode this) {
+inline void art_PortMode_name_(String result, art_PortMode this) {
   switch (this) {
     case art_PortMode_DataIn: String_assign(result, string("DataIn")); return;
     case art_PortMode_DataOut: String_assign(result, string("DataOut")); return;

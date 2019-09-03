@@ -7,11 +7,13 @@ B MSome_D3D128__eq(MSome_D3D128 this, MSome_D3D128 other) {
   return T;
 }
 
-void MSome_D3D128_string(String result, StackFrame caller, MSome_D3D128 this) {
+B MSome_D3D128__ne(MSome_D3D128 this, MSome_D3D128 other);
+
+void MSome_D3D128_string_(STACK_FRAME String result, MSome_D3D128 this) {
   DeclNewStackFrame(caller, "MOption.scala", "org.sireum.MSome", "string", 0);
-  String_string(result, sf, string("MSome("));
-  art_Bridge_string(result, sf, (art_Bridge) &this->value);
-  String_string(result, sf, string(")"));
+  String_string_(SF result, string("MSome("));
+  art_Bridge_string_(SF result, (art_Bridge) &this->value);
+  String_string_(SF result, string(")"));
 }
 
 void MSome_D3D128_cprint(MSome_D3D128 this, B isOut) {
@@ -22,7 +24,10 @@ void MSome_D3D128_cprint(MSome_D3D128 this, B isOut) {
   #endif
 }
 
-void MSome_D3D128_apply(StackFrame caller, MSome_D3D128 this, art_Bridge value) {
+B MSome_D3D128__is(STACK_FRAME void* this);
+MSome_D3D128 MSome_D3D128__as(STACK_FRAME void *this);
+
+void MSome_D3D128_apply(STACK_FRAME MSome_D3D128 this, art_Bridge value) {
   DeclNewStackFrame(caller, "MOption.scala", "org.sireum.MSome_D3D128", "apply", 0);
   Type_assign(&this->value, value, sizeof(union art_Bridge));
 }

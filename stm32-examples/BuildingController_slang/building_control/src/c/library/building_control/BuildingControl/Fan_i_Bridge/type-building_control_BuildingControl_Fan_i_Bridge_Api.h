@@ -13,5 +13,4 @@ struct building_control_BuildingControl_Fan_i_Bridge_Api {
 
 #define DeclNewbuilding_control_BuildingControl_Fan_i_Bridge_Api(x) struct building_control_BuildingControl_Fan_i_Bridge_Api x = { .type = Tbuilding_control_BuildingControl_Fan_i_Bridge_Api }
 
-
 #endif

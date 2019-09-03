@@ -8,14 +8,16 @@ B art_ArchitectureDescription__eq(art_ArchitectureDescription this, art_Architec
   return T;
 }
 
-void art_ArchitectureDescription_string(String result, StackFrame caller, art_ArchitectureDescription this) {
+B art_ArchitectureDescription__ne(art_ArchitectureDescription this, art_ArchitectureDescription other);
+
+void art_ArchitectureDescription_string_(STACK_FRAME String result, art_ArchitectureDescription this) {
   DeclNewStackFrame(caller, "ArchitectureDescription.scala", "art.ArchitectureDescription", "string", 0);
-  String_string(result, sf, string("ArchitectureDescription("));
+  String_string_(SF result, string("ArchitectureDescription("));
   String sep = string(", ");
-  MS_852149_string(result, sf, (MS_852149) &this->components);
-  String_string(result, sf, sep);
-  IS_08117A_string(result, sf, (IS_08117A) &this->connections);
-  String_string(result, sf, string(")"));
+  MS_852149_string_(SF result, (MS_852149) &this->components);
+  String_string_(SF result, sep);
+  IS_08117A_string_(SF result, (IS_08117A) &this->connections);
+  String_string_(SF result, string(")"));
 }
 
 void art_ArchitectureDescription_cprint(art_ArchitectureDescription this, B isOut) {
@@ -29,7 +31,10 @@ void art_ArchitectureDescription_cprint(art_ArchitectureDescription this, B isOu
   #endif
 }
 
-void art_ArchitectureDescription_apply(StackFrame caller, art_ArchitectureDescription this, MS_852149 components, IS_08117A connections) {
+B art_ArchitectureDescription__is(STACK_FRAME void* this);
+art_ArchitectureDescription art_ArchitectureDescription__as(STACK_FRAME void *this);
+
+void art_ArchitectureDescription_apply(STACK_FRAME art_ArchitectureDescription this, MS_852149 components, IS_08117A connections) {
   DeclNewStackFrame(caller, "ArchitectureDescription.scala", "art.ArchitectureDescription", "apply", 0);
   Type_assign(&this->components, components, sizeof(struct MS_852149));
   Type_assign(&this->connections, connections, sizeof(struct IS_08117A));

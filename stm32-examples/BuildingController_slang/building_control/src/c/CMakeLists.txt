@@ -8,6 +8,22 @@ add_compile_options(-Werror)
 
 add_compile_options("$<$<CONFIG:Release>:-O2>")
 
+option(BOUND_CHECK
+  "Build the program with sequence bound checking."
+  OFF)
+
+if(BOUND_CHECK)
+  add_definitions(-DSIREUM_BOUND_CHECK)
+endif(BOUND_CHECK)
+
+option(RANGE_CHECK
+  "Build the program with range checking."
+  OFF)
+
+if(RANGE_CHECK)
+  add_definitions(-DSIREUM_RANGE_CHECK)
+endif(RANGE_CHECK)
+
 option(NO_PRINT
   "Build the program without console output."
   OFF)
@@ -16,20 +32,21 @@ if(NO_PRINT)
   add_definitions(-DSIREUM_NO_PRINT)
 endif(NO_PRINT)
 
-option(NO_LOC
-  "Build the program without location update."
+option(WITH_LOC
+  "Build the program with Slang location info."
   OFF)
 
-if(NO_LOC)
-  add_definitions(-DSIREUM_NO_LOC)
-endif(NO_LOC)
+if(WITH_LOC)
+  add_definitions(-DSIREUM_LOC)
+endif(WITH_LOC)
 
 add_library(main STATIC
-        runtime/stackframe.c
-        runtime/type.h
-        runtime/misc.c
         runtime/stackframe.h
+        runtime/type.h
+        runtime/type.c
+        runtime/stackframe.c
         runtime/misc.h
+        runtime/misc.c
         runtime/ztype.h
         runtime/type-composite.h
         runtime/types.h
@@ -308,27 +325,59 @@ target_include_directories(main
 
 add_executable(TempSensor_i_App-bin app-TempSensor_i_App/TempSensor_i_App.c)
 
-target_link_libraries(TempSensor_i_App-bin LINK_PUBLIC main)
+target_link_libraries(TempSensor_i_App-bin LINK_PUBLIC main m)
 
 set_target_properties(TempSensor_i_App-bin PROPERTIES OUTPUT_NAME TempSensor_i_App)
 
 
 add_executable(Fan_i_App-bin app-Fan_i_App/Fan_i_App.c)
 
-target_link_libraries(Fan_i_App-bin LINK_PUBLIC main)
+target_link_libraries(Fan_i_App-bin LINK_PUBLIC main m)
 
 set_target_properties(Fan_i_App-bin PROPERTIES OUTPUT_NAME Fan_i_App)
 
 
 add_executable(TempControl_i_App-bin app-TempControl_i_App/TempControl_i_App.c)
 
-target_link_libraries(TempControl_i_App-bin LINK_PUBLIC main)
+target_link_libraries(TempControl_i_App-bin LINK_PUBLIC main m)
 
 set_target_properties(TempControl_i_App-bin PROPERTIES OUTPUT_NAME TempControl_i_App)
 
 
 add_executable(Main-bin app-Main/Main.c)
 
-target_link_libraries(Main-bin LINK_PUBLIC main)
+target_link_libraries(Main-bin LINK_PUBLIC main m)
 
 set_target_properties(Main-bin PROPERTIES OUTPUT_NAME Main)
+
+
+function(to_hex DEC HEX)
+  while(DEC GREATER 0)
+    math(EXPR _val "${DEC} % 16")
+    math(EXPR DEC "${DEC} / 16")
+    if(_val EQUAL 10)
+      set(_val "A")
+    elseif(_val EQUAL 11)
+      set(_val "B")
+    elseif(_val EQUAL 12)
+      set(_val "C")
+    elseif(_val EQUAL 13)
+      set(_val "D")
+    elseif(_val EQUAL 14)
+      set(_val "E")
+    elseif(_val EQUAL 15)
+      set(_val "F")
+    endif()
+    set(_res "${_val}${_res}")
+  endwhile()
+  set(${HEX} "0x${_res}" PARENT_SCOPE)
+endfunction()
+
+to_hex("16 * 1024 * 1024" stack_size)
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "(C|c?)lang")
+  set(CMAKE_EXE_LINKER_FLAGS "-Wl,-stack_size -Wl,${stack_size}")
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  if (WIN32 OR MINGW OR MSYS OR CYGWIN)
+    set(CMAKE_EXE_LINKER_FLAGS "-Wl,--stack,${stack_size}")
+  endif()
+endif()

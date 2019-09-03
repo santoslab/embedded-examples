@@ -11,13 +11,10 @@
 typedef struct MS_852149 *MS_852149;
 struct MS_852149 {
   TYPE type;
-  int8_t size;
+  MS_852149SizeT size;
   union art_Bridge value[MaxMS_852149];
 };
 
 #define DeclNewMS_852149(x) struct MS_852149 x = { .type = TMS_852149 }
-#define MS_852149_size(sf, this) ((Z) (this)->size)
-#define MS_852149_zize(sf, this) ((Z) (this)->size)
-#define MS_852149_at(this, i) ((art_Bridge) &((this)->value[(int8_t) (i)]))
 
 #endif

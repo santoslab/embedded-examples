@@ -6,21 +6,23 @@
 
 
 B None_39BC5F__eq(None_39BC5F this, None_39BC5F other);
-static inline B None_39BC5F__ne(None_39BC5F this, None_39BC5F other) {
+inline B None_39BC5F__ne(None_39BC5F this, None_39BC5F other) {
   return !None_39BC5F__eq(this, other);
 };
+void None_39BC5F_string_(STACK_FRAME String result, None_39BC5F this);
 void None_39BC5F_cprint(None_39BC5F this, B isOut);
-void None_39BC5F_string(String result, StackFrame caller, None_39BC5F this);
 
-#define None_39BC5F__is(sf, this) (((None_39BC5F) this)->type == TNone_39BC5F)
+inline B None_39BC5F__is(STACK_FRAME void* this) {
+  return ((None_39BC5F) this)->type == TNone_39BC5F;
+}
 
-static inline None_39BC5F None_39BC5F__as(StackFrame caller, void *this) {
-  if (None_39BC5F__is(caller, this)) return (None_39BC5F) this;
-  fprintf(stderr, "Invalid case from %s to None[art.UPort].", TYPE_string(this));
-  sfAbortImpl(caller, "");
+inline None_39BC5F None_39BC5F__as(STACK_FRAME void *this) {
+  if (None_39BC5F__is(CALLER this)) return (None_39BC5F) this;
+  fprintf(stderr, "Invalid case from %s to None[art.UPort].", TYPE_string_(this));
+  sfAbortImpl(CALLER "");
   abort();
 }
 
-void None_39BC5F_apply(StackFrame caller, None_39BC5F this);
+void None_39BC5F_apply(STACK_FRAME None_39BC5F this);
 
 #endif

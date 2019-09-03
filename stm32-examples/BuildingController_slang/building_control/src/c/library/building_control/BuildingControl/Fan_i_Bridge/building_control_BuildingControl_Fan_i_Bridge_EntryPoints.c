@@ -9,16 +9,18 @@ B building_control_BuildingControl_Fan_i_Bridge_EntryPoints__eq(building_control
   return T;
 }
 
-void building_control_BuildingControl_Fan_i_Bridge_EntryPoints_string(String result, StackFrame caller, building_control_BuildingControl_Fan_i_Bridge_EntryPoints this) {
+B building_control_BuildingControl_Fan_i_Bridge_EntryPoints__ne(building_control_BuildingControl_Fan_i_Bridge_EntryPoints this, building_control_BuildingControl_Fan_i_Bridge_EntryPoints other);
+
+void building_control_BuildingControl_Fan_i_Bridge_EntryPoints_string_(STACK_FRAME String result, building_control_BuildingControl_Fan_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "Fan_i_Bridge.scala", "building_control.BuildingControl.Fan_i_Bridge.EntryPoints", "string", 0);
-  String_string(result, sf, string("EntryPoints("));
+  String_string_(SF result, string("EntryPoints("));
   String sep = string(", ");
-  Z_string(result, sf, this->Fan_i_BridgeId);
-  String_string(result, sf, sep);
-  Z_string(result, sf, this->fanCmd_Id);
-  String_string(result, sf, sep);
-  building_control_BuildingControl_Fan_i_Impl_string(result, sf, (building_control_BuildingControl_Fan_i_Impl) &this->component);
-  String_string(result, sf, string(")"));
+  Z_string_(SF result, this->Fan_i_BridgeId);
+  String_string_(SF result, sep);
+  Z_string_(SF result, this->fanCmd_Id);
+  String_string_(SF result, sep);
+  building_control_BuildingControl_Fan_i_Impl_string_(SF result, (building_control_BuildingControl_Fan_i_Impl) &this->component);
+  String_string_(SF result, string(")"));
 }
 
 void building_control_BuildingControl_Fan_i_Bridge_EntryPoints_cprint(building_control_BuildingControl_Fan_i_Bridge_EntryPoints this, B isOut) {
@@ -34,7 +36,10 @@ void building_control_BuildingControl_Fan_i_Bridge_EntryPoints_cprint(building_c
   #endif
 }
 
-void building_control_BuildingControl_Fan_i_Bridge_EntryPoints_apply(StackFrame caller, building_control_BuildingControl_Fan_i_Bridge_EntryPoints this, Z Fan_i_BridgeId, Z fanCmd_Id, building_control_BuildingControl_Fan_i_Impl component) {
+B building_control_BuildingControl_Fan_i_Bridge_EntryPoints__is(STACK_FRAME void* this);
+building_control_BuildingControl_Fan_i_Bridge_EntryPoints building_control_BuildingControl_Fan_i_Bridge_EntryPoints__as(STACK_FRAME void *this);
+
+void building_control_BuildingControl_Fan_i_Bridge_EntryPoints_apply(STACK_FRAME building_control_BuildingControl_Fan_i_Bridge_EntryPoints this, Z Fan_i_BridgeId, Z fanCmd_Id, building_control_BuildingControl_Fan_i_Impl component) {
   DeclNewStackFrame(caller, "Fan_i_Bridge.scala", "building_control.BuildingControl.Fan_i_Bridge.EntryPoints", "apply", 0);
   this->Fan_i_BridgeId = Fan_i_BridgeId;
   this->fanCmd_Id = fanCmd_Id;
@@ -46,7 +51,7 @@ void building_control_BuildingControl_Fan_i_Bridge_EntryPoints_apply(StackFrame 
   STATIC_ASSERT(1 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
   DeclNewIS_82ABD8(t_1);
   t_1.size = (int8_t) 1;
-  t_1.value[0] = building_control_BuildingControl_Fan_i_Bridge_EntryPoints_fanCmd_Id_(this);
+  IS_82ABD8_up(&t_1, 0, (Z) building_control_BuildingControl_Fan_i_Bridge_EntryPoints_fanCmd_Id_(this));
   Type_assign(&this->eventInPortIds, (&t_1), sizeof(struct IS_82ABD8));
   STATIC_ASSERT(0 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
   DeclNewIS_82ABD8(t_2);
@@ -58,75 +63,71 @@ void building_control_BuildingControl_Fan_i_Bridge_EntryPoints_apply(StackFrame 
   Type_assign(&this->eventOutPortIds, (&t_3), sizeof(struct IS_82ABD8));
 }
 
-Unit building_control_BuildingControl_Fan_i_Bridge_EntryPoints_initialise_(StackFrame caller, building_control_BuildingControl_Fan_i_Bridge_EntryPoints this) {
+Unit building_control_BuildingControl_Fan_i_Bridge_EntryPoints_initialise_(STACK_FRAME building_control_BuildingControl_Fan_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "Fan_i_Bridge.scala", "building_control.BuildingControl.Fan_i_Bridge.EntryPoints", "initialise", 0);
 
   sfUpdateLoc(91);
-  building_control_BuildingControl_Fan_i_Impl_initialise_(sf, building_control_BuildingControl_Fan_i_Bridge_EntryPoints_component_(this));
+  building_control_BuildingControl_Fan_i_Impl_initialise_(SF building_control_BuildingControl_Fan_i_Bridge_EntryPoints_component_(this));
 }
 
-Unit building_control_BuildingControl_Fan_i_Bridge_EntryPoints_compute_(StackFrame caller, building_control_BuildingControl_Fan_i_Bridge_EntryPoints this) {
+static inline B building_control_BuildingControl_Fan_i_Bridge_EntryPoints_compute_match_95_11(STACK_FRAME art_DispatchStatus t_0, building_control_BuildingControl_Fan_i_Bridge_EntryPoints this, IS_82ABD8 *_portIds) {
+  if (!art_EventTriggered__is(SF t_0)) return F;
+  *_portIds = (IS_82ABD8) art_EventTriggered_portIds_(art_EventTriggered__as(SF t_0));
+  return T;
+}
+
+static inline B building_control_BuildingControl_Fan_i_Bridge_EntryPoints_compute_match_101_15(STACK_FRAME Option_8E9F45 t_2, building_control_BuildingControl_Fan_i_Bridge_EntryPoints this, building_control_Base_Types_Boolean *_value) {
+  if (!Some_D29615__is(SF t_2)) return F;
+  if (!building_control_Base_Types_Boolean_Payload__is(SF Some_D29615_value_(Some_D29615__as(SF t_2)))) return F;
+  *_value = (building_control_Base_Types_Boolean) building_control_Base_Types_Boolean_Payload_value_(building_control_Base_Types_Boolean_Payload__as(SF Some_D29615_value_(Some_D29615__as(SF t_2))));
+  return T;
+}
+
+Unit building_control_BuildingControl_Fan_i_Bridge_EntryPoints_compute_(STACK_FRAME building_control_BuildingControl_Fan_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "Fan_i_Bridge.scala", "building_control.BuildingControl.Fan_i_Bridge.EntryPoints", "compute", 0);
 
   sfUpdateLoc(95);
   art_DispatchStatus t_0;
   DeclNewart_DispatchStatus(t_1);
-  art_Art_dispatchStatus((art_DispatchStatus) &t_1, sf, building_control_BuildingControl_Fan_i_Bridge_EntryPoints_Fan_i_BridgeId_(this));
+  art_Art_dispatchStatus(SF (art_DispatchStatus) &t_1, building_control_BuildingControl_Fan_i_Bridge_EntryPoints_Fan_i_BridgeId_(this));
   t_0 = (art_DispatchStatus) ((art_DispatchStatus) &t_1);
-  B t_2 = T;
   IS_82ABD8 portIds;
-  {
-    t_2 = t_2 && art_EventTriggered__is(sf, t_0);
-    if (t_2) {
-      portIds = (IS_82ABD8) art_EventTriggered_portIds_(art_EventTriggered__as(sf, t_0));
-    }
-  }
-  sfAssert(t_2, "Error during var pattern matching.");
+  sfAssert(building_control_BuildingControl_Fan_i_Bridge_EntryPoints_compute_match_95_11(SF t_0, this, &portIds), "Error during var pattern matching.");
 
   sfUpdateLoc(96);
-  art_Art_receiveInput(sf, (IS_82ABD8) portIds, (IS_82ABD8) building_control_BuildingControl_Fan_i_Bridge_EntryPoints_dataInPortIds_(this));
+  art_Art_receiveInput(SF (IS_82ABD8) portIds, (IS_82ABD8) building_control_BuildingControl_Fan_i_Bridge_EntryPoints_dataInPortIds_(this));
 
   sfUpdateLoc(98);
   {
-    IS_82ABD8 t_6 = portIds;
-    int8_t t_7 = (portIds)->size;
-    for (int8_t t_8 = 0; t_8 < t_7; t_8++) {
-      Z portId = t_6->value[t_8];
+    IS_82ABD8 t_4 = portIds;
+    int8_t t_5 = (portIds)->size;
+    for (int8_t t_6 = 0; t_6 < t_5; t_6++) {
+      Z portId = t_4->value[t_6];
 
       sfUpdateLoc(100);
       if (Z__eq(portId, building_control_BuildingControl_Fan_i_Bridge_EntryPoints_fanCmd_Id_(this))) {
 
         sfUpdateLoc(101);
-        Option_8E9F45 t_3;
-        DeclNewOption_8E9F45(t_4);
-        art_Art_getValue((Option_8E9F45) &t_4, sf, building_control_BuildingControl_Fan_i_Bridge_EntryPoints_fanCmd_Id_(this));
-        t_3 = (Option_8E9F45) ((Option_8E9F45) &t_4);
-        B t_5 = T;
+        Option_8E9F45 t_2;
+        DeclNewOption_8E9F45(t_3);
+        art_Art_getValue(SF (Option_8E9F45) &t_3, building_control_BuildingControl_Fan_i_Bridge_EntryPoints_fanCmd_Id_(this));
+        t_2 = (Option_8E9F45) ((Option_8E9F45) &t_3);
         building_control_Base_Types_Boolean value;
-        {
-          t_5 = t_5 && Some_D29615__is(sf, t_3);
-          if (t_5) {
-            t_5 = t_5 && building_control_Base_Types_Boolean_Payload__is(sf, Some_D29615_value_(Some_D29615__as(sf, t_3)));
-            if (t_5) {
-              value = (building_control_Base_Types_Boolean) building_control_Base_Types_Boolean_Payload_value_(building_control_Base_Types_Boolean_Payload__as(sf, Some_D29615_value_(Some_D29615__as(sf, t_3))));
-            }
-          }
-        }
-        sfAssert(t_5, "Error during var pattern matching.");
+        sfAssert(building_control_BuildingControl_Fan_i_Bridge_EntryPoints_compute_match_101_15(SF t_2, this, &value), "Error during var pattern matching.");
 
         sfUpdateLoc(102);
-        building_control_BuildingControl_Fan_i_Impl_handlefanCmd_(sf, building_control_BuildingControl_Fan_i_Bridge_EntryPoints_component_(this), (building_control_Base_Types_Boolean) value);
+        building_control_BuildingControl_Fan_i_Impl_handlefanCmd_(SF building_control_BuildingControl_Fan_i_Bridge_EntryPoints_component_(this), (building_control_Base_Types_Boolean) value);
       }
     }
   }
 
   sfUpdateLoc(106);
-  art_Art_sendOutput(sf, (IS_82ABD8) building_control_BuildingControl_Fan_i_Bridge_EntryPoints_eventOutPortIds_(this), (IS_82ABD8) building_control_BuildingControl_Fan_i_Bridge_EntryPoints_dataOutPortIds_(this));
+  art_Art_sendOutput(SF (IS_82ABD8) building_control_BuildingControl_Fan_i_Bridge_EntryPoints_eventOutPortIds_(this), (IS_82ABD8) building_control_BuildingControl_Fan_i_Bridge_EntryPoints_dataOutPortIds_(this));
 }
 
-Unit building_control_BuildingControl_Fan_i_Bridge_EntryPoints_finalise_(StackFrame caller, building_control_BuildingControl_Fan_i_Bridge_EntryPoints this) {
+Unit building_control_BuildingControl_Fan_i_Bridge_EntryPoints_finalise_(STACK_FRAME building_control_BuildingControl_Fan_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "Fan_i_Bridge.scala", "building_control.BuildingControl.Fan_i_Bridge.EntryPoints", "finalise", 0);
 
   sfUpdateLoc(122);
-  building_control_BuildingControl_Fan_i_Impl_finalise_(sf, building_control_BuildingControl_Fan_i_Bridge_EntryPoints_component_(this));
+  building_control_BuildingControl_Fan_i_Impl_finalise_(SF building_control_BuildingControl_Fan_i_Bridge_EntryPoints_component_(this));
 }

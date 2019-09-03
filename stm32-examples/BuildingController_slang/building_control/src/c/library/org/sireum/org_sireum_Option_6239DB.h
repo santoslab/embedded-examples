@@ -7,9 +7,10 @@
 #define Option_6239DB__eq(this, other) Type__eq(this, other)
 #define Option_6239DB__ne(this, other) (!Type__eq(this, other))
 #define Option_6239DB_cprint(this, isOut) Type_cprint(this, isOut)
-#define Option_6239DB_string(result, caller, this) Type_string(result, caller, this)
-
-B Option_6239DB__is(StackFrame caller, void *this);
-Option_6239DB Option_6239DB__as(StackFrame caller, void *this);
+B Option_6239DB__is(STACK_FRAME void *this);
+Option_6239DB Option_6239DB__as(STACK_FRAME void *this);
+inline void Option_6239DB_string_(STACK_FRAME String result, Option_6239DB this) {
+  Type_string_(CALLER result, this);
+}
 
 #endif

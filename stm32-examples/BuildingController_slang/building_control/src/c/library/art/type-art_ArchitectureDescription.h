@@ -15,5 +15,4 @@ struct art_ArchitectureDescription {
 
 #define DeclNewart_ArchitectureDescription(x) struct art_ArchitectureDescription x = { .type = Tart_ArchitectureDescription }
 
-
 #endif

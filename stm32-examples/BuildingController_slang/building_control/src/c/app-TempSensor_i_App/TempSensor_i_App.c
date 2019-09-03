@@ -2,8 +2,10 @@
 #include <signal.h>
 
 void atExit(int signum) {
+  #ifdef SIREUM_LOC
   StackFrame sf = NULL;
-  building_control_TempSensor_i_App_atExit(sf);
+  #endif
+  building_control_TempSensor_i_App_atExit(SF_LAST);
 }
 
 int main(int argc, char *argv[]) {
@@ -35,5 +37,5 @@ int main(int argc, char *argv[]) {
 
   t_args.size = (int8_t) size;
 
-  return (int) building_control_TempSensor_i_App_main(sf, &t_args);
+  return (int) building_control_TempSensor_i_App_main(SF &t_args);
 }

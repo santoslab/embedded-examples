@@ -11,13 +11,10 @@
 typedef struct MS_94FFA9 *MS_94FFA9;
 struct MS_94FFA9 {
   TYPE type;
-  int8_t size;
+  MS_94FFA9SizeT size;
   union MOption_EA1D29 value[MaxMS_94FFA9];
 };
 
 #define DeclNewMS_94FFA9(x) struct MS_94FFA9 x = { .type = TMS_94FFA9 }
-#define MS_94FFA9_size(sf, this) ((Z) (this)->size)
-#define MS_94FFA9_zize(sf, this) ((Z) (this)->size)
-#define MS_94FFA9_at(this, i) ((MOption_EA1D29) &((this)->value[(int8_t) (i)]))
 
 #endif

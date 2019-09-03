@@ -8,14 +8,16 @@ B building_control_BuildingControl_Fan_i_Bridge_Api__eq(building_control_Buildin
   return T;
 }
 
-void building_control_BuildingControl_Fan_i_Bridge_Api_string(String result, StackFrame caller, building_control_BuildingControl_Fan_i_Bridge_Api this) {
+B building_control_BuildingControl_Fan_i_Bridge_Api__ne(building_control_BuildingControl_Fan_i_Bridge_Api this, building_control_BuildingControl_Fan_i_Bridge_Api other);
+
+void building_control_BuildingControl_Fan_i_Bridge_Api_string_(STACK_FRAME String result, building_control_BuildingControl_Fan_i_Bridge_Api this) {
   DeclNewStackFrame(caller, "Fan_i_Bridge.scala", "building_control.BuildingControl.Fan_i_Bridge.Api", "string", 0);
-  String_string(result, sf, string("Api("));
+  String_string_(SF result, string("Api("));
   String sep = string(", ");
-  Z_string(result, sf, this->id);
-  String_string(result, sf, sep);
-  Z_string(result, sf, this->fanCmd_Id);
-  String_string(result, sf, string(")"));
+  Z_string_(SF result, this->id);
+  String_string_(SF result, sep);
+  Z_string_(SF result, this->fanCmd_Id);
+  String_string_(SF result, string(")"));
 }
 
 void building_control_BuildingControl_Fan_i_Bridge_Api_cprint(building_control_BuildingControl_Fan_i_Bridge_Api this, B isOut) {
@@ -29,7 +31,10 @@ void building_control_BuildingControl_Fan_i_Bridge_Api_cprint(building_control_B
   #endif
 }
 
-void building_control_BuildingControl_Fan_i_Bridge_Api_apply(StackFrame caller, building_control_BuildingControl_Fan_i_Bridge_Api this, Z id, Z fanCmd_Id) {
+B building_control_BuildingControl_Fan_i_Bridge_Api__is(STACK_FRAME void* this);
+building_control_BuildingControl_Fan_i_Bridge_Api building_control_BuildingControl_Fan_i_Bridge_Api__as(STACK_FRAME void *this);
+
+void building_control_BuildingControl_Fan_i_Bridge_Api_apply(STACK_FRAME building_control_BuildingControl_Fan_i_Bridge_Api this, Z id, Z fanCmd_Id) {
   DeclNewStackFrame(caller, "Fan_i_Bridge.scala", "building_control.BuildingControl.Fan_i_Bridge.Api", "apply", 0);
   this->id = id;
   this->fanCmd_Id = fanCmd_Id;

@@ -7,13 +7,14 @@
 #define art_UPort__eq(this, other) Type__eq(this, other)
 #define art_UPort__ne(this, other) (!Type__eq(this, other))
 #define art_UPort_cprint(this, isOut) Type_cprint(this, isOut)
-#define art_UPort_string(result, caller, this) Type_string(result, caller, this)
+B art_UPort__is(STACK_FRAME void *this);
+art_UPort art_UPort__as(STACK_FRAME void *this);
+inline void art_UPort_string_(STACK_FRAME String result, art_UPort this) {
+  Type_string_(CALLER result, this);
+}
 
-B art_UPort__is(StackFrame caller, void *this);
-art_UPort art_UPort__as(StackFrame caller, void *this);
+Z art_UPort_id_(STACK_FRAME art_UPort this);
 
-Z art_UPort_id_(StackFrame caller, art_UPort this);
-
-art_PortMode art_UPort_mode_(StackFrame caller, art_UPort this);
+art_PortMode art_UPort_mode_(STACK_FRAME art_UPort this);
 
 #endif

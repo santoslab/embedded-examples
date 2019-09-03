@@ -3,20 +3,20 @@
 #include <types.h>
 
 // (Z, art.DataContent)
-void Tuple2_D0E3BB_apply(StackFrame caller, Tuple2_D0E3BB this, Z _1, art_DataContent _2);
+void Tuple2_D0E3BB_apply(STACK_FRAME Tuple2_D0E3BB this, Z _1, art_DataContent _2);
 B Tuple2_D0E3BB__eq(Tuple2_D0E3BB this, Tuple2_D0E3BB other);
 void Tuple2_D0E3BB_cprint(Tuple2_D0E3BB this, B isOut);
-void Tuple2_D0E3BB_string(String result, StackFrame caller, Tuple2_D0E3BB this);
+void Tuple2_D0E3BB_string_(STACK_FRAME String result, Tuple2_D0E3BB this);
 
-static inline Z Tuple2_D0E3BB_1(Tuple2_D0E3BB this) {
+inline Z Tuple2_D0E3BB_1(Tuple2_D0E3BB this) {
   return this->_1;
 }
 
-static inline art_DataContent Tuple2_D0E3BB_2(Tuple2_D0E3BB this) {
+inline art_DataContent Tuple2_D0E3BB_2(Tuple2_D0E3BB this) {
   return (art_DataContent) &this->_2;
 };
 
-static inline B Tuple2_D0E3BB__ne(Tuple2_D0E3BB this, Tuple2_D0E3BB other) {
+inline B Tuple2_D0E3BB__ne(Tuple2_D0E3BB this, Tuple2_D0E3BB other) {
   return !Tuple2_D0E3BB__eq(this, other);
 }
 

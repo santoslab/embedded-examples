@@ -7,23 +7,25 @@
 #define building_control_BuildingControl_TempSensor_i_Impl_api_(this) ((building_control_BuildingControl_TempSensor_i_Bridge_Api) &(this)->api)
 
 B building_control_BuildingControl_TempSensor_i_Impl__eq(building_control_BuildingControl_TempSensor_i_Impl this, building_control_BuildingControl_TempSensor_i_Impl other);
-static inline B building_control_BuildingControl_TempSensor_i_Impl__ne(building_control_BuildingControl_TempSensor_i_Impl this, building_control_BuildingControl_TempSensor_i_Impl other) {
+inline B building_control_BuildingControl_TempSensor_i_Impl__ne(building_control_BuildingControl_TempSensor_i_Impl this, building_control_BuildingControl_TempSensor_i_Impl other) {
   return !building_control_BuildingControl_TempSensor_i_Impl__eq(this, other);
 };
+void building_control_BuildingControl_TempSensor_i_Impl_string_(STACK_FRAME String result, building_control_BuildingControl_TempSensor_i_Impl this);
 void building_control_BuildingControl_TempSensor_i_Impl_cprint(building_control_BuildingControl_TempSensor_i_Impl this, B isOut);
-void building_control_BuildingControl_TempSensor_i_Impl_string(String result, StackFrame caller, building_control_BuildingControl_TempSensor_i_Impl this);
 
-#define building_control_BuildingControl_TempSensor_i_Impl__is(sf, this) (((building_control_BuildingControl_TempSensor_i_Impl) this)->type == Tbuilding_control_BuildingControl_TempSensor_i_Impl)
+inline B building_control_BuildingControl_TempSensor_i_Impl__is(STACK_FRAME void* this) {
+  return ((building_control_BuildingControl_TempSensor_i_Impl) this)->type == Tbuilding_control_BuildingControl_TempSensor_i_Impl;
+}
 
-static inline building_control_BuildingControl_TempSensor_i_Impl building_control_BuildingControl_TempSensor_i_Impl__as(StackFrame caller, void *this) {
-  if (building_control_BuildingControl_TempSensor_i_Impl__is(caller, this)) return (building_control_BuildingControl_TempSensor_i_Impl) this;
-  fprintf(stderr, "Invalid case from %s to building_control.BuildingControl.TempSensor_i_Impl.", TYPE_string(this));
-  sfAbortImpl(caller, "");
+inline building_control_BuildingControl_TempSensor_i_Impl building_control_BuildingControl_TempSensor_i_Impl__as(STACK_FRAME void *this) {
+  if (building_control_BuildingControl_TempSensor_i_Impl__is(CALLER this)) return (building_control_BuildingControl_TempSensor_i_Impl) this;
+  fprintf(stderr, "Invalid case from %s to building_control.BuildingControl.TempSensor_i_Impl.", TYPE_string_(this));
+  sfAbortImpl(CALLER "");
   abort();
 }
 
-void building_control_BuildingControl_TempSensor_i_Impl_apply(StackFrame caller, building_control_BuildingControl_TempSensor_i_Impl this, building_control_BuildingControl_TempSensor_i_Bridge_Api api);
+void building_control_BuildingControl_TempSensor_i_Impl_apply(STACK_FRAME building_control_BuildingControl_TempSensor_i_Impl this, building_control_BuildingControl_TempSensor_i_Bridge_Api api);
 
-Unit building_control_BuildingControl_TempSensor_i_Impl_timeTriggered_(StackFrame caller, building_control_BuildingControl_TempSensor_i_Impl this);
+Unit building_control_BuildingControl_TempSensor_i_Impl_timeTriggered_(STACK_FRAME building_control_BuildingControl_TempSensor_i_Impl this);
 
 #endif

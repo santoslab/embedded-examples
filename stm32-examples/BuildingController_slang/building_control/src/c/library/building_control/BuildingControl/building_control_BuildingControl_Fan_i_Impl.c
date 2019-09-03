@@ -7,11 +7,13 @@ B building_control_BuildingControl_Fan_i_Impl__eq(building_control_BuildingContr
   return T;
 }
 
-void building_control_BuildingControl_Fan_i_Impl_string(String result, StackFrame caller, building_control_BuildingControl_Fan_i_Impl this) {
+B building_control_BuildingControl_Fan_i_Impl__ne(building_control_BuildingControl_Fan_i_Impl this, building_control_BuildingControl_Fan_i_Impl other);
+
+void building_control_BuildingControl_Fan_i_Impl_string_(STACK_FRAME String result, building_control_BuildingControl_Fan_i_Impl this) {
   DeclNewStackFrame(caller, "Fan_i_Impl.scala", "building_control.BuildingControl.Fan_i_Impl", "string", 0);
-  String_string(result, sf, string("Fan_i_Impl("));
-  building_control_BuildingControl_Fan_i_Bridge_Api_string(result, sf, (building_control_BuildingControl_Fan_i_Bridge_Api) &this->api);
-  String_string(result, sf, string(")"));
+  String_string_(SF result, string("Fan_i_Impl("));
+  building_control_BuildingControl_Fan_i_Bridge_Api_string_(SF result, (building_control_BuildingControl_Fan_i_Bridge_Api) &this->api);
+  String_string_(SF result, string(")"));
 }
 
 void building_control_BuildingControl_Fan_i_Impl_cprint(building_control_BuildingControl_Fan_i_Impl this, B isOut) {
@@ -22,14 +24,17 @@ void building_control_BuildingControl_Fan_i_Impl_cprint(building_control_Buildin
   #endif
 }
 
-void building_control_BuildingControl_Fan_i_Impl_apply(StackFrame caller, building_control_BuildingControl_Fan_i_Impl this, building_control_BuildingControl_Fan_i_Bridge_Api api) {
+B building_control_BuildingControl_Fan_i_Impl__is(STACK_FRAME void* this);
+building_control_BuildingControl_Fan_i_Impl building_control_BuildingControl_Fan_i_Impl__as(STACK_FRAME void *this);
+
+void building_control_BuildingControl_Fan_i_Impl_apply(STACK_FRAME building_control_BuildingControl_Fan_i_Impl this, building_control_BuildingControl_Fan_i_Bridge_Api api) {
   DeclNewStackFrame(caller, "Fan_i_Impl.scala", "building_control.BuildingControl.Fan_i_Impl", "apply", 0);
   Type_assign(&this->api, api, sizeof(struct building_control_BuildingControl_Fan_i_Bridge_Api));
 }
 
-Unit building_control_BuildingControl_Fan_i_Impl_handlefanCmd_(StackFrame caller, building_control_BuildingControl_Fan_i_Impl this, building_control_Base_Types_Boolean value) {
+Unit building_control_BuildingControl_Fan_i_Impl_handlefanCmd_(STACK_FRAME building_control_BuildingControl_Fan_i_Impl this, building_control_Base_Types_Boolean value) {
   DeclNewStackFrame(caller, "Fan_i_Impl.scala", "building_control.BuildingControl.Fan_i_Impl", "handlefanCmd", 0);
 
   sfUpdateLoc(10);
-  building_control_BuildingControl_FanNative_fanController(sf, building_control_Base_Types_Boolean_value_(value));
+  building_control_BuildingControl_FanNative_fanController(SF building_control_Base_Types_Boolean_value_(value));
 }

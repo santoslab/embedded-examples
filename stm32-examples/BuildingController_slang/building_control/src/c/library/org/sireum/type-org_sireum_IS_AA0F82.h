@@ -11,13 +11,10 @@
 typedef struct IS_AA0F82 *IS_AA0F82;
 struct IS_AA0F82 {
   TYPE type;
-  int8_t size;
+  IS_AA0F82SizeT size;
   struct Tuple2_EC3B57 value[MaxIS_AA0F82];
 };
 
 #define DeclNewIS_AA0F82(x) struct IS_AA0F82 x = { .type = TIS_AA0F82 }
-#define IS_AA0F82_size(sf, this) ((Z) (this)->size)
-#define IS_AA0F82_zize(sf, this) ((Z) (this)->size)
-#define IS_AA0F82_at(this, i) ((Tuple2_EC3B57) &((this)->value[(int8_t) (i)]))
 
 #endif

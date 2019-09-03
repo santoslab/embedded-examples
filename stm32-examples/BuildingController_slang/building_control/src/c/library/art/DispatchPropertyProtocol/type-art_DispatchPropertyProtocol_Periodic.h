@@ -12,5 +12,4 @@ struct art_DispatchPropertyProtocol_Periodic {
 
 #define DeclNewart_DispatchPropertyProtocol_Periodic(x) struct art_DispatchPropertyProtocol_Periodic x = { .type = Tart_DispatchPropertyProtocol_Periodic }
 
-
 #endif

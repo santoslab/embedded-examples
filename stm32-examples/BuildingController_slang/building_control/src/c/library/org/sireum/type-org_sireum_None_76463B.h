@@ -11,5 +11,4 @@ struct None_76463B {
 
 #define DeclNewNone_76463B(x) struct None_76463B x = { .type = TNone_76463B }
 
-
 #endif

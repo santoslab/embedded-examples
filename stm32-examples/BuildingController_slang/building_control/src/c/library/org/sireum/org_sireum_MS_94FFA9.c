@@ -1,6 +1,10 @@
 #include <all.h>
 
 // MS[Z, MOption[art.Bridge]]
+MOption_EA1D29 MS_94FFA9_at(MS_94FFA9 this, Z i);
+void MS_94FFA9_up(MS_94FFA9 this, Z i, MOption_EA1D29 e);
+Z MS_94FFA9_size(STACK_FRAME MS_94FFA9 this);
+Z MS_94FFA9_zize(STACK_FRAME MS_94FFA9 this);
 
 B MS_94FFA9__eq(MS_94FFA9 this, MS_94FFA9 other) {
   int8_t size = this->size;
@@ -11,7 +15,7 @@ B MS_94FFA9__eq(MS_94FFA9 this, MS_94FFA9 other) {
   return T;
 }
 
-void MS_94FFA9_create(MS_94FFA9 result, StackFrame caller, Z size, MOption_EA1D29 dflt) {
+void MS_94FFA9_create(STACK_FRAME MS_94FFA9 result, Z size, MOption_EA1D29 dflt) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "create", 0);
   sfAssert(size <= MaxMS_94FFA9, "Insufficient maximum for MS[Z, MOption[art.Bridge]] elements.");
   int8_t zize = (int8_t) size;
@@ -21,7 +25,7 @@ void MS_94FFA9_create(MS_94FFA9 result, StackFrame caller, Z size, MOption_EA1D2
   result->size = zize;
 }
 
-void MS_94FFA9_zreate(MS_94FFA9 result, StackFrame caller, Z size, MOption_EA1D29 dflt) {
+void MS_94FFA9_zreate(STACK_FRAME MS_94FFA9 result, Z size, MOption_EA1D29 dflt) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "zreate", 0);
   sfAssert(size <= MaxMS_94FFA9, "Insufficient maximum for MS[Z, MOption[art.Bridge]] elements.");
   int8_t zize = (int8_t) size;
@@ -31,7 +35,7 @@ void MS_94FFA9_zreate(MS_94FFA9 result, StackFrame caller, Z size, MOption_EA1D2
   result->size = zize;
 }
 
-void MS_94FFA9__append(MS_94FFA9 result, StackFrame caller, MS_94FFA9 this, MOption_EA1D29 value) {
+void MS_94FFA9__append(STACK_FRAME MS_94FFA9 result, MS_94FFA9 this, MOption_EA1D29 value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", ":+", 0);
   sfAssert(this->size + 1 <= MaxMS_94FFA9, "Insufficient maximum for MS[Z, MOption[art.Bridge]] elements.");
   int8_t thisSize = this->size;
@@ -40,7 +44,7 @@ void MS_94FFA9__append(MS_94FFA9 result, StackFrame caller, MS_94FFA9 this, MOpt
   result->size = (int8_t) (thisSize + 1);
 }
 
-void MS_94FFA9__prepend(MS_94FFA9 result, StackFrame caller, MS_94FFA9 this, MOption_EA1D29 value) {
+void MS_94FFA9__prepend(STACK_FRAME MS_94FFA9 result, MS_94FFA9 this, MOption_EA1D29 value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "+:", 0);
   sfAssert(this->size + 1 <= MaxMS_94FFA9, "Insufficient maximum for MS[Z, MOption[art.Bridge]] elements.");
   int8_t thisSize = this->size;
@@ -50,18 +54,18 @@ void MS_94FFA9__prepend(MS_94FFA9 result, StackFrame caller, MS_94FFA9 this, MOp
   result->size = (int8_t) thisSize + 1;
 }
 
-void MS_94FFA9__appendAll(MS_94FFA9 result, StackFrame caller, MS_94FFA9 this, MS_94FFA9 other) {
+void MS_94FFA9__appendAll(STACK_FRAME MS_94FFA9 result, MS_94FFA9 this, MS_94FFA9 other) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "++", 0);
   sfAssert(this->size + other->size <= MaxMS_94FFA9, "Insufficient maximum for MS[Z, MOption[art.Bridge]] elements.");
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
   Type_assign(result, this, sizeof(struct MS_94FFA9));
-  for (int8_t i = 0; i < otherSize; i++)
-    Type_assign(&result->value[thisSize + i], &other->value[i], sizeof(union MOption_EA1D29));
   result->size = (int8_t) thisSize + otherSize;
+  for (int8_t i = 0; i < otherSize; i++)
+    Type_assign(&result->value[thisSize + i], &other->value[i + 1], sizeof(union MOption_EA1D29));
 }
 
-void MS_94FFA9__remove(MS_94FFA9 result, StackFrame caller, MS_94FFA9 this, MOption_EA1D29 value) {
+void MS_94FFA9__sub(STACK_FRAME MS_94FFA9 result, MS_94FFA9 this, MOption_EA1D29 value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "-", 0);
   int8_t thisSize = this->size;
   int8_t k = 0;
@@ -73,7 +77,7 @@ void MS_94FFA9__remove(MS_94FFA9 result, StackFrame caller, MS_94FFA9 this, MOpt
   result->size = k;
 }
 
-void MS_94FFA9__removeAll(MS_94FFA9 result, StackFrame caller, MS_94FFA9 this, MS_94FFA9 other) {
+void MS_94FFA9__removeAll(STACK_FRAME MS_94FFA9 result, MS_94FFA9 this, MS_94FFA9 other) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "--", 0);
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
@@ -107,20 +111,22 @@ void MS_94FFA9_cprint(MS_94FFA9 this, B isOut) {
   #endif
 }
 
-void MS_94FFA9_string(String result, StackFrame caller, MS_94FFA9 this) {
+void MS_94FFA9_string_(STACK_FRAME String result, MS_94FFA9 this) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "string", 0);
-  String_string(result, sf, string("["));
+  String_string_(SF result, string("["));
   int8_t size = this->size;
   if (size > 0) {
     union MOption_EA1D29 *value = this->value;
     String space = string(" ");
-    String_string(result, sf, space);
-    MOption_EA1D29_string(result, sf, (MOption_EA1D29) &(value[0]));
+    String_string_(SF result, space);
+    MOption_EA1D29_string_(SF result, (MOption_EA1D29) &(value[0]));
     for (int8_t i = 1; i < size; i++) {
-      String_string(result, sf, string(", "));
-      MOption_EA1D29_string(result, sf, (MOption_EA1D29) &(value[i]));
+      String_string_(SF result, string(", "));
+      MOption_EA1D29_string_(SF result, (MOption_EA1D29) &(value[i]));
     }
-    String_string(result, sf, space);
+    String_string_(SF result, space);
   }
-  String_string(result, sf, string("]"));
+  String_string_(SF result, string("]"));
 }
+
+B MS_94FFA9__ne(MS_94FFA9 this, MS_94FFA9 other);

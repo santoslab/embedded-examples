@@ -87,9 +87,6 @@
 #include <org_sireum_Tuple2_EC3B57.h>
 #include <org_sireum_Z16.h>
 
-B Type__eq(void *t1, void *t2);
-void Type_cprint(void *this, B isOut);
-void Type_string(String result, StackFrame caller, void* this);
 void Z_apply(Option_882048 result, String s);
 
 #endif

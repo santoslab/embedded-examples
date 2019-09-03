@@ -7,11 +7,13 @@ B building_control_Base_Types_Boolean__eq(building_control_Base_Types_Boolean th
   return T;
 }
 
-void building_control_Base_Types_Boolean_string(String result, StackFrame caller, building_control_Base_Types_Boolean this) {
+B building_control_Base_Types_Boolean__ne(building_control_Base_Types_Boolean this, building_control_Base_Types_Boolean other);
+
+void building_control_Base_Types_Boolean_string_(STACK_FRAME String result, building_control_Base_Types_Boolean this) {
   DeclNewStackFrame(caller, "Boolean.scala", "building_control.Base_Types.Boolean", "string", 0);
-  String_string(result, sf, string("Boolean("));
-  B_string(result, sf, this->value);
-  String_string(result, sf, string(")"));
+  String_string_(SF result, string("Boolean("));
+  B_string_(SF result, this->value);
+  String_string_(SF result, string(")"));
 }
 
 void building_control_Base_Types_Boolean_cprint(building_control_Base_Types_Boolean this, B isOut) {
@@ -22,7 +24,10 @@ void building_control_Base_Types_Boolean_cprint(building_control_Base_Types_Bool
   #endif
 }
 
-void building_control_Base_Types_Boolean_apply(StackFrame caller, building_control_Base_Types_Boolean this, B value) {
+B building_control_Base_Types_Boolean__is(STACK_FRAME void* this);
+building_control_Base_Types_Boolean building_control_Base_Types_Boolean__as(STACK_FRAME void *this);
+
+void building_control_Base_Types_Boolean_apply(STACK_FRAME building_control_Base_Types_Boolean this, B value) {
   DeclNewStackFrame(caller, "Boolean.scala", "building_control.Base_Types.Boolean", "apply", 0);
   this->value = value;
 }

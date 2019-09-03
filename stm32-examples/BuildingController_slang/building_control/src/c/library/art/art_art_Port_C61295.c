@@ -8,14 +8,16 @@ B art_Port_C61295__eq(art_Port_C61295 this, art_Port_C61295 other) {
   return T;
 }
 
-void art_Port_C61295_string(String result, StackFrame caller, art_Port_C61295 this) {
+B art_Port_C61295__ne(art_Port_C61295 this, art_Port_C61295 other);
+
+void art_Port_C61295_string_(STACK_FRAME String result, art_Port_C61295 this) {
   DeclNewStackFrame(caller, "ArchitectureDescription.scala", "art.Port", "string", 0);
-  String_string(result, sf, string("Port("));
+  String_string_(SF result, string("Port("));
   String sep = string(", ");
-  Z_string(result, sf, this->id);
-  String_string(result, sf, sep);
-  art_PortMode_string(result, sf, this->mode);
-  String_string(result, sf, string(")"));
+  Z_string_(SF result, this->id);
+  String_string_(SF result, sep);
+  art_PortMode_string_(SF result, this->mode);
+  String_string_(SF result, string(")"));
 }
 
 void art_Port_C61295_cprint(art_Port_C61295 this, B isOut) {
@@ -29,7 +31,10 @@ void art_Port_C61295_cprint(art_Port_C61295 this, B isOut) {
   #endif
 }
 
-void art_Port_C61295_apply(StackFrame caller, art_Port_C61295 this, Z id, art_PortMode mode) {
+B art_Port_C61295__is(STACK_FRAME void* this);
+art_Port_C61295 art_Port_C61295__as(STACK_FRAME void *this);
+
+void art_Port_C61295_apply(STACK_FRAME art_Port_C61295 this, Z id, art_PortMode mode) {
   DeclNewStackFrame(caller, "ArchitectureDescription.scala", "art.art_Port_C61295", "apply", 0);
   this->id = id;
   this->mode = mode;

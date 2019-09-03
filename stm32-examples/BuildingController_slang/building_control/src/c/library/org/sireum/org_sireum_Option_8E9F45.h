@@ -7,11 +7,12 @@
 #define Option_8E9F45__eq(this, other) Type__eq(this, other)
 #define Option_8E9F45__ne(this, other) (!Type__eq(this, other))
 #define Option_8E9F45_cprint(this, isOut) Type_cprint(this, isOut)
-#define Option_8E9F45_string(result, caller, this) Type_string(result, caller, this)
+B Option_8E9F45__is(STACK_FRAME void *this);
+Option_8E9F45 Option_8E9F45__as(STACK_FRAME void *this);
+inline void Option_8E9F45_string_(STACK_FRAME String result, Option_8E9F45 this) {
+  Type_string_(CALLER result, this);
+}
 
-B Option_8E9F45__is(StackFrame caller, void *this);
-Option_8E9F45 Option_8E9F45__as(StackFrame caller, void *this);
-
-B Option_8E9F45_nonEmpty_(StackFrame caller, Option_8E9F45 this);
+B Option_8E9F45_nonEmpty_(STACK_FRAME Option_8E9F45 this);
 
 #endif

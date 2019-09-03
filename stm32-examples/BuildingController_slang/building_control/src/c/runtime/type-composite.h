@@ -2,7 +2,6 @@
 #define SIREUM_GEN_TYPE_H
 
 #include <memory.h>
-#include <ztype.h>
 #include <stackframe.h>
 
 typedef enum {
@@ -60,14 +59,14 @@ typedef enum {
   TString = 51, // org.sireum.String
 } TYPE;
 
-char *TYPE_string(void *type);
+char *TYPE_string_(void *type);
 
 typedef struct Type *Type;
 struct Type {
   TYPE type;
 };
 
-#define MaxString 30
+#define MaxString 232
 
 typedef struct String *String;
 struct String {
@@ -84,15 +83,5 @@ struct StaticString {
 
 #define string(v) ((String) &((struct { TYPE type; Z size; C value[sizeof(v)]; }) { TString, Z_C(sizeof (v) - 1), v }))
 #define DeclNewString(x) struct StaticString x = { .type = TString }
-
-static inline B String__eq(String this, String other) {
-  Z thisSize = this->size;
-  if (thisSize != other->size) return F;
-  return memcmp(this->value, other->value, (size_t) thisSize) == 0;
-}
-
-static inline B String__ne(String this, String other) {
-  return !String__eq(this, other);
-}
 
 #endif

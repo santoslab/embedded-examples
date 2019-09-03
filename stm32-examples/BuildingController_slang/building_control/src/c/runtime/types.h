@@ -95,7 +95,7 @@
 #define GLOBAL_STATIC_ASSERT(unique, pred, explanation); namespace ASSERTION {char unique[1/(pred)];}
 #endif
 
-static inline size_t sizeOf(Type t) {
+inline size_t sizeOf(Type t) {
   TYPE type = t->type;
   switch (type) {
     case TTuple2_EC3B57: return sizeof(struct Tuple2_EC3B57); // (Z, Z)

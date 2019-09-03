@@ -13,5 +13,4 @@ struct art_EventTriggered {
 
 #define DeclNewart_EventTriggered(x) struct art_EventTriggered x = { .type = Tart_EventTriggered }
 
-
 #endif

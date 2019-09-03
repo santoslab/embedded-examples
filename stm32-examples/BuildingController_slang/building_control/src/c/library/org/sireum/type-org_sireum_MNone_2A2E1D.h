@@ -11,5 +11,4 @@ struct MNone_2A2E1D {
 
 #define DeclNewMNone_2A2E1D(x) struct MNone_2A2E1D x = { .type = TMNone_2A2E1D }
 
-
 #endif

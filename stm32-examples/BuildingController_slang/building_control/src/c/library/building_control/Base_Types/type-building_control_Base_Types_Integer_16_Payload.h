@@ -13,5 +13,4 @@ struct building_control_Base_Types_Integer_16_Payload {
 
 #define DeclNewbuilding_control_Base_Types_Integer_16_Payload(x) struct building_control_Base_Types_Integer_16_Payload x = { .type = Tbuilding_control_Base_Types_Integer_16_Payload }
 
-
 #endif

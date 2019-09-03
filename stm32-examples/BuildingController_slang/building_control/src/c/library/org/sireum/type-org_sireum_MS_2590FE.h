@@ -11,13 +11,10 @@
 typedef struct MS_2590FE *MS_2590FE;
 struct MS_2590FE {
   TYPE type;
-  int8_t size;
+  MS_2590FESizeT size;
   union Option_8E9F45 value[MaxMS_2590FE];
 };
 
 #define DeclNewMS_2590FE(x) struct MS_2590FE x = { .type = TMS_2590FE }
-#define MS_2590FE_size(sf, this) ((Z) (this)->size)
-#define MS_2590FE_zize(sf, this) ((Z) (this)->size)
-#define MS_2590FE_at(this, i) ((Option_8E9F45) &((this)->value[(int8_t) (i)]))
 
 #endif

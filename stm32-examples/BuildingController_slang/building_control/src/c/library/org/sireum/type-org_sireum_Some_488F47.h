@@ -12,5 +12,4 @@ struct Some_488F47 {
 
 #define DeclNewSome_488F47(x) struct Some_488F47 x = { .type = TSome_488F47 }
 
-
 #endif

@@ -1,6 +1,10 @@
 #include <all.h>
 
 // IS[Z, art.UPort]
+art_UPort IS_820232_at(IS_820232 this, Z i);
+void IS_820232_up(IS_820232 this, Z i, art_UPort e);
+Z IS_820232_size(STACK_FRAME IS_820232 this);
+Z IS_820232_zize(STACK_FRAME IS_820232 this);
 
 B IS_820232__eq(IS_820232 this, IS_820232 other) {
   int8_t size = this->size;
@@ -11,7 +15,7 @@ B IS_820232__eq(IS_820232 this, IS_820232 other) {
   return T;
 }
 
-void IS_820232_create(IS_820232 result, StackFrame caller, Z size, art_UPort dflt) {
+void IS_820232_create(STACK_FRAME IS_820232 result, Z size, art_UPort dflt) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "create", 0);
   sfAssert(size <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   int8_t zize = (int8_t) size;
@@ -21,7 +25,7 @@ void IS_820232_create(IS_820232 result, StackFrame caller, Z size, art_UPort dfl
   result->size = zize;
 }
 
-void IS_820232_zreate(IS_820232 result, StackFrame caller, Z size, art_UPort dflt) {
+void IS_820232_zreate(STACK_FRAME IS_820232 result, Z size, art_UPort dflt) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "zreate", 0);
   sfAssert(size <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   int8_t zize = (int8_t) size;
@@ -31,7 +35,7 @@ void IS_820232_zreate(IS_820232 result, StackFrame caller, Z size, art_UPort dfl
   result->size = zize;
 }
 
-void IS_820232__append(IS_820232 result, StackFrame caller, IS_820232 this, art_UPort value) {
+void IS_820232__append(STACK_FRAME IS_820232 result, IS_820232 this, art_UPort value) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", ":+", 0);
   sfAssert(this->size + 1 <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   int8_t thisSize = this->size;
@@ -40,7 +44,7 @@ void IS_820232__append(IS_820232 result, StackFrame caller, IS_820232 this, art_
   result->size = (int8_t) (thisSize + 1);
 }
 
-void IS_820232__prepend(IS_820232 result, StackFrame caller, IS_820232 this, art_UPort value) {
+void IS_820232__prepend(STACK_FRAME IS_820232 result, IS_820232 this, art_UPort value) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "+:", 0);
   sfAssert(this->size + 1 <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   int8_t thisSize = this->size;
@@ -50,18 +54,18 @@ void IS_820232__prepend(IS_820232 result, StackFrame caller, IS_820232 this, art
   result->size = (int8_t) thisSize + 1;
 }
 
-void IS_820232__appendAll(IS_820232 result, StackFrame caller, IS_820232 this, IS_820232 other) {
+void IS_820232__appendAll(STACK_FRAME IS_820232 result, IS_820232 this, IS_820232 other) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "++", 0);
   sfAssert(this->size + other->size <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
   Type_assign(result, this, sizeof(struct IS_820232));
-  for (int8_t i = 0; i < otherSize; i++)
-    Type_assign(&result->value[thisSize + i], &other->value[i], sizeof(union art_UPort));
   result->size = (int8_t) thisSize + otherSize;
+  for (int8_t i = 0; i < otherSize; i++)
+    Type_assign(&result->value[thisSize + i], &other->value[i + 1], sizeof(union art_UPort));
 }
 
-void IS_820232__remove(IS_820232 result, StackFrame caller, IS_820232 this, art_UPort value) {
+void IS_820232__sub(STACK_FRAME IS_820232 result, IS_820232 this, art_UPort value) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "-", 0);
   int8_t thisSize = this->size;
   int8_t k = 0;
@@ -73,7 +77,7 @@ void IS_820232__remove(IS_820232 result, StackFrame caller, IS_820232 this, art_
   result->size = k;
 }
 
-void IS_820232__removeAll(IS_820232 result, StackFrame caller, IS_820232 this, IS_820232 other) {
+void IS_820232__removeAll(STACK_FRAME IS_820232 result, IS_820232 this, IS_820232 other) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "--", 0);
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
@@ -107,20 +111,22 @@ void IS_820232_cprint(IS_820232 this, B isOut) {
   #endif
 }
 
-void IS_820232_string(String result, StackFrame caller, IS_820232 this) {
+void IS_820232_string_(STACK_FRAME String result, IS_820232 this) {
   DeclNewStackFrame(caller, "IS.scala", "org.sireum.IS", "string", 0);
-  String_string(result, sf, string("["));
+  String_string_(SF result, string("["));
   int8_t size = this->size;
   if (size > 0) {
     union art_UPort *value = this->value;
     String space = string(" ");
-    String_string(result, sf, space);
-    art_UPort_string(result, sf, (art_UPort) &(value[0]));
+    String_string_(SF result, space);
+    art_UPort_string_(SF result, (art_UPort) &(value[0]));
     for (int8_t i = 1; i < size; i++) {
-      String_string(result, sf, string(", "));
-      art_UPort_string(result, sf, (art_UPort) &(value[i]));
+      String_string_(SF result, string(", "));
+      art_UPort_string_(SF result, (art_UPort) &(value[i]));
     }
-    String_string(result, sf, space);
+    String_string_(SF result, space);
   }
-  String_string(result, sf, string("]"));
+  String_string_(SF result, string("]"));
 }
+
+B IS_820232__ne(IS_820232 this, IS_820232 other);

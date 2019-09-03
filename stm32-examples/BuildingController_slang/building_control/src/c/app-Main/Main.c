@@ -24,5 +24,5 @@ int main(int argc, char *argv[]) {
 
   t_args.size = (int8_t) size;
 
-  return (int) building_control_Main_main(sf, &t_args);
+  return (int) building_control_Main_main(SF &t_args);
 }

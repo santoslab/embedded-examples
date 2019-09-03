@@ -21,5 +21,4 @@ struct art_Bridge_Ports {
 
 #define DeclNewart_Bridge_Ports(x) struct art_Bridge_Ports x = { .type = Tart_Bridge_Ports }
 
-
 #endif

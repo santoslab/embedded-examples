@@ -13,5 +13,4 @@ struct MSome_D3D128 {
 
 #define DeclNewMSome_D3D128(x) struct MSome_D3D128 x = { .type = TMSome_D3D128 }
 
-
 #endif

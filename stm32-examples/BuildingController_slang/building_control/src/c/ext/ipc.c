@@ -7,19 +7,19 @@
 
 static union Option_8E9F45 camkes_buffer[7] = { 0 };
 
-Z building_control_SharedMemory_create(StackFrame caller, Z id) {
+Z building_control_SharedMemory_create(STACK_FRAME Z id) {
     DeclNewNone_964667(t_0);
-    None_964667_apply(caller, &t_0);
+    None_964667_apply(CALLER &t_0);
     Type_assign((camkes_buffer + id), (&t_0), sizeof(union Option_8E9F45));
 
     return -1;
 }
 
-void building_control_SharedMemory_receive(art_DataContent result, StackFrame caller, Z port) {
+void building_control_SharedMemory_receive(STACK_FRAME art_DataContent result, Z port) {
     // NO IMPL
 }
 
-void building_control_SharedMemory_receiveAsync(Option_8E9F45 result, StackFrame caller, Z port) {
+void building_control_SharedMemory_receiveAsync(STACK_FRAME Option_8E9F45 result, Z port) {
     union Option_8E9F45 p = camkes_buffer[port];
 
     if (p.type == TSome_D29615) {
@@ -30,11 +30,11 @@ void building_control_SharedMemory_receiveAsync(Option_8E9F45 result, StackFrame
     }
 }
 
-Unit building_control_SharedMemory_send(StackFrame caller, Z destid, Z port, art_DataContent d) {
+Unit building_control_SharedMemory_send(STACK_FRAME Z destid, Z port, art_DataContent d) {
     // NO IMPL
 }
 
-B building_control_SharedMemory_sendAsync(StackFrame caller, Z destid, Z port, art_DataContent d) {
+B building_control_SharedMemory_sendAsync(STACK_FRAME Z destid, Z port, art_DataContent d) {
 
     Option_8E9F45 p = (Option_8E9F45) camkes_buffer + port;
     p->type = TSome_D29615;
@@ -43,11 +43,11 @@ B building_control_SharedMemory_sendAsync(StackFrame caller, Z destid, Z port, a
     return T;
 }
 
-Unit building_control_SharedMemory_remove(StackFrame caller, Z id) {
+Unit building_control_SharedMemory_remove(STACK_FRAME Z id) {
     // NO IMPL
 }
 
-Unit building_control_Process_sleep(StackFrame caller, Z n) {
+Unit building_control_Process_sleep(STACK_FRAME Z n) {
     // NO IMPL
 }
 
@@ -91,7 +91,7 @@ static inline int create_sem(Z msgid) {
     return sem_set_id;
 }
 
-Z building_control_SharedMemory_create(StackFrame caller, Z id) {
+Z building_control_SharedMemory_create(STACK_FRAME Z id) {
     unsigned int permission = 0666;
     unsigned int mask = IPC_CREAT;
 
@@ -105,7 +105,7 @@ Z building_control_SharedMemory_create(StackFrame caller, Z id) {
     return (Z) shmid;
 }
 
-void building_control_SharedMemory_receive(art_DataContent result, StackFrame caller, Z port) {
+void building_control_SharedMemory_receive(STACK_FRAME art_DataContent result, Z port) {
     int sid = semget((key_t) port, 1, 0666);
 
     lock(sid);
@@ -128,7 +128,7 @@ void building_control_SharedMemory_receive(art_DataContent result, StackFrame ca
     unlock(sid);
 }
 
-void building_control_SharedMemory_receiveAsync(Option_8E9F45 result, StackFrame caller, Z port) {
+void building_control_SharedMemory_receiveAsync(STACK_FRAME Option_8E9F45 result, Z port) {
     int sid = semget((key_t) port, 1, 0666);
 
     lock(sid);
@@ -149,7 +149,7 @@ void building_control_SharedMemory_receiveAsync(Option_8E9F45 result, StackFrame
     unlock(sid);
 }
 
-Unit building_control_SharedMemory_send(StackFrame caller, Z destid, Z port, art_DataContent d) {
+Unit building_control_SharedMemory_send(STACK_FRAME Z destid, Z port, art_DataContent d) {
     int sid = semget((key_t) port, 1, 0666);
 
     lock(sid);
@@ -172,7 +172,7 @@ Unit building_control_SharedMemory_send(StackFrame caller, Z destid, Z port, art
     unlock(sid);
 }
 
-B building_control_SharedMemory_sendAsync(StackFrame caller, Z destid, Z port, art_DataContent d) {
+B building_control_SharedMemory_sendAsync(STACK_FRAME Z destid, Z port, art_DataContent d) {
     int sid = semget((key_t) port, 1, 0666);
 
     lock(sid);
@@ -189,12 +189,12 @@ B building_control_SharedMemory_sendAsync(StackFrame caller, Z destid, Z port, a
     return T;
 }
 
-Unit building_control_SharedMemory_remove(StackFrame caller, Z id) {
+Unit building_control_SharedMemory_remove(STACK_FRAME Z id) {
     semctl(semget((key_t) id, 1, 0666), 0, IPC_RMID);
     shmctl(shmget((key_t) id, sizeof(union Option_8E9F45), 0666), IPC_RMID, NULL);
 }
 
-Unit building_control_Process_sleep(StackFrame caller, Z n) {
+Unit building_control_Process_sleep(STACK_FRAME Z n) {
     usleep((useconds_t) n * 1000);
 }
 

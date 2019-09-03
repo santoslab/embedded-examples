@@ -11,5 +11,4 @@ struct art_TimeTriggered {
 
 #define DeclNewart_TimeTriggered(x) struct art_TimeTriggered x = { .type = Tart_TimeTriggered }
 
-
 #endif

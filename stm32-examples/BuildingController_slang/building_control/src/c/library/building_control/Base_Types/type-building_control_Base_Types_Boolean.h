@@ -12,5 +12,4 @@ struct building_control_Base_Types_Boolean {
 
 #define DeclNewbuilding_control_Base_Types_Boolean(x) struct building_control_Base_Types_Boolean x = { .type = Tbuilding_control_Base_Types_Boolean }
 
-
 #endif

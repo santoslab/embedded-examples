@@ -3,18 +3,43 @@
 #include <types.h>
 
 // MS[Z, IS[Z, Z]]
-B MS_E444B2__eq(MS_E444B2 this, MS_E444B2 other);
-void MS_E444B2_create(MS_E444B2 result, StackFrame caller, Z size, IS_82ABD8 dflt);
-void MS_E444B2_zreate(MS_E444B2 result, StackFrame caller, Z size, IS_82ABD8 dflt);
-void MS_E444B2__append(MS_E444B2 result, StackFrame caller, MS_E444B2 this, IS_82ABD8 value);
-void MS_E444B2__prepend(MS_E444B2 result, StackFrame caller, MS_E444B2 this, IS_82ABD8 value);
-void MS_E444B2__appendAll(MS_E444B2 result, StackFrame caller, MS_E444B2 this, MS_E444B2 other);
-void MS_E444B2__remove(MS_E444B2 result, StackFrame caller, MS_E444B2 this, IS_82ABD8 value);
-void MS_E444B2__removeAll(MS_E444B2 result, StackFrame caller, MS_E444B2 this, MS_E444B2 other);
-void MS_E444B2_cprint(MS_E444B2 this, B isOut);
-void MS_E444B2_string(String result, StackFrame caller, MS_E444B2 this);
 
-static inline B MS_E444B2__ne(MS_E444B2 this, MS_E444B2 other) {
+inline IS_82ABD8 MS_E444B2_at(MS_E444B2 this, Z i) {
+  intmax_t idx = i;
+  #ifdef SIREUM_BOUND_CHECK
+  assert (0 <= idx && idx < this->size);
+  #endif
+  return (IS_82ABD8) &(this->value[(int8_t) idx]);
+}
+
+inline void MS_E444B2_up(MS_E444B2 this, Z i, IS_82ABD8 e) {
+  intmax_t idx = i;
+  #ifdef SIREUM_BOUND_CHECK
+  assert (0 <= idx && idx < this->size);
+  #endif
+  Type_assign(&this->value[(int8_t) idx], e, sizeof(struct IS_82ABD8));
+}
+
+inline Z MS_E444B2_size(STACK_FRAME MS_E444B2 this) {
+   return (Z) (this)->size;
+}
+
+inline Z MS_E444B2_zize(STACK_FRAME MS_E444B2 this) {
+   return (Z) (this)->size;
+}
+
+B MS_E444B2__eq(MS_E444B2 this, MS_E444B2 other);
+void MS_E444B2_create(STACK_FRAME MS_E444B2 result, Z size, IS_82ABD8 dflt);
+void MS_E444B2_zreate(STACK_FRAME MS_E444B2 result, Z size, IS_82ABD8 dflt);
+void MS_E444B2__append(STACK_FRAME MS_E444B2 result, MS_E444B2 this, IS_82ABD8 value);
+void MS_E444B2__prepend(STACK_FRAME MS_E444B2 result, MS_E444B2 this, IS_82ABD8 value);
+void MS_E444B2__appendAll(STACK_FRAME MS_E444B2 result, MS_E444B2 this, MS_E444B2 other);
+void MS_E444B2__sub(STACK_FRAME MS_E444B2 result, MS_E444B2 this, IS_82ABD8 value);
+void MS_E444B2__removeAll(STACK_FRAME MS_E444B2 result, MS_E444B2 this, MS_E444B2 other);
+void MS_E444B2_cprint(MS_E444B2 this, B isOut);
+void MS_E444B2_string_(STACK_FRAME String result, MS_E444B2 this);
+
+inline B MS_E444B2__ne(MS_E444B2 this, MS_E444B2 other) {
   return !MS_E444B2__eq(this, other);
 }
 

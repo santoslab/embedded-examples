@@ -22,5 +22,4 @@ struct building_control_BuildingControl_Fan_i_Bridge {
 
 #define DeclNewbuilding_control_BuildingControl_Fan_i_Bridge(x) struct building_control_BuildingControl_Fan_i_Bridge x = { .type = Tbuilding_control_BuildingControl_Fan_i_Bridge }
 
-
 #endif

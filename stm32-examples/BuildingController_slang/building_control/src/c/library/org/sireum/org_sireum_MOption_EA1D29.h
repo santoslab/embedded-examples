@@ -7,9 +7,10 @@
 #define MOption_EA1D29__eq(this, other) Type__eq(this, other)
 #define MOption_EA1D29__ne(this, other) (!Type__eq(this, other))
 #define MOption_EA1D29_cprint(this, isOut) Type_cprint(this, isOut)
-#define MOption_EA1D29_string(result, caller, this) Type_string(result, caller, this)
-
-B MOption_EA1D29__is(StackFrame caller, void *this);
-MOption_EA1D29 MOption_EA1D29__as(StackFrame caller, void *this);
+B MOption_EA1D29__is(STACK_FRAME void *this);
+MOption_EA1D29 MOption_EA1D29__as(STACK_FRAME void *this);
+inline void MOption_EA1D29_string_(STACK_FRAME String result, MOption_EA1D29 this) {
+  Type_string_(CALLER result, this);
+}
 
 #endif

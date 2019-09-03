@@ -7,7 +7,7 @@ Z _building_control_IPCPorts_Fan_i_App;
 Z _building_control_IPCPorts_TempControl_i_App;
 Z _building_control_IPCPorts_Main;
 
-void building_control_IPCPorts_init(StackFrame caller) {
+void building_control_IPCPorts_init(STACK_FRAME_ONLY) {
   if (building_control_IPCPorts_initialized_) return;
   building_control_IPCPorts_initialized_ = T;
   DeclNewStackFrame(caller, "IPC.scala", "building_control.IPCPorts", "<init>", 0);
@@ -17,22 +17,22 @@ void building_control_IPCPorts_init(StackFrame caller) {
   _building_control_IPCPorts_Main = Z_C(7);
 }
 
-Z building_control_IPCPorts_TempSensor_i_App(StackFrame caller) {
-  building_control_IPCPorts_init(caller);
+Z building_control_IPCPorts_TempSensor_i_App(STACK_FRAME_ONLY) {
+  building_control_IPCPorts_init(CALLER_LAST);
   return _building_control_IPCPorts_TempSensor_i_App;
 }
 
-Z building_control_IPCPorts_Fan_i_App(StackFrame caller) {
-  building_control_IPCPorts_init(caller);
+Z building_control_IPCPorts_Fan_i_App(STACK_FRAME_ONLY) {
+  building_control_IPCPorts_init(CALLER_LAST);
   return _building_control_IPCPorts_Fan_i_App;
 }
 
-Z building_control_IPCPorts_TempControl_i_App(StackFrame caller) {
-  building_control_IPCPorts_init(caller);
+Z building_control_IPCPorts_TempControl_i_App(STACK_FRAME_ONLY) {
+  building_control_IPCPorts_init(CALLER_LAST);
   return _building_control_IPCPorts_TempControl_i_App;
 }
 
-Z building_control_IPCPorts_Main(StackFrame caller) {
-  building_control_IPCPorts_init(caller);
+Z building_control_IPCPorts_Main(STACK_FRAME_ONLY) {
+  building_control_IPCPorts_init(CALLER_LAST);
   return _building_control_IPCPorts_Main;
 }

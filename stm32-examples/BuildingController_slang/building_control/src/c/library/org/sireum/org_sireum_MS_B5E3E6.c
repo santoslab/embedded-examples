@@ -1,6 +1,10 @@
 #include <all.h>
 
 // MS[Z, IS[Z, (Z, Z)]]
+IS_AA0F82 MS_B5E3E6_at(MS_B5E3E6 this, Z i);
+void MS_B5E3E6_up(MS_B5E3E6 this, Z i, IS_AA0F82 e);
+Z MS_B5E3E6_size(STACK_FRAME MS_B5E3E6 this);
+Z MS_B5E3E6_zize(STACK_FRAME MS_B5E3E6 this);
 
 B MS_B5E3E6__eq(MS_B5E3E6 this, MS_B5E3E6 other) {
   int8_t size = this->size;
@@ -11,7 +15,7 @@ B MS_B5E3E6__eq(MS_B5E3E6 this, MS_B5E3E6 other) {
   return T;
 }
 
-void MS_B5E3E6_create(MS_B5E3E6 result, StackFrame caller, Z size, IS_AA0F82 dflt) {
+void MS_B5E3E6_create(STACK_FRAME MS_B5E3E6 result, Z size, IS_AA0F82 dflt) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "create", 0);
   sfAssert(size <= MaxMS_B5E3E6, "Insufficient maximum for MS[Z, IS[Z, (Z, Z)]] elements.");
   int8_t zize = (int8_t) size;
@@ -21,7 +25,7 @@ void MS_B5E3E6_create(MS_B5E3E6 result, StackFrame caller, Z size, IS_AA0F82 dfl
   result->size = zize;
 }
 
-void MS_B5E3E6_zreate(MS_B5E3E6 result, StackFrame caller, Z size, IS_AA0F82 dflt) {
+void MS_B5E3E6_zreate(STACK_FRAME MS_B5E3E6 result, Z size, IS_AA0F82 dflt) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "zreate", 0);
   sfAssert(size <= MaxMS_B5E3E6, "Insufficient maximum for MS[Z, IS[Z, (Z, Z)]] elements.");
   int8_t zize = (int8_t) size;
@@ -31,7 +35,7 @@ void MS_B5E3E6_zreate(MS_B5E3E6 result, StackFrame caller, Z size, IS_AA0F82 dfl
   result->size = zize;
 }
 
-void MS_B5E3E6__append(MS_B5E3E6 result, StackFrame caller, MS_B5E3E6 this, IS_AA0F82 value) {
+void MS_B5E3E6__append(STACK_FRAME MS_B5E3E6 result, MS_B5E3E6 this, IS_AA0F82 value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", ":+", 0);
   sfAssert(this->size + 1 <= MaxMS_B5E3E6, "Insufficient maximum for MS[Z, IS[Z, (Z, Z)]] elements.");
   int8_t thisSize = this->size;
@@ -40,7 +44,7 @@ void MS_B5E3E6__append(MS_B5E3E6 result, StackFrame caller, MS_B5E3E6 this, IS_A
   result->size = (int8_t) (thisSize + 1);
 }
 
-void MS_B5E3E6__prepend(MS_B5E3E6 result, StackFrame caller, MS_B5E3E6 this, IS_AA0F82 value) {
+void MS_B5E3E6__prepend(STACK_FRAME MS_B5E3E6 result, MS_B5E3E6 this, IS_AA0F82 value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "+:", 0);
   sfAssert(this->size + 1 <= MaxMS_B5E3E6, "Insufficient maximum for MS[Z, IS[Z, (Z, Z)]] elements.");
   int8_t thisSize = this->size;
@@ -50,18 +54,18 @@ void MS_B5E3E6__prepend(MS_B5E3E6 result, StackFrame caller, MS_B5E3E6 this, IS_
   result->size = (int8_t) thisSize + 1;
 }
 
-void MS_B5E3E6__appendAll(MS_B5E3E6 result, StackFrame caller, MS_B5E3E6 this, MS_B5E3E6 other) {
+void MS_B5E3E6__appendAll(STACK_FRAME MS_B5E3E6 result, MS_B5E3E6 this, MS_B5E3E6 other) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "++", 0);
   sfAssert(this->size + other->size <= MaxMS_B5E3E6, "Insufficient maximum for MS[Z, IS[Z, (Z, Z)]] elements.");
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
   Type_assign(result, this, sizeof(struct MS_B5E3E6));
-  for (int8_t i = 0; i < otherSize; i++)
-    Type_assign(&result->value[thisSize + i], &other->value[i], sizeof(struct IS_AA0F82));
   result->size = (int8_t) thisSize + otherSize;
+  for (int8_t i = 0; i < otherSize; i++)
+    Type_assign(&result->value[thisSize + i], &other->value[i + 1], sizeof(struct IS_AA0F82));
 }
 
-void MS_B5E3E6__remove(MS_B5E3E6 result, StackFrame caller, MS_B5E3E6 this, IS_AA0F82 value) {
+void MS_B5E3E6__sub(STACK_FRAME MS_B5E3E6 result, MS_B5E3E6 this, IS_AA0F82 value) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "-", 0);
   int8_t thisSize = this->size;
   int8_t k = 0;
@@ -73,7 +77,7 @@ void MS_B5E3E6__remove(MS_B5E3E6 result, StackFrame caller, MS_B5E3E6 this, IS_A
   result->size = k;
 }
 
-void MS_B5E3E6__removeAll(MS_B5E3E6 result, StackFrame caller, MS_B5E3E6 this, MS_B5E3E6 other) {
+void MS_B5E3E6__removeAll(STACK_FRAME MS_B5E3E6 result, MS_B5E3E6 this, MS_B5E3E6 other) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "--", 0);
   int8_t thisSize = this->size;
   int8_t otherSize = other->size;
@@ -107,20 +111,22 @@ void MS_B5E3E6_cprint(MS_B5E3E6 this, B isOut) {
   #endif
 }
 
-void MS_B5E3E6_string(String result, StackFrame caller, MS_B5E3E6 this) {
+void MS_B5E3E6_string_(STACK_FRAME String result, MS_B5E3E6 this) {
   DeclNewStackFrame(caller, "MS.scala", "org.sireum.MS", "string", 0);
-  String_string(result, sf, string("["));
+  String_string_(SF result, string("["));
   int8_t size = this->size;
   if (size > 0) {
     struct IS_AA0F82 *value = this->value;
     String space = string(" ");
-    String_string(result, sf, space);
-    IS_AA0F82_string(result, sf, (IS_AA0F82) &(value[0]));
+    String_string_(SF result, space);
+    IS_AA0F82_string_(SF result, (IS_AA0F82) &(value[0]));
     for (int8_t i = 1; i < size; i++) {
-      String_string(result, sf, string(", "));
-      IS_AA0F82_string(result, sf, (IS_AA0F82) &(value[i]));
+      String_string_(SF result, string(", "));
+      IS_AA0F82_string_(SF result, (IS_AA0F82) &(value[i]));
     }
-    String_string(result, sf, space);
+    String_string_(SF result, space);
   }
-  String_string(result, sf, string("]"));
+  String_string_(SF result, string("]"));
 }
+
+B MS_B5E3E6__ne(MS_B5E3E6 this, MS_B5E3E6 other);

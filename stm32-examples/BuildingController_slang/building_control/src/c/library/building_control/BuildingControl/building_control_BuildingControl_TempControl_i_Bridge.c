@@ -10,18 +10,20 @@ B building_control_BuildingControl_TempControl_i_Bridge__eq(building_control_Bui
   return T;
 }
 
-void building_control_BuildingControl_TempControl_i_Bridge_string(String result, StackFrame caller, building_control_BuildingControl_TempControl_i_Bridge this) {
+B building_control_BuildingControl_TempControl_i_Bridge__ne(building_control_BuildingControl_TempControl_i_Bridge this, building_control_BuildingControl_TempControl_i_Bridge other);
+
+void building_control_BuildingControl_TempControl_i_Bridge_string_(STACK_FRAME String result, building_control_BuildingControl_TempControl_i_Bridge this) {
   DeclNewStackFrame(caller, "TempControl_i_Bridge.scala", "building_control.BuildingControl.TempControl_i_Bridge", "string", 0);
-  String_string(result, sf, string("TempControl_i_Bridge("));
+  String_string_(SF result, string("TempControl_i_Bridge("));
   String sep = string(", ");
-  Z_string(result, sf, this->id);
-  String_string(result, sf, sep);
-  art_DispatchPropertyProtocol_string(result, sf, (art_DispatchPropertyProtocol) &this->dispatchProtocol);
-  String_string(result, sf, sep);
-  art_Port_C61295_string(result, sf, (art_Port_C61295) &this->currentTemp);
-  String_string(result, sf, sep);
-  art_Port_69270F_string(result, sf, (art_Port_69270F) &this->fanCmd);
-  String_string(result, sf, string(")"));
+  Z_string_(SF result, this->id);
+  String_string_(SF result, sep);
+  art_DispatchPropertyProtocol_string_(SF result, (art_DispatchPropertyProtocol) &this->dispatchProtocol);
+  String_string_(SF result, sep);
+  art_Port_C61295_string_(SF result, (art_Port_C61295) &this->currentTemp);
+  String_string_(SF result, sep);
+  art_Port_69270F_string_(SF result, (art_Port_69270F) &this->fanCmd);
+  String_string_(SF result, string(")"));
 }
 
 void building_control_BuildingControl_TempControl_i_Bridge_cprint(building_control_BuildingControl_TempControl_i_Bridge this, B isOut) {
@@ -39,7 +41,10 @@ void building_control_BuildingControl_TempControl_i_Bridge_cprint(building_contr
   #endif
 }
 
-void building_control_BuildingControl_TempControl_i_Bridge_apply(StackFrame caller, building_control_BuildingControl_TempControl_i_Bridge this, Z id, art_DispatchPropertyProtocol dispatchProtocol, art_Port_C61295 currentTemp, art_Port_69270F fanCmd) {
+B building_control_BuildingControl_TempControl_i_Bridge__is(STACK_FRAME void* this);
+building_control_BuildingControl_TempControl_i_Bridge building_control_BuildingControl_TempControl_i_Bridge__as(STACK_FRAME void *this);
+
+void building_control_BuildingControl_TempControl_i_Bridge_apply(STACK_FRAME building_control_BuildingControl_TempControl_i_Bridge this, Z id, art_DispatchPropertyProtocol dispatchProtocol, art_Port_C61295 currentTemp, art_Port_69270F fanCmd) {
   DeclNewStackFrame(caller, "TempControl_i_Bridge.scala", "building_control.BuildingControl.TempControl_i_Bridge", "apply", 0);
   this->id = id;
   Type_assign(&this->dispatchProtocol, dispatchProtocol, sizeof(union art_DispatchPropertyProtocol));
@@ -48,8 +53,8 @@ void building_control_BuildingControl_TempControl_i_Bridge_apply(StackFrame call
   STATIC_ASSERT(2 <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   DeclNewIS_820232(t_1);
   t_1.size = (int8_t) 2;
-  Type_assign(&t_1.value[0], building_control_BuildingControl_TempControl_i_Bridge_currentTemp_(this), sizeof(union art_UPort));
-  Type_assign(&t_1.value[1], building_control_BuildingControl_TempControl_i_Bridge_fanCmd_(this), sizeof(union art_UPort));
+  IS_820232_up(&t_1, 0, (art_UPort) building_control_BuildingControl_TempControl_i_Bridge_currentTemp_(this));
+  IS_820232_up(&t_1, 1, (art_UPort) building_control_BuildingControl_TempControl_i_Bridge_fanCmd_(this));
   STATIC_ASSERT(0 <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   DeclNewIS_820232(t_2);
   t_2.size = (int8_t) 0;
@@ -59,20 +64,20 @@ void building_control_BuildingControl_TempControl_i_Bridge_apply(StackFrame call
   STATIC_ASSERT(1 <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   DeclNewIS_820232(t_4);
   t_4.size = (int8_t) 1;
-  Type_assign(&t_4.value[0], building_control_BuildingControl_TempControl_i_Bridge_currentTemp_(this), sizeof(union art_UPort));
+  IS_820232_up(&t_4, 0, (art_UPort) building_control_BuildingControl_TempControl_i_Bridge_currentTemp_(this));
   STATIC_ASSERT(1 <= MaxIS_820232, "Insufficient maximum for IS[Z, art.UPort] elements.");
   DeclNewIS_820232(t_5);
   t_5.size = (int8_t) 1;
-  Type_assign(&t_5.value[0], building_control_BuildingControl_TempControl_i_Bridge_fanCmd_(this), sizeof(union art_UPort));
+  IS_820232_up(&t_5, 0, (art_UPort) building_control_BuildingControl_TempControl_i_Bridge_fanCmd_(this));
   DeclNewart_Bridge_Ports(t_0);
-  art_Bridge_Ports_apply(sf, &t_0, (IS_820232) (&t_1), (IS_820232) (&t_2), (IS_820232) (&t_3), (IS_820232) (&t_4), (IS_820232) (&t_5));
+  art_Bridge_Ports_apply(SF &t_0, (IS_820232) (&t_1), (IS_820232) (&t_2), (IS_820232) (&t_3), (IS_820232) (&t_4), (IS_820232) (&t_5));
   Type_assign(&this->ports, (&t_0), sizeof(struct art_Bridge_Ports));
   DeclNewbuilding_control_BuildingControl_TempControl_i_Bridge_Api(t_6);
-  building_control_BuildingControl_TempControl_i_Bridge_Api_apply(sf, &t_6, building_control_BuildingControl_TempControl_i_Bridge_id_(this), art_Port_C61295_id_(building_control_BuildingControl_TempControl_i_Bridge_currentTemp_(this)), art_Port_69270F_id_(building_control_BuildingControl_TempControl_i_Bridge_fanCmd_(this)));
+  building_control_BuildingControl_TempControl_i_Bridge_Api_apply(SF &t_6, building_control_BuildingControl_TempControl_i_Bridge_id_(this), art_Port_C61295_id_(building_control_BuildingControl_TempControl_i_Bridge_currentTemp_(this)), art_Port_69270F_id_(building_control_BuildingControl_TempControl_i_Bridge_fanCmd_(this)));
   Type_assign(&this->api, (&t_6), sizeof(struct building_control_BuildingControl_TempControl_i_Bridge_Api));
   DeclNewbuilding_control_BuildingControl_TempControl_i_Impl(t_8);
-  building_control_BuildingControl_TempControl_i_Impl_apply(sf, &t_8, (building_control_BuildingControl_TempControl_i_Bridge_Api) building_control_BuildingControl_TempControl_i_Bridge_api_(this));
+  building_control_BuildingControl_TempControl_i_Impl_apply(SF &t_8, (building_control_BuildingControl_TempControl_i_Bridge_Api) building_control_BuildingControl_TempControl_i_Bridge_api_(this));
   DeclNewbuilding_control_BuildingControl_TempControl_i_Bridge_EntryPoints(t_7);
-  building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_apply(sf, &t_7, building_control_BuildingControl_TempControl_i_Bridge_id_(this), art_Port_C61295_id_(building_control_BuildingControl_TempControl_i_Bridge_currentTemp_(this)), art_Port_69270F_id_(building_control_BuildingControl_TempControl_i_Bridge_fanCmd_(this)), (building_control_BuildingControl_TempControl_i_Impl) (&t_8));
+  building_control_BuildingControl_TempControl_i_Bridge_EntryPoints_apply(SF &t_7, building_control_BuildingControl_TempControl_i_Bridge_id_(this), art_Port_C61295_id_(building_control_BuildingControl_TempControl_i_Bridge_currentTemp_(this)), art_Port_69270F_id_(building_control_BuildingControl_TempControl_i_Bridge_fanCmd_(this)), (building_control_BuildingControl_TempControl_i_Impl) (&t_8));
   Type_assign(&this->entryPoints, (&t_7), sizeof(struct building_control_BuildingControl_TempControl_i_Bridge_EntryPoints));
 }

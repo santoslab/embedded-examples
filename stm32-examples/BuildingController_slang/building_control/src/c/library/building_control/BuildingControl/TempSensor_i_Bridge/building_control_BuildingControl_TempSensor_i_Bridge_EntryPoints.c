@@ -9,16 +9,18 @@ B building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints__eq(building_
   return T;
 }
 
-void building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_string(String result, StackFrame caller, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this) {
+B building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints__ne(building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints other);
+
+void building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_string_(STACK_FRAME String result, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "TempSensor_i_Bridge.scala", "building_control.BuildingControl.TempSensor_i_Bridge.EntryPoints", "string", 0);
-  String_string(result, sf, string("EntryPoints("));
+  String_string_(SF result, string("EntryPoints("));
   String sep = string(", ");
-  Z_string(result, sf, this->TempSensor_i_BridgeId);
-  String_string(result, sf, sep);
-  Z_string(result, sf, this->currentTemp_Id);
-  String_string(result, sf, sep);
-  building_control_BuildingControl_TempSensor_i_Impl_string(result, sf, (building_control_BuildingControl_TempSensor_i_Impl) &this->component);
-  String_string(result, sf, string(")"));
+  Z_string_(SF result, this->TempSensor_i_BridgeId);
+  String_string_(SF result, sep);
+  Z_string_(SF result, this->currentTemp_Id);
+  String_string_(SF result, sep);
+  building_control_BuildingControl_TempSensor_i_Impl_string_(SF result, (building_control_BuildingControl_TempSensor_i_Impl) &this->component);
+  String_string_(SF result, string(")"));
 }
 
 void building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_cprint(building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this, B isOut) {
@@ -34,7 +36,10 @@ void building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_cprint(bui
   #endif
 }
 
-void building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_apply(StackFrame caller, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this, Z TempSensor_i_BridgeId, Z currentTemp_Id, building_control_BuildingControl_TempSensor_i_Impl component) {
+B building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints__is(STACK_FRAME void* this);
+building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints__as(STACK_FRAME void *this);
+
+void building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_apply(STACK_FRAME building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this, Z TempSensor_i_BridgeId, Z currentTemp_Id, building_control_BuildingControl_TempSensor_i_Impl component) {
   DeclNewStackFrame(caller, "TempSensor_i_Bridge.scala", "building_control.BuildingControl.TempSensor_i_Bridge.EntryPoints", "apply", 0);
   this->TempSensor_i_BridgeId = TempSensor_i_BridgeId;
   this->currentTemp_Id = currentTemp_Id;
@@ -54,33 +59,33 @@ void building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_apply(Stac
   STATIC_ASSERT(1 <= MaxIS_82ABD8, "Insufficient maximum for IS[Z, Z] elements.");
   DeclNewIS_82ABD8(t_3);
   t_3.size = (int8_t) 1;
-  t_3.value[0] = building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_currentTemp_Id_(this);
+  IS_82ABD8_up(&t_3, 0, (Z) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_currentTemp_Id_(this));
   Type_assign(&this->eventOutPortIds, (&t_3), sizeof(struct IS_82ABD8));
 }
 
-Unit building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_initialise_(StackFrame caller, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this) {
+Unit building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_initialise_(STACK_FRAME building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "TempSensor_i_Bridge.scala", "building_control.BuildingControl.TempSensor_i_Bridge.EntryPoints", "initialise", 0);
 
   sfUpdateLoc(87);
-  building_control_BuildingControl_TempSensor_i_Impl_initialise_(sf, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_component_(this));
+  building_control_BuildingControl_TempSensor_i_Impl_initialise_(SF building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_component_(this));
 }
 
-Unit building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_compute_(StackFrame caller, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this) {
+Unit building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_compute_(STACK_FRAME building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "TempSensor_i_Bridge.scala", "building_control.BuildingControl.TempSensor_i_Bridge.EntryPoints", "compute", 0);
 
   sfUpdateLoc(91);
-  art_Art_receiveInput(sf, (IS_82ABD8) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_eventInPortIds_(this), (IS_82ABD8) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_dataInPortIds_(this));
+  art_Art_receiveInput(SF (IS_82ABD8) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_eventInPortIds_(this), (IS_82ABD8) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_dataInPortIds_(this));
 
   sfUpdateLoc(92);
-  building_control_BuildingControl_TempSensor_i_Impl_timeTriggered_(sf, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_component_(this));
+  building_control_BuildingControl_TempSensor_i_Impl_timeTriggered_(SF building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_component_(this));
 
   sfUpdateLoc(93);
-  art_Art_sendOutput(sf, (IS_82ABD8) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_eventOutPortIds_(this), (IS_82ABD8) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_dataOutPortIds_(this));
+  art_Art_sendOutput(SF (IS_82ABD8) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_eventOutPortIds_(this), (IS_82ABD8) building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_dataOutPortIds_(this));
 }
 
-Unit building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_finalise_(StackFrame caller, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this) {
+Unit building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_finalise_(STACK_FRAME building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints this) {
   DeclNewStackFrame(caller, "TempSensor_i_Bridge.scala", "building_control.BuildingControl.TempSensor_i_Bridge.EntryPoints", "finalise", 0);
 
   sfUpdateLoc(109);
-  building_control_BuildingControl_TempSensor_i_Impl_finalise_(sf, building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_component_(this));
+  building_control_BuildingControl_TempSensor_i_Impl_finalise_(SF building_control_BuildingControl_TempSensor_i_Bridge_EntryPoints_component_(this));
 }

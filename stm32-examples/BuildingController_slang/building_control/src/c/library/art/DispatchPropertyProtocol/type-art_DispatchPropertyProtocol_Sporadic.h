@@ -12,5 +12,4 @@ struct art_DispatchPropertyProtocol_Sporadic {
 
 #define DeclNewart_DispatchPropertyProtocol_Sporadic(x) struct art_DispatchPropertyProtocol_Sporadic x = { .type = Tart_DispatchPropertyProtocol_Sporadic }
 
-
 #endif
