@@ -30,6 +30,6 @@ that to the board
 
 1. Open [hamr/slang](hamr/slang) in IVE
 
-1. Change [DeviceBridge.port](hamr/slang/src/main/component/bc/BuildingControl/device/DeviceBridge.scala) so that it matches the board's port
+1. Change [DeviceBridge.port](hamr/slang/src/main/component/bc/BuildingControl/device/DeviceBridge.scala#L8) so that it matches the board's port
 
 1. Run the [Demo](hamr/slang/src/main/architecture/bc/Demo.scala) app
