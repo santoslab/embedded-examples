@@ -1,0 +1,3 @@
+projects=.
+system_impl_file=packages/BuildingControl.aadl
+system_impl=BuildingControlDemo.i

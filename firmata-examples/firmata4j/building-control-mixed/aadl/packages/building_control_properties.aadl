@@ -1,0 +1,6 @@
+property set building_control_properties is
+  --stack size   
+  StackSize : constant
+    --Size => 110592 Bytes; -- needs to be 4K aligned for seL4
+    Size => 229376 Bytes; -- and also need to be 16K aligned for clang - 1024*16*14
+end building_control_properties;
