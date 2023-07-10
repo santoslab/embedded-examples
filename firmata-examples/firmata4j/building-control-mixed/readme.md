@@ -33,3 +33,6 @@ that to the board
 1. Change [DeviceBridge.port](hamr/slang/src/main/component/bc/BuildingControl/device/DeviceBridge.scala#L8) so that it matches the board's port
 
 1. Run the [Demo](hamr/slang/src/main/architecture/bc/Demo.scala) app
+
+**Note** if you're using Windows or Apple Silicon then you'll also need to add the Java Serial Simple Connector (JSSC)
+libray as an IVY dependency in your ``bin/project.cmd``.  A combination of ``io.github.java-native:jssc:2.9.4`` and ``com.github.kurbatov:firmata4j:2.3.8`` worked on an M2.  Refer [here](https://www.yorku.ca/professor/drsmith/2022/02/25/easy-java-arduino-with-firmata/) for more information.
