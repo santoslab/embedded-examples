@@ -5,7 +5,7 @@ import bc.BuildingControl.{FanAck, FanCmd, Util}
 import org.sireum._
 
 object DeviceBridge {
-  val port: String = "/dev/cu.usbmodem14301"
+  val port: String = "/dev/cu.usbmodem2201"
   val pwmPort: Z = 9
   val ledPin: Z = 13
   val analog0Pin: Z = 14
