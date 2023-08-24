@@ -21,10 +21,14 @@ object UnoBoard {
           device.ensureInitializationIsDone()
         }
       } catch {
-        case e: Exception =>
+        case e: Throwable =>
           cprintln(T, e)
       }
     }
+  }
+
+  def ready: B = {
+    return device.isReady
   }
 
   def analogRead(pin: Z, mode: PinMode.Type): Z = {

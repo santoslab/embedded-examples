@@ -17,6 +17,11 @@ object DeviceBridge {
     UnoBoard.init(port)
   }
 
+  def ready: B = {
+    init()
+    return UnoBoard.ready
+  }
+
   def getCurrentTemp(): F32 = {
     init()
 
