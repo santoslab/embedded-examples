@@ -5,7 +5,7 @@ import org.firmata4j._
 import org.firmata4j.firmata._
 import org.sireum._
 
-object UnoBoard {
+object Board {
 
   var port: String = _
   var device: IODevice = _

@@ -4,22 +4,25 @@ import bc.BuildingControl.device.FirmataUtil.PinMode
 import bc.BuildingControl.{FanAck, FanCmd, Util}
 import org.sireum._
 
+case class BoardPinOut(pwmPin: Z, ledPin: Z, analog0Pin: Z)
+
 object DeviceBridge {
+  val MEGA2560 = BoardPinOut(9, 13, 54) // https://www.electronicshub.org/arduino-mega-pinout/
+  val UNO = BoardPinOut(9, 13, 14)
+
+  val board = UNO
   val port: String = "/dev/cu.usbmodem2201"
-  val pwmPort: Z = 9
-  val ledPin: Z = 13
-  val analog0Pin: Z = 14
 
   val minTempZ: Z = Z(Util.minTemp.value.toInt)
   val maxTempZ: Z = Z(Util.maxTemp.value.toInt)
 
   def init(): Unit = {
-    UnoBoard.init(port)
+    Board.init(port)
   }
 
   def ready: B = {
     init()
-    return UnoBoard.ready
+    return Board.ready
   }
 
   def getCurrentTemp(): F32 = {
@@ -29,14 +32,14 @@ object DeviceBridge {
     var accum: Z = 0
     val numReads: Z = 100
     for (i <- 0 to numReads) {
-      accum = accum + UnoBoard.analogRead(analog0Pin, PinMode.ANALOG)
+      accum = accum + Board.analogRead(board.analog0Pin, PinMode.ANALOG)
     }
 
     // scale value so that it's within led range
     val ledScaled = map(accum / numReads, 0, 1033, 0, 255)
 
     // use pwm to display room temp: brighter == hotter
-    UnoBoard.analogWrite(pwmPort, PinMode.PWM, ledScaled)
+    Board.analogWrite(board.pwmPin, PinMode.PWM, ledScaled)
 
     // scale value so that it's within the absolute min/max of the sensor
     val tempScaled = map(ledScaled, 0, 255, minTempZ, maxTempZ)
@@ -48,9 +51,9 @@ object DeviceBridge {
 
     cmd match {
       case FanCmd.On =>
-        UnoBoard.analogWrite(ledPin, PinMode.OUTPUT, 255)
+        Board.analogWrite(board.ledPin, PinMode.OUTPUT, 255)
       case FanCmd.Off =>
-        UnoBoard.analogWrite(ledPin, PinMode.OUTPUT, 0)
+        Board.analogWrite(board.ledPin, PinMode.OUTPUT, 0)
     }
 
     return FanAck.Ok

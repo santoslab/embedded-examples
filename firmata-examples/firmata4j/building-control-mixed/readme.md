@@ -1,4 +1,4 @@
-# Building Control + Firmata4j + Uno example
+# Building Control + Firmata4j + Arduino example
 
 ![circuit_diagram.jpg](circuit_diagram.jpg)
 
@@ -15,8 +15,8 @@ drops below 80 F.
 
 1. Install [Arduino IDE 2.0](https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing)
 
-1. Plugin in the Uno, launch the IDE, and then select the board making
-note of its port (e.g. it will look something like ``/dev/cu.usbmodem14301``)
+1. Plugin in the Arduino board, launch the IDE, and then select the board making
+note of its port (e.g. it will look something like ``/dev/cu.usbmodem2201``)
 
 1. Select ``File >> Examples >> Firmata >> StandardFirmata`` and upload
 that to the board
@@ -30,7 +30,7 @@ that to the board
 
 1. Open [hamr/slang](hamr/slang) in IVE
 
-1. Change [DeviceBridge.port](hamr/slang/src/main/component/bc/BuildingControl/device/DeviceBridge.scala#L8) so that it matches the board's port
+1. Change [DeviceBridge.board](hamr/slang/src/main/component/bc/BuildingControl/device/DeviceBridge.scala#L13) and [DeviceBridge.port](hamr/slang/src/main/component/bc/BuildingControl/device/DeviceBridge.scala#L14) so that they match your setup
 
 1. Run the [Demo](hamr/slang/src/main/architecture/bc/Demo.scala) app
 
