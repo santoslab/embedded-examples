@@ -1,0 +1,43 @@
+package Off_On
+public
+	with Base_Types, Data_Model, HAMR;
+
+	system OffOnDemo
+	end OffOnDemo;
+
+	system implementation OffOnDemo.i
+		subcomponents
+			p: process OffOnProcess.i;
+	end OffOnDemo.i;
+
+	process OffOnProcess
+	end OffOnProcess;
+
+	process implementation OffOnProcess.i
+		subcomponents
+			on: thread On;
+			off: thread Off;
+		connections
+			c1: port on.turnOff -> off.turnOff;
+			c2: port off.turnOn -> on.turnOn;
+	end OffOnProcess.i;
+
+	thread On
+		features
+			turnOff: out event data port Base_Types::Integer;
+			turnOn: in event data port Base_Types::Integer;
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 1sec;
+	end On;
+
+	thread Off
+		features
+			turnOff: in event data port Base_Types::Integer;
+			turnOn: out event data port Base_Types::Integer;
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 1sec;
+	end Off;
+
+end Off_On;
