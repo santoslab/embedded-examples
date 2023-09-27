@@ -10,7 +10,7 @@ object DeviceBridge {
 
   val board = UNO
 
-  val port: String = "/dev/cu.usbmodem2201"
+  val port: String = "/dev/cu.usbmodem14401"
 
   def init(): Unit = {
     Board.init(port)

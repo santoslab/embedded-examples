@@ -8,7 +8,7 @@ object SlangBoundary_Ext {
 
   def init(): Unit = {
     DeviceBridge.init()
-println(Os.prop("os.arch"))
+
     if (!DeviceBridge.ready) {
       println(s"Device not found on ${DeviceBridge.port}")
       println("\nHere are the connected serial devices:")
