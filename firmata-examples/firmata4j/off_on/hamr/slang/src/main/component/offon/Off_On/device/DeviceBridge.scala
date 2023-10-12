@@ -10,20 +10,15 @@ object DeviceBridge {
 
   val board = UNO
 
-  val port: String = "/dev/cu.usbmodem14401"
-
-  def init(): Unit = {
+  def init(port: String): Unit = {
     Board.init(port)
   }
 
   def ready: B = {
-    init()
     return Board.ready
   }
 
   def turnOnOff(on: B): Unit = {
-    init()
-
     Board.analogWrite(board.ledPin, PinMode.OUTPUT, if (on) 255 else 0)
   }
 }

@@ -1,36 +1,75 @@
 package offon.Off_On
 
-import com.fazecast.jSerialComm.SerialPort
 import org.sireum._
-import device.DeviceBridge
+import jssc.{SerialNativeInterface, SerialPortList}
+import offon.Off_On.device.DeviceBridge
+import java.awt.GridBagLayout
+import java.util.regex.Pattern
+import javax.swing._
 
 object SlangBoundary_Ext {
 
-  def init(): Unit = {
-    DeviceBridge.init()
+  // point port at a device or SIMULATE to skip the dropdown
+  var port: Option[String] = None() // Some("/dev/ttyACM0")
 
-    if (!DeviceBridge.ready) {
-      val deviceBridge = Os.path(implicitly[sourcecode.File].value).up / "device" / "DeviceBridge.scala"
-      println(s"\nDevice not found on ${DeviceBridge.port} as specified in ${deviceBridge.toUri}")
-      println("\nHere are the connected serial devices:")
-      for(p <- SerialPort.getCommPorts.toList) {
-        println(s"  ${p.getSystemPortPath}${if (p.getVendorID == 0x2341) " by Arduino LLC" else ""}")
+  var simulating: B = F
+
+  def init(): Unit = {
+
+    port = Some(port match {
+      case Some(s) => s
+      case _ => requestPort
+    })
+
+    if (port.get == string"SIMULATE") {
+      simulating = T
+    } else {
+
+      DeviceBridge.init(port.get)
+
+      if (!DeviceBridge.ready) {
+        JOptionPane.showMessageDialog(null, s"${port.get} isn't ready\nNote: You may need to give rwx access to the device (e.g. sudo chmod 777 ${port.get})", "Error", JOptionPane.ERROR_MESSAGE)
+        System.exit(1)
       }
-      println("\nNote: You may need to give rwx access to the device (e.g. sudo chmod 777 /dev/ttyACM0)")
-      print(s"\nWill simulate devices instead starting in 5 seconds  ")
-      for (i <- 4 to 0 by -1) {
-        Thread.sleep(1000)
-        print(s"\b\b\b\b\b\b\b\b\b\b\b$i seconds ${if (i % 2 == 0) "*" else " "}")
-      }
-      println("\b ")
     }
   }
 
   def onOff(on: B): Unit = {
-    if (DeviceBridge.ready) {
-      DeviceBridge.turnOnOff(on)
-    } else {
+    if (simulating) {
       println(s"Turned led ${if (on) "on" else "off"}")
+    } else {
+      DeviceBridge.turnOnOff(on)
+    }
+  }
+
+  private def requestPort: String = {
+    val portNameSelector = new JComboBox[String]()
+    portNameSelector.setModel(new DefaultComboBoxModel[String]())
+    var portNames: List[Predef.String] = List[Predef.String] {"SIMULATE"}
+    // TODO: maybe use jSerialComm so that the ports can be filtered by vendor ID
+    //for (p <- SerialPort.getCommPorts.toList) {
+    //  println(s"  ${p.getSystemPortPath}${if (p.getVendorID == 0x2341) " by Arduino LLC" else ""}")
+    //}
+    if (SerialNativeInterface.getOsType == SerialNativeInterface.OS_MAC_OS_X) {
+      // for MAC OS default pattern of jssc library is too restrictive
+      portNames = portNames.appendedAll(SerialPortList.getPortNames("/dev/", Pattern.compile("tty\\..*")).toList)
+    }
+    else {
+      portNames = portNames.appendedAll(SerialPortList.getPortNames.toList)
+    }
+    for (portName <- portNames) {
+      portNameSelector.addItem(portName)
+    }
+    val panel = new JPanel()
+    panel.setLayout(new GridBagLayout())
+    panel.add(new JLabel("Port "))
+    panel.add(portNameSelector)
+    if (JOptionPane.showConfirmDialog(null, panel, "Select the port", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+      return portNameSelector.getSelectedItem.toString
+    }
+    else {
+      System.exit(0)
+      halt("")
     }
   }
 }
