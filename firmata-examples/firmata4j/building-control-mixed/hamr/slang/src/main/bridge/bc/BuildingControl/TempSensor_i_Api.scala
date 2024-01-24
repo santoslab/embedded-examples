@@ -11,11 +11,37 @@ import bc._
   def currentTemp_Id : Art.PortId
   def tempChanged_Id : Art.PortId
 
+  // Logika spec var representing port state for outgoing data port
+  @spec var currentTemp: BuildingControl.Temperature_i = $
+
   def put_currentTemp(value : BuildingControl.Temperature_i) : Unit = {
+    Contract(
+      Modifies(currentTemp),
+      Ensures(
+        currentTemp == value
+      )
+    )
+    Spec {
+      currentTemp = value
+    }
+
     Art.putValue(currentTemp_Id, BuildingControl.Temperature_i_Payload(value))
   }
 
+  // Logika spec var representing port state for outgoing event port
+  @spec var tempChanged: Option[art.Empty] = $
+
   def put_tempChanged() : Unit = {
+    Contract(
+      Modifies(tempChanged),
+      Ensures(
+        tempChanged == Some(Empty())
+      )
+    )
+    Spec {
+      tempChanged = Some(Empty())
+    }
+
     Art.putValue(tempChanged_Id, art.Empty())
   }
 

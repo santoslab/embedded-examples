@@ -1,10 +1,10 @@
-::#! 2> /dev/null                                   #
-@ 2>/dev/null # 2>nul & echo off & goto BOF         #
-if [ -z ${SIREUM_HOME} ]; then                      #
-  echo "Please set SIREUM_HOME env var"             #
-  exit -1                                           #
-fi                                                  #
-exec ${SIREUM_HOME}/bin/sireum slang run "$0" "$@"  #
+::/*#! 2> /dev/null                                   #
+@ 2>/dev/null # 2>nul & echo off & goto BOF           #
+if [ -z ${SIREUM_HOME} ]; then                        #
+  echo "Please set SIREUM_HOME env var"               #
+  exit -1                                             #
+fi                                                    #
+exec ${SIREUM_HOME}/bin/sireum slang run "$0" "$@"    #
 :BOF
 setlocal
 if not defined SIREUM_HOME (
@@ -13,12 +13,12 @@ if not defined SIREUM_HOME (
 )
 %SIREUM_HOME%\\bin\\sireum.bat slang run "%0" %*
 exit /B %errorlevel%
-::!#
+::!#*/
 // #Sireum
 
 // Example Sireum Proyek build definitions -- the contents of this file will not be overwritten
 //
-// To install Sireum (Proyek and IVE) see https://github.com/sireum/kekinian#installing
+// To install Sireum (Proyek and IVE) see https://sireum.org/getting-started/
 //
 // The following commands should be executed in the parent of the 'bin' directory.
 //
@@ -37,7 +37,8 @@ exit /B %errorlevel%
 //
 // Sireum IVE:
 //
-//   If you prevented HAMR from running Proyek IVE then first generate the IVE project:
+//   Create the IVE project if Codegen was not run locally or if its no-proyek-ive
+//   option was used:
 //     sireum proyek ive .
 //
 //   Then in IVE select 'File > Open ...' and navigate to the parent of the
@@ -61,14 +62,14 @@ val slangModule: Module = Module(
   deps = ISZ(),
   targets = ISZ(Target.Jvm),
   ivyDeps = ISZ("org.sireum.kekinian::library:",
+    "org.sireum.kekinian::hamr-vision:",
     "com.github.kurbatov:firmata4j:",
-    // uncomment the following two if on Windows or Apple Silicon
-    //"io.github.java-native:jssc:",
-    //"com.github.kurbatov:firmata4j:"
+    "io.github.java-native:jssc:",
+    "com.github.kurbatov:firmata4j:"
 ),
-  sources = for(m <- ISZ("art", "architecture", "bridge", "component", "data", "nix", "seL4Nix")) yield (Os.path("main") / m).string,
+  sources = for(m <- ISZ("art", "architecture", "bridge", "component", "data", "nix", "seL4Nix", "util")) yield (Os.path("main") / m).string,
   resources = ISZ(),
-  testSources = for (m <- ISZ("bridge", "util")) yield (Os.path("test") / m).string,
+  testSources = for (m <- ISZ("bridge", "system", "util")) yield (Os.path("test") / m).string,
   testResources = ISZ(),
   publishInfoOpt = None()
 )

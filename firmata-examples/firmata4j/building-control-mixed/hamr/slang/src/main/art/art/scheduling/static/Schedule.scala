@@ -3,7 +3,8 @@
 package art.scheduling.static
 
 import org.sireum._
-import art.{Art, Bridge}
+import art.Art
+import art.scheduling.static.Explorer.ScheduleState
 
 object Schedule {
 
@@ -29,22 +30,23 @@ object Schedule {
 
   // contract invariants on schedule
 
-  @datatype class Slot(bridgeId: art.Art.BridgeId, length: Z)
+  @datatype class Slot(domain: Z, length: Z)
 
-  val emptyDScheduleSpec: DScheduleSpec = DScheduleSpec(0,0,DSchedule(ISZ()))
+  val emptyDScheduleSpec: DScheduleSpec = DScheduleSpec(0, 0, DSchedule(ISZ()))
 
   // ---------- schedule structure
 
   var dScheduleSpec: DScheduleSpec = emptyDScheduleSpec
   var domainToBridgeIdMap: ISZ[Art.BridgeId] = ISZ()
 
-  def setSchedule(spec: DScheduleSpec, bridgeMap: ISZ[Art.BridgeId]) : Unit = {
+  def setSchedule(spec: DScheduleSpec,
+                  domainsToBridgeMap: ISZ[Art.BridgeId]): Unit = {
     // pre-condition -- all structural invariants for the domain schedule hold
     validDScheduleSpec(spec)
     // checking period for each thread requires alignment with model -- cannot check that here -- client should guarantee
     // body
     dScheduleSpec = spec
-    domainToBridgeIdMap = bridgeMap
+    domainToBridgeIdMap = domainsToBridgeMap
     //
     // Technically, after this point, the schedule is "frozen" and we should have to check the invariant properties on the
     // schedule again.
@@ -52,101 +54,75 @@ object Schedule {
 
   // --------- helper method for accessing schedule info
 
-  def getBridgeIdFromSlot(slot: Slot): Z = {
-    //val domainId = slot.domain
-    //val bridgeId = domainToBridgeIdMap(domainId).get
-    val bridgeId = slot.bridgeId
-    return bridgeId
+  def getBridgeIdFromSlot(slot: Slot): Art.BridgeId = {
+    return domainToBridgeIdMap(slot.domain)
   }
 
-  def getBridgeIdFromSlotNumber(slotNum: Z): Z = {
-    val slot: Slot = dScheduleSpec.schedule.slots(slotNum)
-    return getBridgeIdFromSlot(slot)
+  def getBridgeIdFromSlotNumber(slotNum: Z): Art.BridgeId = {
+    return getBridgeIdFromSlot(dScheduleSpec.schedule.slots(slotNum))
   }
 
-  def getBridgeId(scheduleState : Explorer.ScheduleState): Z = {
+  def getBridgeIdFromScheduleState(scheduleState: ScheduleState): Art.BridgeId = {
     return getBridgeIdFromSlotNumber(scheduleState.slotNum)
   }
 
-  //def getDomain(slotNum: Z): Z = {
-  //  val slot: Slot = dScheduleSpec.schedule.slots(slotNum)
-  //  return slot.domain
-  //}
+  def getDomainFromSlotNum(slotNum: Z): Z = {
+    return dScheduleSpec.schedule.slots(slotNum).domain
+  }
 
-  //def getDomain(scheduleState : Explorer.ScheduleState): Z = {
-  //   return getDomain(scheduleState.slotNum)
-  //}
+  def getDomainFromScheduleState(scheduleState: Explorer.ScheduleState): Z = {
+    return getDomainFromSlotNum(scheduleState.slotNum)
+  }
 
   def threadNickName(bridgeId: Art.BridgeId): String = {
-    halt("TODO")
-    /*
-    for (e <- StaticScheduling.threadNickNames.entries) {
+    for (e <- StaticScheduler.threadNickNames.entries) {
       if (e._2 == bridgeId) {
         return e._1
       }
     }
     return "<not found>"
-     */
   }
 
-  def threadNickNameFromScheduleState(scheduleState: Explorer.ScheduleState) : String = {
+  def getThreadNickNameFromScheduleState(scheduleState: Explorer.ScheduleState): String = {
     val bridgeId = Schedule.getBridgeIdFromSlotNumber(scheduleState.slotNum)
     return threadNickName(bridgeId)
-  }
-
-  // --------- helper methods for contracts -------------
-
-  def mySome[T](isz: ISZ[T], pred: T => B): B = {
-    for (e <- isz) {
-      if (pred(e)) {
-        return true
-      }
-    }
-    return false
-  }
-
-  def myAll[T](isz: ISZ[T], pred: T => B): B = {
-    for (e <- isz) {
-      if (!pred(e)) {
-        return false
-      }
-    }
-    return true
   }
 
   // ------------- contract invariants on schedule -------------
 
   // aggregate invariant on static schedule
   def validDScheduleSpec(dScheduleSpec: DScheduleSpec): B = {
-    checkMaxDomain(dScheduleSpec)
-    checkNoMissingDomain(dScheduleSpec)
-    checkHyperPeriodTicks(dScheduleSpec)
+    return checkMaxDomain(dScheduleSpec) &&
+      checkNoMissingDomain(dScheduleSpec) &&
+      checkHyperPeriodTicks(dScheduleSpec)
   }
 
   // Invariant: no domain id referenced in a slot exceeds the specified max domain
   def checkMaxDomain(dScheduleSpec: DScheduleSpec): B = {
-    halt("TODO")
-    //myAll[Slot](dScheduleSpec.schedule.slots, s => s.domain <= dScheduleSpec.maxDomain)
-    //  for (s <- dScheduleSpec.schedule.slots) {
-    //    if (s.domain > dScheduleSpec.maxDomain) {
-    //      return false
-    //    }
-    //  }
-    //  return true
+    // Note: transpiler doesn't current support function passing
+    //return All(dScheduleSpec.schedule.slots)(s => s.domain <= dScheduleSpec.maxDomain)
+    for (s <- dScheduleSpec.schedule.slots if s.domain > dScheduleSpec.maxDomain) {
+      return F
+    }
+    return T
   }
 
   // Invariant: every domain 0 .. maxDomain is referenced by at least one slot
   def checkNoMissingDomain(dScheduleSpec: DScheduleSpec): B = {
-    halt("TODO")
-    /*
-    for (d <- 0 to dScheduleSpec.maxDomain) {
-      if (!mySome[Slot](dScheduleSpec.schedule.slots, s => s.domain == d)) {
-        return false
+    // NOTE: transpiler doesn't currently support function passing
+    //return All(0 until dScheduleSpec.maxDomain)(d =>
+    //  Exists(dScheduleSpec.schedule.slots)(s => s.domain == d)
+    //)
+    for (d <- 0 until dScheduleSpec.maxDomain) {
+      var exists: B = F
+      for (s <- dScheduleSpec.schedule.slots if !exists) {
+        exists = exists || s.domain == d
+      }
+      if (!exists) {
+        return F
       }
     }
-    return true
-
-     */
+    return T
   }
 
   // Invariant: the total time (in ticks) across all slots matches the specified hyper-period
@@ -173,8 +149,6 @@ object Schedule {
    * @param dScheduleSpec static schedule
    */
   def checkPeriodTicks(domain: Z, period: Z, dScheduleSpec: DScheduleSpec): B = {
-    halt("TODO")
-    /*
     var computedPeriod: Z = 0 // computed period in ticks
     var computedTicksBeforeOccurrence: Z = 0
     // number of ticks before first occurrence
@@ -212,11 +186,9 @@ object Schedule {
     // computedTicksBeforeOccurrence should hold the time before it was seen.
     // The sum of these values should equal the period.
     return (computedPeriod + computedTicksBeforeOccurrence == period)
-
-     */
   }
 
-  def computeElaspedRemainingHPTicks(slotNum: Z, dScheduleSpec: DScheduleSpec) : (Z,Z) = {
+  def computeElaspedRemainingHPTicks(slotNum: Z, dScheduleSpec: DScheduleSpec): (Z, Z) = {
     // pre-condition
     //  TODO: well-formed dScheduleSpec
     //  TODO: valid slotNum (define function for below)
@@ -227,7 +199,7 @@ object Schedule {
       elaspedHPTicks = elaspedHPTicks + dScheduleSpec.schedule.slots(0).length
     }
     val remainingHPTicks: Z = dScheduleSpec.hyperPeriod - elaspedHPTicks
-    return (elaspedHPTicks,remainingHPTicks)
+    return (elaspedHPTicks, remainingHPTicks)
   }
 }
 

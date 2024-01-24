@@ -11,7 +11,20 @@ import bc._
   def fanCmd_Id : Art.PortId
   def fanAck_Id : Art.PortId
 
+  // Logika spec var representing port state for outgoing event data port
+  @spec var fanAck: Option[BuildingControl.FanAck.Type] = $
+
   def put_fanAck(value : BuildingControl.FanAck.Type) : Unit = {
+    Contract(
+      Modifies(fanAck),
+      Ensures(
+        fanAck == Some(value)
+      )
+    )
+    Spec {
+      fanAck = Some(value)
+    }
+
     Art.putValue(fanAck_Id, BuildingControl.FanAck_Payload(value))
   }
 
@@ -38,7 +51,15 @@ import bc._
   val fanCmd_Id : Art.PortId,
   val fanAck_Id : Art.PortId) extends Fan_i_Api {
 
+  // Logika spec var representing port state for incoming event data port
+  @spec var fanCmd: Option[BuildingControl.FanCmd.Type] = $
+
   def get_fanCmd() : Option[BuildingControl.FanCmd.Type] = {
+    Contract(
+      Ensures(
+        Res == fanCmd
+      )
+    )
     val value : Option[BuildingControl.FanCmd.Type] = Art.getValue(fanCmd_Id) match {
       case Some(BuildingControl.FanCmd_Payload(v)) => Some(v)
       case Some(v) =>
